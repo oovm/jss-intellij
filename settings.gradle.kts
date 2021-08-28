@@ -1,1 +1,1 @@
-rootProject.name = "voml-intellij"
+rootProject.name = "jss-intellij"
