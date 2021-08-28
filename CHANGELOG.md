@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# jss-intellij Changelog
+# voml-intellij Changelog
 
 ## [Unreleased]
 ### Added
