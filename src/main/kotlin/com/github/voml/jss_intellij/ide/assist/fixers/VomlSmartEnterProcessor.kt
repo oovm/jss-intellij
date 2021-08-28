@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.assist.fixers
 
-import com.github.voml.jss_intellij.language.VomlFile
+import com.github.voml.jss_intellij.language.JssFile
 import com.intellij.lang.SmartEnterProcessorWithFixers
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
@@ -27,7 +27,7 @@ class VomlSmartEnterProcessor : SmartEnterProcessorWithFixers() {
 
     private class PlainEnterProcessor : FixEnterProcessor() {
         override fun doEnter(atCaret: PsiElement, file: PsiFile, editor: Editor, modified: Boolean): Boolean {
-            if (file !is VomlFile) return false
+            if (file !is JssFile) return false
             plainEnter(editor)
             return true
         }

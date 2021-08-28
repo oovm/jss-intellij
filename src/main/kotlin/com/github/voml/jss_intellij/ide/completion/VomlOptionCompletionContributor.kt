@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.completion
 
-import com.github.voml.jss_intellij.language.psi.VomlTypes
+import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.codeInsight.completion.*
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.editor.EditorModificationUtil
@@ -11,7 +11,7 @@ class VomlOptionCompletionContributor : CompletionContributor() {
     init {
         extend(
             CompletionType.BASIC,
-            PlatformPatterns.psiElement(VomlTypes.SYMBOL),
+            PlatformPatterns.psiElement(JssTypes.SYMBOL),
             object : CompletionProvider<CompletionParameters>() {
                 override fun addCompletions(
                     parameters: CompletionParameters,

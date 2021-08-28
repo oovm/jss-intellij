@@ -2,7 +2,7 @@ package com.github.voml.jss_intellij.ide.colors
 
 import com.github.voml.jss_intellij.ide.VomlSyntaxHighlighter
 import com.github.voml.jss_intellij.ide.icons.VomlIcons
-import com.github.voml.jss_intellij.language.VomlBundle
+import com.github.voml.jss_intellij.language.JssBundle
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 
@@ -20,7 +20,7 @@ class VomlColorSettingsPage : ColorSettingsPage {
 
     override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
 
-    override fun getDisplayName() =  VomlBundle.message("filetype.voml.name")
+    override fun getDisplayName() =  JssBundle.message("filetype.voml.name")
 
     override fun getIcon() = VomlIcons.FILE
 

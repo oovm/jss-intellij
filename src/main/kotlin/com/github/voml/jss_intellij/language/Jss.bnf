@@ -1,6 +1,6 @@
 {
-    parserClass = "com.github.voml.jss_intellij.language.parser.VomlParser"
-    parserUtilClass = "com.github.voml.jss_intellij.language.psi.VomlParserUtil"
+    parserClass = "com.github.voml.jss_intellij.language.parser.JssParser"
+    parserUtilClass = "com.github.voml.jss_intellij.language.psi.JssParserUtil"
 
     extends = "com.intellij.extapi.psi.ASTWrapperPsiElement"
 
@@ -9,11 +9,11 @@
     psiPackage = "com.github.voml.jss_intellij.language.psi"
     psiImplPackage = "com.github.voml.jss_intellij.language.psi.impl"
 
-    elementTypeHolderClass = "com.github.voml.jss_intellij.language.psi.VomlTypes"
-    elementTypeClass = "com.github.voml.jss_intellij.language.psi.VomlElementType"
-    tokenTypeClass = "com.github.voml.jss_intellij.language.psi.VomlTokenType"
+    elementTypeHolderClass = "com.github.voml.jss_intellij.language.psi.JssTypes"
+    elementTypeClass = "com.github.voml.jss_intellij.language.psi.JssElementType"
+    tokenTypeClass = "com.github.voml.jss_intellij.language.psi.JssTokenType"
 
-    psiImplUtilClass = "com.github.voml.jss_intellij.language.psi.impl.VomlPsiImplUtil"
+    psiImplUtilClass = "com.github.voml.jss_intellij.language.psi.impl.JssPsiImplUtil"
 
     tokens = [
         COMMENT = 'regexp:(//|#)[^\r\n]*'
@@ -28,8 +28,8 @@
         NULL = 'null'
         BOOLEAN = 'regexp:true|false'
 
-        SYMBOL = 'regexp:[A-Za-z_][A-Za-z0-9_]*'
-        STRING = "regexp:'([^'\\]|\\.)*'|\"([^\"\\]|\\\"|\\'|\\)*\""
+        SYMBOL = 'regexp:[\p{XID_Start}_][\p{XID_Continue}_]*'
+        STRING = 'regexp:"([^"\\]|\\.)*"'
         BYTE = 'regexp:(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)'
         INTEGER = 'regexp:(0|[1-9][0-9_]*)'
         DECIMAL = 'regexp:([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)'

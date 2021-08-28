@@ -2,7 +2,7 @@ package com.github.voml.jss_intellij.ide
 
 import com.github.voml.jss_intellij.ide.colors.VomlColor
 import com.github.voml.jss_intellij.language.VomlLexerAdapter
-import com.github.voml.jss_intellij.language.psi.VomlTypes
+import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
@@ -21,38 +21,38 @@ class VomlSyntaxHighlighter : SyntaxHighlighterBase() {
     private fun getTokenColor(tokenType: IElementType): VomlColor? {
         return when (tokenType) {
             //
-            VomlTypes.INCLUDE, VomlTypes.INHERIT, VomlTypes.AS -> VomlColor.KEYWORD
-            VomlTypes.ANNOTATION, VomlTypes.ANNOTATION_MARK -> VomlColor.ANNOTATION
-            VomlTypes.PREDEFINED_SYMBOL -> VomlColor.PREDEFINED
+            JssTypes.INCLUDE, JssTypes.INHERIT, JssTypes.AS -> VomlColor.KEYWORD
+            JssTypes.ANNOTATION, JssTypes.ANNOTATION_MARK -> VomlColor.ANNOTATION
+            JssTypes.PREDEFINED_SYMBOL -> VomlColor.PREDEFINED
             //
-            VomlTypes.STRING_PREFIX -> VomlColor.STRING_HINT
-            VomlTypes.NUMBER_SUFFIX -> VomlColor.NUMBER_HINT
-            VomlTypes.TYPE_HINT -> VomlColor.TYPE_HINT
-            VomlTypes.SCOPE_SYMBOL -> VomlColor.SCOPE_SYMBOL
-            VomlTypes.SCOPE_MARK -> VomlColor.SCOPE_MARK
-            VomlTypes.INSERT_DOT, VomlTypes.INSERT_STAR -> VomlColor.INSERT_MARK
+            JssTypes.STRING_PREFIX -> VomlColor.STRING_HINT
+            JssTypes.NUMBER_SUFFIX -> VomlColor.NUMBER_HINT
+            JssTypes.TYPE_HINT -> VomlColor.TYPE_HINT
+            JssTypes.SCOPE_SYMBOL -> VomlColor.SCOPE_SYMBOL
+            JssTypes.SCOPE_MARK -> VomlColor.SCOPE_MARK
+            JssTypes.INSERT_DOT, JssTypes.INSERT_STAR -> VomlColor.INSERT_MARK
             //
-            VomlTypes.PARENTHESIS_L, VomlTypes.PARENTHESIS_R -> VomlColor.PARENTHESES
-            VomlTypes.BRACKET_L, VomlTypes.BRACKET_R -> VomlColor.BRACKETS
-            VomlTypes.BRACE_L, VomlTypes.BRACE_R -> VomlColor.BRACES
-            VomlTypes.COLON, VomlTypes.EQ -> VomlColor.SET
-            VomlTypes.COMMA -> VomlColor.COMMA
+            JssTypes.PARENTHESIS_L, JssTypes.PARENTHESIS_R -> VomlColor.PARENTHESES
+            JssTypes.BRACKET_L, JssTypes.BRACKET_R -> VomlColor.BRACKETS
+            JssTypes.BRACE_L, JssTypes.BRACE_R -> VomlColor.BRACES
+            JssTypes.COLON, JssTypes.EQ -> VomlColor.SET
+            JssTypes.COMMA -> VomlColor.COMMA
             // atom
-            VomlTypes.NULL -> VomlColor.NULL
-            VomlTypes.BOOLEAN -> VomlColor.BOOLEAN
+            JssTypes.NULL -> VomlColor.NULL
+            JssTypes.BOOLEAN -> VomlColor.BOOLEAN
 
-            VomlTypes.NUMBER_SUFFIX -> VomlColor.NUMBER_HINT
-            VomlTypes.INTEGER -> VomlColor.INTEGER
-            VomlTypes.DECIMAL -> VomlColor.DECIMAL
+            JssTypes.NUMBER_SUFFIX -> VomlColor.NUMBER_HINT
+            JssTypes.INTEGER -> VomlColor.INTEGER
+            JssTypes.DECIMAL -> VomlColor.DECIMAL
 
-            VomlTypes.STRING_PREFIX -> VomlColor.STRING_HINT
-            VomlTypes.STRING_INLINE -> VomlColor.STRING
-            VomlTypes.STRING_MULTI -> VomlColor.STRING
+            JssTypes.STRING_PREFIX -> VomlColor.STRING_HINT
+            JssTypes.STRING_INLINE -> VomlColor.STRING
+            JssTypes.STRING_MULTI -> VomlColor.STRING
 
-            VomlTypes.SYMBOL -> VomlColor.IDENTIFIER
+            JssTypes.SYMBOL -> VomlColor.IDENTIFIER
             // 注释
-            VomlTypes.COMMENT -> VomlColor.LINE_COMMENT
-            VomlTypes.BLOCK_COMMENT -> VomlColor.BLOCK_COMMENT
+            JssTypes.COMMENT -> VomlColor.LINE_COMMENT
+            JssTypes.BLOCK_COMMENT -> VomlColor.BLOCK_COMMENT
             // 错误
             TokenType.BAD_CHARACTER -> VomlColor.BAD_CHARACTER
             else -> null

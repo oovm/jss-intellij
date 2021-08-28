@@ -5,7 +5,7 @@ import com.intellij.lang.folding.FoldingDescriptor
 import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
 
-class VomlFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>) : VomlRecursiveVisitor() {
+class JssFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>) : JssRecursiveVisitor() {
     override fun visitTable(o: VomlTable) {
         //if (o.valueList.isNotEmpty()) {
         fold(o)
@@ -44,7 +44,7 @@ class VomlFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>
 //    }
 
     override fun visitComment(comment: PsiComment) {
-        if (comment.tokenType == VomlTypes.BLOCK_COMMENT) {
+        if (comment.tokenType == JssTypes.BLOCK_COMMENT) {
             fold(comment)
             super.visitComment(comment)
         }

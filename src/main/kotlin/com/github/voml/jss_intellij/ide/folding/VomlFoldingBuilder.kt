@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.folding
 
-import com.github.voml.jss_intellij.language.VomlFile
+import com.github.voml.jss_intellij.language.JssFile
 import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.ASTNode
 import com.intellij.lang.folding.CustomFoldingBuilder
@@ -18,8 +18,8 @@ class VomlFoldingBuilder : CustomFoldingBuilder(), DumbAware {
         document: Document,
         quick: Boolean
     ) {
-        if (root !is VomlFile) return
-        val visitor = VomlFoldingVisitor(descriptors)
+        if (root !is JssFile) return
+        val visitor = JssFoldingVisitor(descriptors)
         PsiTreeUtil.processElements(root) {
             it.accept(visitor); true
         }
@@ -27,7 +27,7 @@ class VomlFoldingBuilder : CustomFoldingBuilder(), DumbAware {
 
     override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) =
         when (node.elementType) {
-            VomlTypes.TABLE -> "[...]"
+            JssTypes.TABLE -> "[...]"
             else -> "{...}"
         }
 

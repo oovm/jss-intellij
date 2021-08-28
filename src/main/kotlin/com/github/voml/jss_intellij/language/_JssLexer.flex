@@ -4,7 +4,7 @@ import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
 import static com.intellij.psi.TokenType.WHITE_SPACE;
-import static com.github.voml.jss_intellij.language.psi.VomlTypes.*;
+import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 
 %%
 
@@ -15,7 +15,7 @@ import static com.github.voml.jss_intellij.language.psi.VomlTypes.*;
 %}
 
 %public
-%class _VomlLexer
+%class _JssLexer
 %implements FlexLexer
 %function advance
 %type IElementType

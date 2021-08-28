@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.formatter
 
-import com.github.voml.jss_intellij.language.VomlLanguage
-import com.github.voml.jss_intellij.language.psi.VomlTypes
+import com.github.voml.jss_intellij.language.JssLanguage
+import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.formatting.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
@@ -36,7 +36,7 @@ class VomlAstBlock(
 
     override fun getChildAttributes(newChildIndex: Int): ChildAttributes {
         val indent = when (node.elementType) {
-            VomlTypes.TABLE -> Indent.getNormalIndent()
+            JssTypes.TABLE -> Indent.getNormalIndent()
             else -> Indent.getNoneIndent()
         }
         return ChildAttributes(indent, null)
@@ -60,7 +60,7 @@ data class VomlFormatterContext(
 ) {
     companion object {
         fun create(settings: CodeStyleSettings): VomlFormatterContext {
-            val commonSettings = settings.getCommonSettings(VomlLanguage.INSTANCE)
+            val commonSettings = settings.getCommonSettings(JssLanguage.INSTANCE)
             return VomlFormatterContext(commonSettings, createSpacingBuilder(commonSettings))
         }
     }
@@ -69,17 +69,17 @@ data class VomlFormatterContext(
 fun createSpacingBuilder(commonSettings: CommonCodeStyleSettings): SpacingBuilder =
     SpacingBuilder(commonSettings)
         // ,
-        .after(VomlTypes.COMMA).spacing(1, 1, 0, true, 0)
-        .before(VomlTypes.COMMA).spaceIf(false)
+        .after(JssTypes.COMMA).spacing(1, 1, 0, true, 0)
+        .before(JssTypes.COMMA).spaceIf(false)
         // [ ]
-        .after(VomlTypes.BRACKET_L).spaceIf(false)
-        .before(VomlTypes.BRACKET_R).spaceIf(false)
+        .after(JssTypes.BRACKET_L).spaceIf(false)
+        .before(JssTypes.BRACKET_R).spaceIf(false)
         // { }
-        .after(VomlTypes.BRACE_L).spaceIf(false)
-        .before(VomlTypes.BRACE_R).spaceIf(false)
+        .after(JssTypes.BRACE_L).spaceIf(false)
+        .before(JssTypes.BRACE_R).spaceIf(false)
         // ( )
-        .after(VomlTypes.PARENTHESIS_L).spaceIf(false)
-        .before(VomlTypes.PARENTHESIS_R).spaceIf(false)
+        .after(JssTypes.PARENTHESIS_L).spaceIf(false)
+        .before(JssTypes.PARENTHESIS_R).spaceIf(false)
 
 private fun Block.computeSpacing(child1: Block?, child2: Block, ctx: VomlFormatterContext): Spacing? {
     return ctx.spacingBuilder.getSpacing(this, child1, child2)
@@ -90,8 +90,8 @@ private fun ASTNode?.isWhitespaceOrEmpty() = this == null || textLength == 0 || 
 private fun VomlAstBlock.computeIndent(child: ASTNode): Indent? {
     val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
     return when (node.elementType) {
-        VomlTypes.TABLE -> when {
-            isCornerChild || child.elementType == VomlTypes.COMMA -> Indent.getNoneIndent()
+        JssTypes.TABLE -> when {
+            isCornerChild || child.elementType == JssTypes.COMMA -> Indent.getNoneIndent()
             else -> Indent.getNormalIndent()
         }
         else -> Indent.getNoneIndent()

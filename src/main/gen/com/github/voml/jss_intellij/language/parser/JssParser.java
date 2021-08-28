@@ -3,15 +3,15 @@ package com.github.voml.jss_intellij.language.parser;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import static com.github.voml.jss_intellij.language.psi.VomlTypes.*;
-import static com.github.voml.jss_intellij.language.psi.VomlParserUtil.*;
+import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
+import static com.github.voml.jss_intellij.language.psi.JssParserUtil.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiParser;
 import com.intellij.lang.LightPsiParser;
 
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
-public class VomlParser implements PsiParser, LightPsiParser {
+public class JssParser implements PsiParser, LightPsiParser {
 
   public ASTNode parse(IElementType t, PsiBuilder b) {
     parseLight(t, b);
@@ -54,7 +54,7 @@ public class VomlParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = annotation_mark(b, l + 1);
-    r = r && paired(b, l + 1, VomlParser::table_inner);
+    r = r && paired(b, l + 1, JssParser::table_inner);
     exit_section_(b, m, ANNOTATION, r);
     return r;
   }
@@ -214,7 +214,7 @@ public class VomlParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b);
     r = include_statement_3_0(b, l + 1);
-    if (!r) r = paired(b, l + 1, VomlParser::include_inner);
+    if (!r) r = paired(b, l + 1, JssParser::include_inner);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -530,7 +530,7 @@ public class VomlParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "scope")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, SCOPE, "<scope>");
-    r = paired(b, l + 1, VomlParser::scope_inner);
+    r = paired(b, l + 1, JssParser::scope_inner);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -771,7 +771,7 @@ public class VomlParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TABLE, "<table>");
     r = table_0(b, l + 1);
-    r = r && paired(b, l + 1, VomlParser::table_inner);
+    r = r && paired(b, l + 1, JssParser::table_inner);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

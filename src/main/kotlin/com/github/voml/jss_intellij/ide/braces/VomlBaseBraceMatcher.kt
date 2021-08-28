@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.braces
 
-import com.github.voml.jss_intellij.language.psi.VomlTypes
+import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.github.voml.jss_intellij.language.psi.Voml_COMMENTS
 import com.github.voml.jss_intellij.language.psi.tokenSetOf
 import com.intellij.lang.BracePair
@@ -20,9 +20,9 @@ class VomlBaseBraceMatcher : PairedBraceMatcher {
 
     companion object {
         private val PAIRS = arrayOf(
-            BracePair(VomlTypes.BRACE_L, VomlTypes.BRACE_R, true),
-            BracePair(VomlTypes.BRACKET_L, VomlTypes.BRACKET_R, true),
-            BracePair(VomlTypes.PARENTHESIS_L, VomlTypes.PARENTHESIS_R, true),
+            BracePair(JssTypes.BRACE_L, JssTypes.BRACE_R, true),
+            BracePair(JssTypes.BRACKET_L, JssTypes.BRACKET_R, true),
+            BracePair(JssTypes.PARENTHESIS_L, JssTypes.PARENTHESIS_R, true),
             // BracePair(VomlTypes.EXT_PREFIX, VomlTypes.BRACKETR, false)
         )
 
@@ -30,11 +30,11 @@ class VomlBaseBraceMatcher : PairedBraceMatcher {
             Voml_COMMENTS,
             tokenSetOf(
                 TokenType.WHITE_SPACE,
-                VomlTypes.COMMA,
-                VomlTypes.PARENTHESIS_R,
-                VomlTypes.BRACKET_R,
-                VomlTypes.BRACE_R,
-                VomlTypes.BRACE_L
+                JssTypes.COMMA,
+                JssTypes.PARENTHESIS_R,
+                JssTypes.BRACKET_R,
+                JssTypes.BRACE_R,
+                JssTypes.BRACE_L
             )
         )
     }

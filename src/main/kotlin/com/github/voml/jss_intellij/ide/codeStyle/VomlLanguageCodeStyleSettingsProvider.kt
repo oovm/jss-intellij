@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.codeStyle
 
-import com.github.voml.jss_intellij.language.VomlLanguage
+import com.github.voml.jss_intellij.language.JssLanguage
 import com.intellij.application.options.CodeStyleAbstractConfigurable
 import com.intellij.application.options.SmartIndentOptionsEditor
 import com.intellij.psi.codeStyle.CodeStyleConfigurable
@@ -10,7 +10,7 @@ import com.intellij.psi.codeStyle.CommonCodeStyleSettings
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider
 
 class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider() {
-    override fun getLanguage() = VomlLanguage.INSTANCE
+    override fun getLanguage() = JssLanguage.INSTANCE
 
     override fun getIndentOptionsEditor() = SmartIndentOptionsEditor()
 

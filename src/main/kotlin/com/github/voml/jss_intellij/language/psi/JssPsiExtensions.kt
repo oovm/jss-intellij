@@ -189,4 +189,4 @@ inline val <T : StubElement<*>> StubBasedPsiElement<T>.greenStub: T?
 
 fun tokenSetOf(vararg tokens: IElementType) = TokenSet.create(*tokens)
 
-val Voml_COMMENTS = tokenSetOf(VomlTypes.BLOCK_COMMENT, VomlTypes.COMMENT)
+val Voml_COMMENTS = tokenSetOf(JssTypes.BLOCK_COMMENT, JssTypes.COMMENT)

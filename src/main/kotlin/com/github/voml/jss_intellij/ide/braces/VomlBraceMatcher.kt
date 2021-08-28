@@ -1,12 +1,12 @@
 package com.github.voml.jss_intellij.ide.braces
 
-import com.github.voml.jss_intellij.language.VomlFileType
-import com.github.voml.jss_intellij.language.VomlLanguage
+import com.github.voml.jss_intellij.language.JssFileType
+import com.github.voml.jss_intellij.language.JssLanguage
 import com.intellij.codeInsight.highlighting.PairedBraceMatcherAdapter
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
 import com.intellij.openapi.fileTypes.FileType
 
-class VomlBraceMatcher : PairedBraceMatcherAdapter(VomlBaseBraceMatcher(), VomlLanguage.INSTANCE) {
+class VomlBraceMatcher : PairedBraceMatcherAdapter(VomlBaseBraceMatcher(), JssLanguage.INSTANCE) {
     override fun isLBraceToken(iterator: HighlighterIterator, fileText: CharSequence, fileType: FileType): Boolean =
         isBrace(iterator, fileText, fileType, true)
 
@@ -19,7 +19,7 @@ class VomlBraceMatcher : PairedBraceMatcherAdapter(VomlBaseBraceMatcher(), VomlL
         fileType: FileType,
         left: Boolean
     ): Boolean {
-        if (fileType != VomlFileType.INSTANCE) return false
+        if (fileType != JssFileType.INSTANCE) return false
         val pair = findPair(left, iterator, fileText, fileType)
         return pair != null
     }
