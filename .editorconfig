@@ -2,14 +2,11 @@
 charset = utf-8
 end_of_line = lf
 
-[*.bnf]
+
+[*.{bnf, toml}]
 indent_style = space
 indent_size = 4
 
-[*.toml]
-indent_style = space
-indent_size = 4
-
-[*.arc]
-indent_style = space
-indent_size = 4
+[*.{xml, yaml}]
+indent_style = tab
+indent_size = 2

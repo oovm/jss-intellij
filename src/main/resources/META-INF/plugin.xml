@@ -26,7 +26,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
         />
         <lang.parserDefinition
                 language="JSS"
-                implementationClass="com.github.voml.jss_intellij.language.VomlParserDefinition"
+                implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
         />
         <lang.syntaxHighlighter
                 language="JSS"

@@ -15,14 +15,13 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 
 
-class VomlLexerAdapter : FlexAdapter(_JssLexer())
+class JssLexerAdapter : FlexAdapter(_JssLexer())
 
 
-class VomlParserDefinition : ParserDefinition {
-    override fun createLexer(project: Project): Lexer = VomlLexerAdapter()
+class JssParserDefinition : ParserDefinition {
+    override fun createLexer(project: Project): Lexer = JssLexerAdapter()
 
-    override fun createParser(project: Project): PsiParser =
-        JssParser()
+    override fun createParser(project: Project): PsiParser = JssParser()
 
     override fun getFileNodeType(): IFileElementType = FILE
 
@@ -34,8 +33,9 @@ class VomlParserDefinition : ParserDefinition {
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile = JssFile(viewProvider)
 
-    override fun spaceExistenceTypeBetweenTokens(left: ASTNode, right: ASTNode): ParserDefinition.SpaceRequirements =
-        ParserDefinition.SpaceRequirements.MAY
+    override fun spaceExistenceTypeBetweenTokens(left: ASTNode, right: ASTNode): ParserDefinition.SpaceRequirements {
+        return ParserDefinition.SpaceRequirements.MAY
+    }
 
     companion object {
         val COMMENTS = TokenSet.create(JssTypes.COMMENT, JssTypes.BLOCK_COMMENT)
