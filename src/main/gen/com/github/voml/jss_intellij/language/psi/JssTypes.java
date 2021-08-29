@@ -78,88 +78,88 @@ public interface JssTypes {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
       if (type == ANNOTATION) {
-        return new VomlAnnotationImpl(node);
+        return new JssAnnotationImpl(node);
       }
       else if (type == ANNOTATION_MARK) {
-        return new VomlAnnotationMarkImpl(node);
+        return new JssAnnotationMarkImpl(node);
       }
       else if (type == BACK_TOP) {
-        return new VomlBackTopImpl(node);
+        return new JssBackTopImpl(node);
       }
       else if (type == ESCAPED) {
-        return new VomlEscapedImpl(node);
+        return new JssEscapedImpl(node);
       }
       else if (type == EXPORT_STATEMENT) {
-        return new VomlExportStatementImpl(node);
+        return new JssExportStatementImpl(node);
       }
       else if (type == EXPRESSION) {
-        return new VomlExpressionImpl(node);
+        return new JssExpressionImpl(node);
       }
       else if (type == INCLUDE_STATEMENT) {
-        return new VomlIncludeStatementImpl(node);
+        return new JssIncludeStatementImpl(node);
       }
       else if (type == INHERIT_STATEMENT) {
-        return new VomlInheritStatementImpl(node);
+        return new JssInheritStatementImpl(node);
       }
       else if (type == INSERT_DOT) {
-        return new VomlInsertDotImpl(node);
+        return new JssInsertDotImpl(node);
       }
       else if (type == INSERT_ITEM) {
-        return new VomlInsertItemImpl(node);
+        return new JssInsertItemImpl(node);
       }
       else if (type == INSERT_PAIR) {
-        return new VomlInsertPairImpl(node);
+        return new JssInsertPairImpl(node);
       }
       else if (type == INSERT_STAR) {
-        return new VomlInsertStarImpl(node);
+        return new JssInsertStarImpl(node);
       }
       else if (type == KEY_SYMBOL) {
-        return new VomlKeySymbolImpl(node);
+        return new JssKeySymbolImpl(node);
       }
       else if (type == NUMBER_SUFFIX) {
-        return new VomlNumberSuffixImpl(node);
+        return new JssNumberSuffixImpl(node);
       }
       else if (type == PAIR) {
-        return new VomlPairImpl(node);
+        return new JssPairImpl(node);
       }
       else if (type == PAIRED) {
-        return new VomlPairedImpl(node);
+        return new JssPairedImpl(node);
       }
       else if (type == PREDEFINED_SYMBOL) {
-        return new VomlPredefinedSymbolImpl(node);
+        return new JssPredefinedSymbolImpl(node);
       }
       else if (type == REF) {
-        return new VomlRefImpl(node);
+        return new JssRefImpl(node);
       }
       else if (type == SCOPE) {
-        return new VomlScopeImpl(node);
+        return new JssScopeImpl(node);
       }
       else if (type == SCOPE_MARK) {
-        return new VomlScopeMarkImpl(node);
+        return new JssScopeMarkImpl(node);
       }
       else if (type == SCOPE_SYMBOL) {
-        return new VomlScopeSymbolImpl(node);
+        return new JssScopeSymbolImpl(node);
       }
       else if (type == STRING_INLINE) {
-        return new VomlStringInlineImpl(node);
+        return new JssStringInlineImpl(node);
       }
       else if (type == STRING_MULTI) {
-        return new VomlStringMultiImpl(node);
+        return new JssStringMultiImpl(node);
       }
       else if (type == STRING_PREFIX) {
-        return new VomlStringPrefixImpl(node);
+        return new JssStringPrefixImpl(node);
       }
       else if (type == SYMBOL_PATH) {
-        return new VomlSymbolPathImpl(node);
+        return new JssSymbolPathImpl(node);
       }
       else if (type == TABLE) {
-        return new VomlTableImpl(node);
+        return new JssTableImpl(node);
       }
       else if (type == TYPE_HINT) {
-        return new VomlTypeHintImpl(node);
+        return new JssTypeHintImpl(node);
       }
       else if (type == VALUE) {
-        return new VomlValueImpl(node);
+        return new JssValueImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }
