@@ -4,7 +4,7 @@
 
     extends = "com.intellij.extapi.psi.ASTWrapperPsiElement"
 
-    psiClassPrefix = "Voml"
+    psiClassPrefix = "Jss"
     psiImplClassSuffix = "Impl"
     psiPackage = "com.github.voml.jss_intellij.language.psi"
     psiImplPackage = "com.github.voml.jss_intellij.language.psi.impl"

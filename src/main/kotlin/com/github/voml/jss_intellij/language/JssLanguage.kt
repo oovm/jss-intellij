@@ -16,9 +16,9 @@ class JssLanguage private constructor() : Language("JSS") {
 }
 
 class JssFileType private constructor() : LanguageFileType(JssLanguage.INSTANCE) {
-    override fun getName(): String = JssBundle.message("filetype.voml.name")
+    override fun getName(): String = JssBundle.message("filetype.name")
 
-    override fun getDescription(): String = JssBundle.message("filetype.voml.description")
+    override fun getDescription(): String = JssBundle.message("filetype.description")
 
     override fun getDefaultExtension(): String = "jss"
 
@@ -33,5 +33,5 @@ class JssFileType private constructor() : LanguageFileType(JssLanguage.INSTANCE)
 class JssFile(viewProvider: FileViewProvider) : PsiFileBase(viewProvider, JssLanguage.INSTANCE) {
     override fun getFileType(): FileType = JssFileType.INSTANCE
 
-    override fun toString(): String = JssBundle.message("filetype.voml.create")
+    override fun toString(): String = JssBundle.message("action.create_file")
 }

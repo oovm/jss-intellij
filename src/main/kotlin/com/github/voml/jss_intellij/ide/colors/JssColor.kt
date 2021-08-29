@@ -12,7 +12,7 @@ import java.util.function.Supplier
 
 
 // TODO: 分类
-enum class VomlColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
+enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
     KEYWORD(JssBundle.messagePointer("color.settings.toml.keyword"), Default.KEYWORD),
     // 字面量

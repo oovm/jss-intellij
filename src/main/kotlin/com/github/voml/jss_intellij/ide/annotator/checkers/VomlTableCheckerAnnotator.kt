@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.annotator.checkers
 
-import com.github.voml.jss_intellij.language.psi.VomlPair
+import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
@@ -11,12 +11,12 @@ class VomlTableCheckerAnnotator : CheckerAnnotator() {
             CheckerAnnotatorResult.Ok
         } else {
             when (element) {
-                is VomlPair -> checkPair(element)
+                is JssPair -> checkPair(element)
                 else -> CheckerAnnotatorResult.Ok
             }
         }
 
-    private fun checkPair(mapEntry: VomlPair): CheckerAnnotatorResult {
+    private fun checkPair(mapEntry: JssPair): CheckerAnnotatorResult {
 //        val filteredEntries = (mapEntry.parent as VomlMap)
 //            .mapEntryList
 //            .asSequence()

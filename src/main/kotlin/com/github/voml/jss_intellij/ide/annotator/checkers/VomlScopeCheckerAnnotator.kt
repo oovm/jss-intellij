@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.annotator.checkers
 
-import com.github.voml.jss_intellij.language.psi.VomlScope
+import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
@@ -10,12 +10,12 @@ class VomlScopeCheckerAnnotator : CheckerAnnotator() {
             CheckerAnnotatorResult.Ok
         } else {
             when (element) {
-                is VomlScope -> checkScope(element)
+                is JssScope -> checkScope(element)
                 else -> CheckerAnnotatorResult.Ok
             }
         }
 
-    private fun checkScope(objectEntry: VomlScope): CheckerAnnotatorResult {
+    private fun checkScope(objectEntry: JssScope): CheckerAnnotatorResult {
 //        val filteredEntries = (objectEntry.parent as VomlObjectBody)
 //            .objectEntryList
 //            .asSequence()

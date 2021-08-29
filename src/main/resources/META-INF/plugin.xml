@@ -30,14 +30,14 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
         />
         <lang.syntaxHighlighter
                 language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.VomlSyntaxHighlighter"
+                implementationClass="com.github.voml.jss_intellij.ide.colors.JssSyntaxHighlighter"
         />
         <colorSettingsPage
-                implementation="com.github.voml.jss_intellij.ide.colors.VomlColorSettingsPage"
+                implementation="com.github.voml.jss_intellij.ide.colors.JssColorSettingsPage"
         />
         <lang.commenter
                 language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.VomlCommenter"
+                implementationClass="com.github.voml.jss_intellij.ide.formatter.JssCommenter"
         />
         <lang.braceMatcher
                 language="JSS"
@@ -49,7 +49,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
         />
         <lang.foldingBuilder
                 language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.folding.VomlFoldingBuilder"
+                implementationClass="com.github.voml.jss_intellij.ide.folding.JssFoldingBuilder"
         />
         <indexPatternBuilder
                 implementation="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexPatternBuilder"
@@ -89,8 +89,8 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
         />
     </extensions>
     <actions>
-        <action id="com.github.voml.jss_intellij.ide.actions.VomlCreateFile"
-                class="com.github.voml.jss_intellij.ide.actions.VomlCreateFile"
+        <action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
+                class="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
                 text="Voml File"
                 description="Create new Voml file">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>

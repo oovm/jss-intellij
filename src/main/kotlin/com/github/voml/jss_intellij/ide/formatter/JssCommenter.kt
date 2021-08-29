@@ -1,8 +1,8 @@
-package com.github.voml.jss_intellij.ide
+package com.github.voml.jss_intellij.ide.formatter
 
 import com.intellij.lang.Commenter
 
-class VomlCommenter : Commenter {
+class JssCommenter : Commenter {
     override fun getLineCommentPrefix(): String = "//"
 
     override fun getBlockCommentPrefix(): String = "/*"

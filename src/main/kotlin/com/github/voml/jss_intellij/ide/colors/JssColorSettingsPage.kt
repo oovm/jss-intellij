@@ -1,33 +1,32 @@
 package com.github.voml.jss_intellij.ide.colors
 
-import com.github.voml.jss_intellij.ide.VomlSyntaxHighlighter
 import com.github.voml.jss_intellij.ide.icons.VomlIcons
 import com.github.voml.jss_intellij.language.JssBundle
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 
-class VomlColorSettingsPage : ColorSettingsPage {
-    private val attrs = VomlColor
+class JssColorSettingsPage : ColorSettingsPage {
+    private val annotatorTags = JssColor
+        .values()
+        .associateBy({ it.name }, { it.textAttributesKey })
+
+    override fun getAttributeDescriptors() = JssColor
         .values()
         .map { it.attributesDescriptor }
         .toTypedArray()
 
-    private val annotatorTags = VomlColor
-        .values()
-        .associateBy({ it.name }, { it.textAttributesKey })
-
-    override fun getAttributeDescriptors() = attrs
-
     override fun getColorDescriptors(): Array<ColorDescriptor> = ColorDescriptor.EMPTY_ARRAY
 
-    override fun getDisplayName() =  JssBundle.message("filetype.voml.name")
+    override fun getDisplayName() = JssBundle.message("filetype.name")
 
     override fun getIcon() = VomlIcons.FILE
 
-    override fun getHighlighter() = VomlSyntaxHighlighter()
+    override fun getHighlighter() = JssSyntaxHighlighter()
+
+    override fun getAdditionalHighlightingTagToDescriptorMap() = annotatorTags
 
     override fun getDemoText() =
-"""<KEYWORD>@inherit</KEYWORD> <PREDEFINED>user</PREDEFINED>;
+        """<KEYWORD>@inherit</KEYWORD> <PREDEFINED>user</PREDEFINED>;
 
 @include <STRING_HINT>json</STRING_HINT> <STRING>"some/path/test.json"</STRING> <KEYWORD>as</KEYWORD> <KEY_SYMBOL>json</KEY_SYMBOL>;
 @include <STRING>"https://example.org/test.voml"</STRING> {
@@ -75,5 +74,5 @@ class VomlColorSettingsPage : ColorSettingsPage {
   <INSERT_MARK>*</INSERT_MARK> [true]
 """
 
-    override fun getAdditionalHighlightingTagToDescriptorMap() = annotatorTags
+
 }

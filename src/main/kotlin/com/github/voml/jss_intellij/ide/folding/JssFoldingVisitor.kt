@@ -6,21 +6,6 @@ import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
 
 class JssFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>) : JssRecursiveVisitor() {
-    override fun visitTable(o: VomlTable) {
-        //if (o.valueList.isNotEmpty()) {
-        fold(o)
-        super.visitTable(o)
-    }
-
-    override fun visitIncludeStatement(o: VomlIncludeStatement) {
-        fold(o)
-        super.visitIncludeStatement(o)
-    }
-
-    override fun visitInheritStatement(o: VomlInheritStatement) {
-        fold(o)
-        super.visitInheritStatement(o)
-    }
 
 //    override fun visitObjectBody(o: VomlObjectBody) {
 //        if (o.objectEntryList.isNotEmpty()) {
@@ -43,12 +28,6 @@ class JssFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>)
 //        }
 //    }
 
-    override fun visitComment(comment: PsiComment) {
-        if (comment.tokenType == JssTypes.BLOCK_COMMENT) {
-            fold(comment)
-            super.visitComment(comment)
-        }
-    }
 
     private fun fold(element: PsiElement) {
         descriptors += FoldingDescriptor(element.node, element.textRange)

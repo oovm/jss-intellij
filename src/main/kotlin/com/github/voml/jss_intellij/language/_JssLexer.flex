@@ -1,5 +1,6 @@
 package com.github.voml.jss_intellij.language;
 
+import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 
 import static com.intellij.psi.TokenType.BAD_CHARACTER;
@@ -9,7 +10,7 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 %%
 
 %{
-  public _VomlLexer() {
+  public _JssLexer() {
     this((java.io.Reader)null);
   }
 %}
@@ -27,8 +28,8 @@ WHITE_SPACE=\s+
 COMMENT=("//"|#)[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 BOOLEAN=true|false
-SYMBOL=[A-Za-z_][A-Za-z0-9_]*
-STRING='([^'\\]|\\.)*'|\"([^\"\\]|\\\"|\'|\\)*\"
+SYMBOL=[\p{XID_Start}_][\p{XID_Continue}_]*
+STRING=\"([^\"\\]|\\.)*\"
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
@@ -39,12 +40,12 @@ NON_ESCAPE=[^\\]
 <YYINITIAL> {
   {WHITE_SPACE}        { return WHITE_SPACE; }
 
-  "null"               { return NULL; }
   "@include"           { return INCLUDE; }
   "@inherit"           { return INHERIT; }
   "@import"            { return IMPORT; }
   "@export"            { return EXPORT; }
   "as"                 { return AS; }
+  "null"               { return NULL; }
   "("                  { return PARENTHESIS_L; }
   ")"                  { return PARENTHESIS_R; }
   "["                  { return BRACKET_L; }
