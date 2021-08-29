@@ -13,7 +13,6 @@ public interface JssTypes {
   IElementType BACK_TOP = new JssElementType("BACK_TOP");
   IElementType ESCAPED = new JssElementType("ESCAPED");
   IElementType EXPORT_STATEMENT = new JssElementType("EXPORT_STATEMENT");
-  IElementType EXPRESSION = new JssElementType("EXPRESSION");
   IElementType INCLUDE_STATEMENT = new JssElementType("INCLUDE_STATEMENT");
   IElementType INHERIT_STATEMENT = new JssElementType("INHERIT_STATEMENT");
   IElementType INSERT_DOT = new JssElementType("INSERT_DOT");
@@ -26,6 +25,7 @@ public interface JssTypes {
   IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PREDEFINED_SYMBOL = new JssElementType("PREDEFINED_SYMBOL");
   IElementType REF = new JssElementType("REF");
+  IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType SCOPE = new JssElementType("SCOPE");
   IElementType SCOPE_MARK = new JssElementType("SCOPE_MARK");
   IElementType SCOPE_SYMBOL = new JssElementType("SCOPE_SYMBOL");
@@ -49,11 +49,13 @@ public interface JssTypes {
   IElementType BRACKET_L = new JssTokenType("[");
   IElementType BRACKET_R = new JssTokenType("]");
   IElementType BYTE = new JssTokenType("BYTE");
-  IElementType CITE = new JssTokenType("$");
+  IElementType CITE = new JssTokenType("CITE");
   IElementType COLON = new JssTokenType(":");
   IElementType COMMA = new JssTokenType(",");
   IElementType COMMENT = new JssTokenType("COMMENT");
+  IElementType COMMENT_DOCUMENT = new JssTokenType("COMMENT_DOCUMENT");
   IElementType DECIMAL = new JssTokenType("DECIMAL");
+  IElementType DOLLAR = new JssTokenType("DOLLAR");
   IElementType DOT = new JssTokenType(".");
   IElementType EQ = new JssTokenType("=");
   IElementType ESCAPE = new JssTokenType("\\");
@@ -68,6 +70,7 @@ public interface JssTypes {
   IElementType PARENTHESIS_L = new JssTokenType("(");
   IElementType PARENTHESIS_R = new JssTokenType(")");
   IElementType QUOTATION = new JssTokenType("\"");
+  IElementType SCHEMA = new JssTokenType("schema");
   IElementType SEMICOLON = new JssTokenType(";");
   IElementType SIGN = new JssTokenType("SIGN");
   IElementType STAR = new JssTokenType("*");
@@ -91,9 +94,6 @@ public interface JssTypes {
       }
       else if (type == EXPORT_STATEMENT) {
         return new JssExportStatementImpl(node);
-      }
-      else if (type == EXPRESSION) {
-        return new JssExpressionImpl(node);
       }
       else if (type == INCLUDE_STATEMENT) {
         return new JssIncludeStatementImpl(node);
@@ -130,6 +130,9 @@ public interface JssTypes {
       }
       else if (type == REF) {
         return new JssRefImpl(node);
+      }
+      else if (type == SCHEMA_STATEMENT) {
+        return new JssSchemaStatementImpl(node);
       }
       else if (type == SCOPE) {
         return new JssScopeImpl(node);

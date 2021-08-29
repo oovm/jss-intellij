@@ -16,14 +16,16 @@
     psiImplUtilClass = "com.github.voml.jss_intellij.language.psi.impl.JssPsiImplUtil"
 
     tokens = [
-        COMMENT = 'regexp:(//|#)[^\r\n]*'
+        COMMENT_DOCUMENT = 'regexp:(///)[^\r\n]*'
+        COMMENT = 'regexp:(//)[^\r\n]*'
         BLOCK_COMMENT = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
         INCLUDE = '@include'
         INHERIT = '@inherit'
         IMPORT = '@import'
-        EXPORT = '@export'
+        PROP = 'properties'
         AS = "as"
+        SCHEMA = "schema"
 
         NULL = 'null'
         BOOLEAN = 'regexp:true|false'
@@ -52,7 +54,7 @@
         COLON = ':'
         SEMICOLON = ';'
         COMMA = ','
-        CITE = '$'
+        Dollar = '$'
         DOT = '.'
         STAR = '*'
         AT = '@'
@@ -61,22 +63,23 @@
     ]
 }
 
-Voml ::= expression*;
+Jss ::= statement*;
 
-expression ::= scope
-    | back_top
-    | include_statement
-    | inherit_statement
-    | export_statement
-    | insert_pair
-    | insert_item
+private statement ::=
+      schema_statement
+    | properties_statement
     | annotation
+    | COMMENT_DOCUMENT
     | SEMICOLON;
 // ------------------------------------
-export_statement ::= EXPORT [string_prefix] string_inline;
+properties_statement ::= (PROP|DOT) string_inline COLON SYMBOL;
 // ------------------------------------
 inherit_statement ::= INHERIT (predefined_symbol | [string_prefix] string_inline);
 predefined_symbol ::= SYMBOL;
+
+schema_statement ::= SCHEMA SYMBOL COLON SYMBOL <<brace schema_inner>>;
+private schema_inner ::= SYMBOL;
+
 // -------------------------------G-----
 include_statement ::= INCLUDE [string_prefix] string_inline (AS key_symbol | <<paired include_inner>>);
 private include_inner ::= key_symbol*;
@@ -116,8 +119,8 @@ escaped ::= ESCAPE (ESCAPE|NON_ESCAPE);
 // ------------------------------------
 ref ::= CITE symbol_path;
 // ------------------------------------
-annotation ::= annotation_mark <<paired table_inner>>;
-annotation_mark ::= AT SYMBOL;
+annotation ::= annotation_mark [COLON] <<paired table_inner>>;
+annotation_mark ::= DOLLAR SYMBOL;
 // ------------------------------------
 table ::= [type_hint] <<paired table_inner>>;
 private table_inner ::= [table_item (COMMA table_item)* [COMMA]];
@@ -127,3 +130,7 @@ meta paired ::=
     PARENTHESIS_L <<param>> PARENTHESIS_R
   | BRACKET_L <<param>> BRACKET_R
   | BRACE_L <<param>> BRACE_R
+private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
+
+private meta brace ::= BRACE_L <<param>> BRACE_R;
+

@@ -36,38 +36,46 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // expression*
+  // statement*
   static boolean Voml(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Voml")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!expression(b, l + 1)) break;
+      if (!statement(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "Voml", c)) break;
     }
     return true;
   }
 
   /* ********************************************************** */
-  // annotation_mark <<paired table_inner>>
+  // annotation_mark [COLON] <<paired table_inner>>
   public static boolean annotation(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "annotation")) return false;
-    if (!nextTokenIs(b, AT)) return false;
+    if (!nextTokenIs(b, DOLLAR)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = annotation_mark(b, l + 1);
+    r = r && annotation_1(b, l + 1);
     r = r && paired(b, l + 1, JssParser::table_inner);
     exit_section_(b, m, ANNOTATION, r);
     return r;
   }
 
+  // [COLON]
+  private static boolean annotation_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "annotation_1")) return false;
+    consumeToken(b, COLON);
+    return true;
+  }
+
   /* ********************************************************** */
-  // AT SYMBOL
+  // DOLLAR SYMBOL
   public static boolean annotation_mark(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "annotation_mark")) return false;
-    if (!nextTokenIs(b, AT)) return false;
+    if (!nextTokenIs(b, DOLLAR)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, AT, SYMBOL);
+    r = consumeTokens(b, 0, DOLLAR, SYMBOL);
     exit_section_(b, m, ANNOTATION_MARK, r);
     return r;
   }
@@ -80,6 +88,20 @@ public class JssParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b, l, _NONE_, BACK_TOP, "<back top>");
     r = consumeToken(b, "---");
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // BRACE_L <<param>> BRACE_R
+  static boolean brace(PsiBuilder b, int l, Parser _param) {
+    if (!recursion_guard_(b, l, "brace")) return false;
+    if (!nextTokenIs(b, BRACE_L)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, BRACE_L);
+    r = r && _param.parse(b, l);
+    r = r && consumeToken(b, BRACE_R);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -146,33 +168,6 @@ public class JssParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "export_statement_1")) return false;
     string_prefix(b, l + 1);
     return true;
-  }
-
-  /* ********************************************************** */
-  // scope
-  //     | back_top
-  //     | include_statement
-  //     | inherit_statement
-  //     | export_statement
-  //     | insert_pair
-  //     | insert_item
-  //     | annotation
-  //     | SEMICOLON
-  public static boolean expression(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "expression")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, EXPRESSION, "<expression>");
-    r = scope(b, l + 1);
-    if (!r) r = back_top(b, l + 1);
-    if (!r) r = include_statement(b, l + 1);
-    if (!r) r = inherit_statement(b, l + 1);
-    if (!r) r = export_statement(b, l + 1);
-    if (!r) r = insert_pair(b, l + 1);
-    if (!r) r = insert_item(b, l + 1);
-    if (!r) r = annotation(b, l + 1);
-    if (!r) r = consumeToken(b, SEMICOLON);
-    exit_section_(b, l, m, r, false, null);
-    return r;
   }
 
   /* ********************************************************** */
@@ -501,6 +496,20 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // PARENTHESIS_L <<param>> PARENTHESIS_R
+  static boolean parenthesis(PsiBuilder b, int l, Parser _param) {
+    if (!recursion_guard_(b, l, "parenthesis")) return false;
+    if (!nextTokenIs(b, PARENTHESIS_L)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, PARENTHESIS_L);
+    r = r && _param.parse(b, l);
+    r = r && consumeToken(b, PARENTHESIS_R);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // SYMBOL
   public static boolean predefined_symbol(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "predefined_symbol")) return false;
@@ -522,6 +531,25 @@ public class JssParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, CITE);
     r = r && symbol_path(b, l + 1);
     exit_section_(b, m, REF, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // SYMBOL
+  static boolean schema_inner(PsiBuilder b, int l) {
+    return consumeToken(b, SYMBOL);
+  }
+
+  /* ********************************************************** */
+  // SCHEMA SYMBOL COLON SYMBOL <<brace schema_inner>>
+  public static boolean schema_statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "schema_statement")) return false;
+    if (!nextTokenIs(b, SCHEMA)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, SCHEMA, SYMBOL, COLON, SYMBOL);
+    r = r && brace(b, l + 1, JssParser::schema_inner);
+    exit_section_(b, m, SCHEMA_STATEMENT, r);
     return r;
   }
 
@@ -637,6 +665,19 @@ public class JssParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, SYMBOL);
     exit_section_(b, m, SCOPE_SYMBOL, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // schema_statement
+  //     | annotation
+  //     | SEMICOLON
+  static boolean statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "statement")) return false;
+    boolean r;
+    r = schema_statement(b, l + 1);
+    if (!r) r = annotation(b, l + 1);
+    if (!r) r = consumeToken(b, SEMICOLON);
     return r;
   }
 

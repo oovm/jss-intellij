@@ -27,10 +27,6 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitExpression(@NotNull JssExpression o) {
-    visitPsiElement(o);
-  }
-
   public void visitIncludeStatement(@NotNull JssIncludeStatement o) {
     visitPsiElement(o);
   }
@@ -76,6 +72,10 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitRef(@NotNull JssRef o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSchemaStatement(@NotNull JssSchemaStatement o) {
     visitPsiElement(o);
   }
 

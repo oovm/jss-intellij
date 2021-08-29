@@ -14,7 +14,7 @@ import java.util.function.Supplier
 // TODO: 分类
 enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
-    KEYWORD(JssBundle.messagePointer("color.settings.toml.keyword"), Default.KEYWORD),
+    KEYWORD(OptionsBundle.messagePointer("options.language.defaults.keyword"), Default.KEYWORD),
     // 字面量
     NULL(JssBundle.messagePointer("color.settings.voml.null"), Default.KEYWORD),
     BOOLEAN(JssBundle.messagePointer("color.settings.voml.boolean"), Default.KEYWORD),
