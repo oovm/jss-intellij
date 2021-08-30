@@ -2,7 +2,7 @@ package com.github.voml.jss_intellij.ide.todo
 
 import com.github.voml.jss_intellij.language.JssFile
 import com.github.voml.jss_intellij.language.JssLexerAdapter
-import com.github.voml.jss_intellij.language.psi.Voml_COMMENTS
+import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
 import com.intellij.lexer.Lexer
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.search.IndexPatternBuilder
@@ -14,10 +14,10 @@ class VomlTodoIndexPatternBuilder : IndexPatternBuilder {
         if (file is JssFile) JssLexerAdapter() else null
 
     override fun getCommentTokenSet(file: PsiFile): TokenSet? =
-        if (file is JssFile) Voml_COMMENTS else null
+        if (file is JssFile) JSS_COMMENT else null
 
     override fun getCommentStartDelta(tokenType: IElementType?): Int =
-        if (tokenType in Voml_COMMENTS) 2 else 0
+        if (tokenType in JSS_COMMENT) 2 else 0
 
     override fun getCommentEndDelta(tokenType: IElementType?): Int = 0
 }

@@ -18,7 +18,7 @@
     tokens = [
         COMMENT_DOCUMENT = 'regexp:(///)[^\r\n]*'
         COMMENT = 'regexp:(//)[^\r\n]*'
-        BLOCK_COMMENT = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
+        COMMENT_BLOCK = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
 
         INCLUDE = '@include'
         INHERIT = '@inherit'
@@ -54,7 +54,7 @@
         COLON = ':'
         SEMICOLON = ';'
         COMMA = ','
-        Dollar = '$'
+        DOLLAR = '$'
         DOT = '.'
         STAR = '*'
         AT = '@'
@@ -66,20 +66,23 @@
 Jss ::= statement*;
 
 private statement ::=
-      schema_statement
-    | properties_statement
-    | annotation
-    | COMMENT_DOCUMENT
-    | SEMICOLON;
+    schema_statement
+  | properties_statement
+  | COMMENT_DOCUMENT
+  | SEMICOLON;
 // ------------------------------------
-properties_statement ::= (PROP|DOT) string_inline COLON SYMBOL;
+properties_statement ::= (PROP|DOT) string_inline COLON SYMBOL [properties_block];
+properties_block ::= <<brace properties_inner>>;
+private properties_inner ::= SYMBOL
 // ------------------------------------
-inherit_statement ::= INHERIT (predefined_symbol | [string_prefix] string_inline);
-predefined_symbol ::= SYMBOL;
-
 schema_statement ::= SCHEMA SYMBOL COLON SYMBOL <<brace schema_inner>>;
-private schema_inner ::= SYMBOL;
-
+private schema_inner ::=
+    idiom_statement
+  | properties_statement
+  | SEMICOLON;
+// ------------------------------------
+idiom_statement ::= DOLLAR (predefined_symbol | [string_prefix] string_inline);
+predefined_symbol ::= SYMBOL;
 // -------------------------------G-----
 include_statement ::= INCLUDE [string_prefix] string_inline (AS key_symbol | <<paired include_inner>>);
 private include_inner ::= key_symbol*;
@@ -119,8 +122,8 @@ escaped ::= ESCAPE (ESCAPE|NON_ESCAPE);
 // ------------------------------------
 ref ::= CITE symbol_path;
 // ------------------------------------
-annotation ::= annotation_mark [COLON] <<paired table_inner>>;
-annotation_mark ::= DOLLAR SYMBOL;
+//annotation ::= annotation_mark [COLON] <<paired table_inner>>;
+//annotation_mark ::= DOLLAR SYMBOL;
 // ------------------------------------
 table ::= [type_hint] <<paired table_inner>>;
 private table_inner ::= [table_item (COMMA table_item)* [COMMA]];

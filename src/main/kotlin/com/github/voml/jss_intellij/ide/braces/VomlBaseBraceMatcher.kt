@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.braces
 
 import com.github.voml.jss_intellij.language.psi.JssTypes
-import com.github.voml.jss_intellij.language.psi.Voml_COMMENTS
+import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
 import com.github.voml.jss_intellij.language.psi.tokenSetOf
 import com.intellij.lang.BracePair
 import com.intellij.lang.PairedBraceMatcher
@@ -27,7 +27,7 @@ class VomlBaseBraceMatcher : PairedBraceMatcher {
         )
 
         private val InsertPairBraceBefore = TokenSet.orSet(
-            Voml_COMMENTS,
+            JSS_COMMENT,
             tokenSetOf(
                 TokenType.WHITE_SPACE,
                 JssTypes.COMMA,

@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssExportStatementImpl extends ASTWrapperPsiElement implements JssExportStatement {
+public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements JssPropertiesStatement {
 
-  public JssExportStatementImpl(@NotNull ASTNode node) {
+  public JssPropertiesStatementImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitExportStatement(this);
+    visitor.visitPropertiesStatement(this);
   }
 
   @Override
@@ -28,15 +28,21 @@ public class JssExportStatementImpl extends ASTWrapperPsiElement implements JssE
   }
 
   @Override
+  @Nullable
+  public JssPropertiesBlock getPropertiesBlock() {
+    return findChildByClass(JssPropertiesBlock.class);
+  }
+
+  @Override
   @NotNull
   public JssStringInline getStringInline() {
     return findNotNullChildByClass(JssStringInline.class);
   }
 
   @Override
-  @Nullable
-  public JssStringPrefix getStringPrefix() {
-    return findChildByClass(JssStringPrefix.class);
+  @NotNull
+  public PsiElement getSymbol() {
+    return findNotNullChildByType(SYMBOL);
   }
 
 }

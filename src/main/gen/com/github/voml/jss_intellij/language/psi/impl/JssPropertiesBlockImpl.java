@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssInheritStatementImpl extends ASTWrapperPsiElement implements JssInheritStatement {
+public class JssPropertiesBlockImpl extends ASTWrapperPsiElement implements JssPropertiesBlock {
 
-  public JssInheritStatementImpl(@NotNull ASTNode node) {
+  public JssPropertiesBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitInheritStatement(this);
+    visitor.visitPropertiesBlock(this);
   }
 
   @Override
@@ -28,21 +28,9 @@ public class JssInheritStatementImpl extends ASTWrapperPsiElement implements Jss
   }
 
   @Override
-  @Nullable
-  public JssPredefinedSymbol getPredefinedSymbol() {
-    return findChildByClass(JssPredefinedSymbol.class);
-  }
-
-  @Override
-  @Nullable
-  public JssStringInline getStringInline() {
-    return findChildByClass(JssStringInline.class);
-  }
-
-  @Override
-  @Nullable
-  public JssStringPrefix getStringPrefix() {
-    return findChildByClass(JssStringPrefix.class);
+  @NotNull
+  public PsiElement getSymbol() {
+    return findNotNullChildByType(SYMBOL);
   }
 
 }

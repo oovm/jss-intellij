@@ -27,7 +27,7 @@ WHITE_SPACE=\s+
 
 COMMENT_DOCUMENT=("///")[^\r\n]*
 COMMENT=("//")[^\r\n]*
-BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
+COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 BOOLEAN=true|false
 SYMBOL=[\p{XID_Start}_][\p{XID_Continue}_]*
 STRING=\"([^\"\\]|\\.)*\"
@@ -44,7 +44,7 @@ NON_ESCAPE=[^\\]
   "@include"              { return INCLUDE; }
   "@inherit"              { return INHERIT; }
   "@import"               { return IMPORT; }
-  "@export"               { return EXPORT; }
+  "properties"            { return PROP; }
   "as"                    { return AS; }
   "schema"                { return SCHEMA; }
   "null"                  { return NULL; }
@@ -64,15 +64,15 @@ NON_ESCAPE=[^\\]
   ":"                     { return COLON; }
   ";"                     { return SEMICOLON; }
   ","                     { return COMMA; }
-  "$"                     { return DOLLAR; }
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }
+  "DOLLAR"                { return DOLLAR; }
   "CITE"                  { return CITE; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
   {COMMENT}               { return COMMENT; }
-  {BLOCK_COMMENT}         { return BLOCK_COMMENT; }
+  {COMMENT_BLOCK}         { return COMMENT_BLOCK; }
   {BOOLEAN}               { return BOOLEAN; }
   {SYMBOL}                { return SYMBOL; }
   {STRING}                { return STRING; }

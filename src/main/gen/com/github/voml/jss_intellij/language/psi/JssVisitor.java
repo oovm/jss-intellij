@@ -23,15 +23,11 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitExportStatement(@NotNull JssExportStatement o) {
+  public void visitIdiomStatement(@NotNull JssIdiomStatement o) {
     visitPsiElement(o);
   }
 
   public void visitIncludeStatement(@NotNull JssIncludeStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInheritStatement(@NotNull JssInheritStatement o) {
     visitPsiElement(o);
   }
 
@@ -68,6 +64,14 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitPredefinedSymbol(@NotNull JssPredefinedSymbol o) {
+    visitPsiElement(o);
+  }
+
+  public void visitPropertiesBlock(@NotNull JssPropertiesBlock o) {
+    visitPsiElement(o);
+  }
+
+  public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
     visitPsiElement(o);
   }
 

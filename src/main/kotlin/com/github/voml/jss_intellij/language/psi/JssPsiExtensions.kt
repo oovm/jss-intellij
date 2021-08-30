@@ -65,7 +65,7 @@ val PsiElement.stubParent: PsiElement?
     }
 
 val PsiElement.leftLeaves: Sequence<PsiElement>
-    get() = generateSequence(this){ it.prevLeaf() }.drop(1)
+    get() = generateSequence(this) { it.prevLeaf() }.drop(1)
 
 val PsiElement.rightSiblings: Sequence<PsiElement>
     get() = generateSequence(this.nextSibling) { it.nextSibling }
@@ -189,4 +189,8 @@ inline val <T : StubElement<*>> StubBasedPsiElement<T>.greenStub: T?
 
 fun tokenSetOf(vararg tokens: IElementType) = TokenSet.create(*tokens)
 
-val Voml_COMMENTS = tokenSetOf(JssTypes.BLOCK_COMMENT, JssTypes.COMMENT)
+val JSS_COMMENT = tokenSetOf(
+    JssTypes.COMMENT,
+    JssTypes.COMMENT_BLOCK,
+    JssTypes.COMMENT_DOCUMENT
+)

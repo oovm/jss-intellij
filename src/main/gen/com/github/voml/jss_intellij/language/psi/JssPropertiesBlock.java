@@ -5,15 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssInheritStatement extends PsiElement {
+public interface JssPropertiesBlock extends PsiElement {
 
-  @Nullable
-  JssPredefinedSymbol getPredefinedSymbol();
-
-  @Nullable
-  JssStringInline getStringInline();
-
-  @Nullable
-  JssStringPrefix getStringPrefix();
+  @NotNull
+  PsiElement getSymbol();
 
 }

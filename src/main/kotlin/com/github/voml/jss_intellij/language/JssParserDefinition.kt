@@ -38,7 +38,7 @@ class JssParserDefinition : ParserDefinition {
     }
 
     companion object {
-        val COMMENTS = TokenSet.create(JssTypes.COMMENT, JssTypes.BLOCK_COMMENT)
+        val COMMENTS = TokenSet.create(JssTypes.COMMENT, JssTypes.COMMENT_BLOCK)
         val STRING_LITERALS = TokenSet.create(JssTypes.STRING_INLINE, JssTypes.STRING_PREFIX, JssTypes.STRING_MULTI)
         val FILE = IFileElementType(JssLanguage.INSTANCE)
     }

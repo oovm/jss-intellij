@@ -5,12 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssSchemaStatement extends PsiElement {
+public interface JssIdiomStatement extends PsiElement {
 
   @Nullable
-  JssIdiomStatement getIdiomStatement();
+  JssPredefinedSymbol getPredefinedSymbol();
 
   @Nullable
-  JssPropertiesStatement getPropertiesStatement();
+  JssStringInline getStringInline();
+
+  @Nullable
+  JssStringPrefix getStringPrefix();
 
 }

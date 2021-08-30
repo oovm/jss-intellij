@@ -12,9 +12,8 @@ public interface JssTypes {
   IElementType ANNOTATION_MARK = new JssElementType("ANNOTATION_MARK");
   IElementType BACK_TOP = new JssElementType("BACK_TOP");
   IElementType ESCAPED = new JssElementType("ESCAPED");
-  IElementType EXPORT_STATEMENT = new JssElementType("EXPORT_STATEMENT");
+  IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType INCLUDE_STATEMENT = new JssElementType("INCLUDE_STATEMENT");
-  IElementType INHERIT_STATEMENT = new JssElementType("INHERIT_STATEMENT");
   IElementType INSERT_DOT = new JssElementType("INSERT_DOT");
   IElementType INSERT_ITEM = new JssElementType("INSERT_ITEM");
   IElementType INSERT_PAIR = new JssElementType("INSERT_PAIR");
@@ -24,6 +23,8 @@ public interface JssTypes {
   IElementType PAIR = new JssElementType("PAIR");
   IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PREDEFINED_SYMBOL = new JssElementType("PREDEFINED_SYMBOL");
+  IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
+  IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
   IElementType REF = new JssElementType("REF");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType SCOPE = new JssElementType("SCOPE");
@@ -42,7 +43,6 @@ public interface JssTypes {
   IElementType ANGLE_R = new JssTokenType(">");
   IElementType AS = new JssTokenType("as");
   IElementType AT = new JssTokenType("@");
-  IElementType BLOCK_COMMENT = new JssTokenType("BLOCK_COMMENT");
   IElementType BOOLEAN = new JssTokenType("BOOLEAN");
   IElementType BRACE_L = new JssTokenType("{");
   IElementType BRACE_R = new JssTokenType("}");
@@ -53,13 +53,13 @@ public interface JssTypes {
   IElementType COLON = new JssTokenType(":");
   IElementType COMMA = new JssTokenType(",");
   IElementType COMMENT = new JssTokenType("COMMENT");
+  IElementType COMMENT_BLOCK = new JssTokenType("COMMENT_BLOCK");
   IElementType COMMENT_DOCUMENT = new JssTokenType("COMMENT_DOCUMENT");
   IElementType DECIMAL = new JssTokenType("DECIMAL");
   IElementType DOLLAR = new JssTokenType("DOLLAR");
   IElementType DOT = new JssTokenType(".");
   IElementType EQ = new JssTokenType("=");
   IElementType ESCAPE = new JssTokenType("\\");
-  IElementType EXPORT = new JssTokenType("@export");
   IElementType IMPORT = new JssTokenType("@import");
   IElementType INCLUDE = new JssTokenType("@include");
   IElementType INHERIT = new JssTokenType("@inherit");
@@ -69,6 +69,7 @@ public interface JssTypes {
   IElementType NULL = new JssTokenType("null");
   IElementType PARENTHESIS_L = new JssTokenType("(");
   IElementType PARENTHESIS_R = new JssTokenType(")");
+  IElementType PROP = new JssTokenType("properties");
   IElementType QUOTATION = new JssTokenType("\"");
   IElementType SCHEMA = new JssTokenType("schema");
   IElementType SEMICOLON = new JssTokenType(";");
@@ -92,14 +93,11 @@ public interface JssTypes {
       else if (type == ESCAPED) {
         return new JssEscapedImpl(node);
       }
-      else if (type == EXPORT_STATEMENT) {
-        return new JssExportStatementImpl(node);
+      else if (type == IDIOM_STATEMENT) {
+        return new JssIdiomStatementImpl(node);
       }
       else if (type == INCLUDE_STATEMENT) {
         return new JssIncludeStatementImpl(node);
-      }
-      else if (type == INHERIT_STATEMENT) {
-        return new JssInheritStatementImpl(node);
       }
       else if (type == INSERT_DOT) {
         return new JssInsertDotImpl(node);
@@ -127,6 +125,12 @@ public interface JssTypes {
       }
       else if (type == PREDEFINED_SYMBOL) {
         return new JssPredefinedSymbolImpl(node);
+      }
+      else if (type == PROPERTIES_BLOCK) {
+        return new JssPropertiesBlockImpl(node);
+      }
+      else if (type == PROPERTIES_STATEMENT) {
+        return new JssPropertiesStatementImpl(node);
       }
       else if (type == REF) {
         return new JssRefImpl(node);

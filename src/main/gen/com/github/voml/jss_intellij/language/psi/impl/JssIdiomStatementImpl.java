@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssSchemaStatement {
+public class JssIdiomStatementImpl extends ASTWrapperPsiElement implements JssIdiomStatement {
 
-  public JssSchemaStatementImpl(@NotNull ASTNode node) {
+  public JssIdiomStatementImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitSchemaStatement(this);
+    visitor.visitIdiomStatement(this);
   }
 
   @Override
@@ -29,14 +29,20 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
 
   @Override
   @Nullable
-  public JssIdiomStatement getIdiomStatement() {
-    return findChildByClass(JssIdiomStatement.class);
+  public JssPredefinedSymbol getPredefinedSymbol() {
+    return findChildByClass(JssPredefinedSymbol.class);
   }
 
   @Override
   @Nullable
-  public JssPropertiesStatement getPropertiesStatement() {
-    return findChildByClass(JssPropertiesStatement.class);
+  public JssStringInline getStringInline() {
+    return findChildByClass(JssStringInline.class);
+  }
+
+  @Override
+  @Nullable
+  public JssStringPrefix getStringPrefix() {
+    return findChildByClass(JssStringPrefix.class);
   }
 
 }

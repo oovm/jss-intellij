@@ -21,7 +21,7 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
     private fun getTokenColor(tokenType: IElementType): JssColor? {
         return when (tokenType) {
             //
-            INCLUDE, INHERIT, AS, SCHEMA -> JssColor.KEYWORD
+            INCLUDE, INHERIT, AS, SCHEMA, PROP -> JssColor.KEYWORD
             ANNOTATION, ANNOTATION_MARK -> JssColor.ANNOTATION
             PREDEFINED_SYMBOL -> JssColor.PREDEFINED
             //
@@ -52,7 +52,8 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             SYMBOL -> JssColor.IDENTIFIER
             // 注释
             COMMENT -> JssColor.LINE_COMMENT
-            BLOCK_COMMENT -> JssColor.BLOCK_COMMENT
+            COMMENT_BLOCK -> JssColor.BLOCK_COMMENT
+            COMMENT_DOCUMENT -> JssColor.DOC_COMMENT
             // 错误
             TokenType.BAD_CHARACTER -> JssColor.BAD_CHARACTER
             else -> null
