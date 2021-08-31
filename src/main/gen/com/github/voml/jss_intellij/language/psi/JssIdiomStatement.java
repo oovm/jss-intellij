@@ -7,13 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface JssIdiomStatement extends PsiElement {
 
-  @Nullable
-  JssPredefinedSymbol getPredefinedSymbol();
+  @NotNull
+  JssIdiomSymbol getIdiomSymbol();
 
-  @Nullable
-  JssStringInline getStringInline();
-
-  @Nullable
-  JssStringPrefix getStringPrefix();
+  @NotNull
+  JssValue getValue();
 
 }

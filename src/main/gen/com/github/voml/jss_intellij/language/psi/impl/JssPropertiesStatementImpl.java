@@ -41,8 +41,8 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+  public JssTypeSymbol getTypeSymbol() {
+    return findNotNullChildByClass(JssTypeSymbol.class);
   }
 
 }

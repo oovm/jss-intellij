@@ -8,12 +8,10 @@ import com.github.voml.jss_intellij.language.psi.impl.*;
 
 public interface JssTypes {
 
-  IElementType ANNOTATION = new JssElementType("ANNOTATION");
-  IElementType ANNOTATION_MARK = new JssElementType("ANNOTATION_MARK");
-  IElementType BACK_TOP = new JssElementType("BACK_TOP");
+  IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType ESCAPED = new JssElementType("ESCAPED");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
-  IElementType INCLUDE_STATEMENT = new JssElementType("INCLUDE_STATEMENT");
+  IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
   IElementType INSERT_DOT = new JssElementType("INSERT_DOT");
   IElementType INSERT_ITEM = new JssElementType("INSERT_ITEM");
   IElementType INSERT_PAIR = new JssElementType("INSERT_PAIR");
@@ -22,7 +20,6 @@ public interface JssTypes {
   IElementType NUMBER_SUFFIX = new JssElementType("NUMBER_SUFFIX");
   IElementType PAIR = new JssElementType("PAIR");
   IElementType PAIRED = new JssElementType("PAIRED");
-  IElementType PREDEFINED_SYMBOL = new JssElementType("PREDEFINED_SYMBOL");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
   IElementType REF = new JssElementType("REF");
@@ -35,12 +32,13 @@ public interface JssTypes {
   IElementType STRING_PREFIX = new JssElementType("STRING_PREFIX");
   IElementType SYMBOL_PATH = new JssElementType("SYMBOL_PATH");
   IElementType TABLE = new JssElementType("TABLE");
-  IElementType TYPE_HINT = new JssElementType("TYPE_HINT");
+  IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
   IElementType VALUE = new JssElementType("VALUE");
 
   IElementType ACCENT = new JssTokenType("^");
   IElementType ANGLE_L = new JssTokenType("<");
   IElementType ANGLE_R = new JssTokenType(">");
+  IElementType ANNOTATION = new JssTokenType("annotation");
   IElementType AS = new JssTokenType("as");
   IElementType AT = new JssTokenType("@");
   IElementType BOOLEAN = new JssTokenType("BOOLEAN");
@@ -56,13 +54,11 @@ public interface JssTypes {
   IElementType COMMENT_BLOCK = new JssTokenType("COMMENT_BLOCK");
   IElementType COMMENT_DOCUMENT = new JssTokenType("COMMENT_DOCUMENT");
   IElementType DECIMAL = new JssTokenType("DECIMAL");
-  IElementType DOLLAR = new JssTokenType("DOLLAR");
+  IElementType DEFINE = new JssTokenType("DEFINE");
+  IElementType DOLLAR = new JssTokenType("$");
   IElementType DOT = new JssTokenType(".");
   IElementType EQ = new JssTokenType("=");
   IElementType ESCAPE = new JssTokenType("\\");
-  IElementType IMPORT = new JssTokenType("@import");
-  IElementType INCLUDE = new JssTokenType("@include");
-  IElementType INHERIT = new JssTokenType("@inherit");
   IElementType INTEGER = new JssTokenType("INTEGER");
   IElementType NAN = new JssTokenType("nan");
   IElementType NON_ESCAPE = new JssTokenType("NON_ESCAPE");
@@ -77,18 +73,13 @@ public interface JssTypes {
   IElementType STAR = new JssTokenType("*");
   IElementType STRING = new JssTokenType("STRING");
   IElementType SYMBOL = new JssTokenType("SYMBOL");
+  IElementType URL = new JssTokenType("URL");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ANNOTATION) {
-        return new JssAnnotationImpl(node);
-      }
-      else if (type == ANNOTATION_MARK) {
-        return new JssAnnotationMarkImpl(node);
-      }
-      else if (type == BACK_TOP) {
-        return new JssBackTopImpl(node);
+      if (type == DEF_STATEMENT) {
+        return new JssDefStatementImpl(node);
       }
       else if (type == ESCAPED) {
         return new JssEscapedImpl(node);
@@ -96,8 +87,8 @@ public interface JssTypes {
       else if (type == IDIOM_STATEMENT) {
         return new JssIdiomStatementImpl(node);
       }
-      else if (type == INCLUDE_STATEMENT) {
-        return new JssIncludeStatementImpl(node);
+      else if (type == IDIOM_SYMBOL) {
+        return new JssIdiomSymbolImpl(node);
       }
       else if (type == INSERT_DOT) {
         return new JssInsertDotImpl(node);
@@ -122,9 +113,6 @@ public interface JssTypes {
       }
       else if (type == PAIRED) {
         return new JssPairedImpl(node);
-      }
-      else if (type == PREDEFINED_SYMBOL) {
-        return new JssPredefinedSymbolImpl(node);
       }
       else if (type == PROPERTIES_BLOCK) {
         return new JssPropertiesBlockImpl(node);
@@ -162,8 +150,8 @@ public interface JssTypes {
       else if (type == TABLE) {
         return new JssTableImpl(node);
       }
-      else if (type == TYPE_HINT) {
-        return new JssTypeHintImpl(node);
+      else if (type == TYPE_SYMBOL) {
+        return new JssTypeSymbolImpl(node);
       }
       else if (type == VALUE) {
         return new JssValueImpl(node);

@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssValue extends PsiElement {
 
   @Nullable
-  JssAnnotation getAnnotation();
-
-  @Nullable
   JssNumberSuffix getNumberSuffix();
 
   @Nullable
@@ -42,5 +39,8 @@ public interface JssValue extends PsiElement {
 
   @Nullable
   PsiElement getSign();
+
+  @Nullable
+  PsiElement getUrl();
 
 }

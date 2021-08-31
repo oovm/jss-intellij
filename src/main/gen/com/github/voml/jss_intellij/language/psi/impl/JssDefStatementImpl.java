@@ -11,20 +11,38 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssAnnotationMarkImpl extends ASTWrapperPsiElement implements JssAnnotationMark {
+public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefStatement {
 
-  public JssAnnotationMarkImpl(@NotNull ASTNode node) {
+  public JssDefStatementImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitAnnotationMark(this);
+    visitor.visitDefStatement(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
+  }
+
+  @Override
+  @Nullable
+  public JssKeySymbol getKeySymbol() {
+    return findChildByClass(JssKeySymbol.class);
+  }
+
+  @Override
+  @Nullable
+  public JssPaired getPaired() {
+    return findChildByClass(JssPaired.class);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement getDefine() {
+    return findNotNullChildByType(DEFINE);
   }
 
   @Override

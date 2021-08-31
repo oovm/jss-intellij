@@ -28,9 +28,9 @@ public class JssPropertiesBlockImpl extends ASTWrapperPsiElement implements JssP
   }
 
   @Override
-  @NotNull
+  @Nullable
   public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+    return findChildByType(SYMBOL);
   }
 
 }

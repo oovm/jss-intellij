@@ -29,12 +29,6 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
 
   @Override
   @Nullable
-  public JssAnnotation getAnnotation() {
-    return findChildByClass(JssAnnotation.class);
-  }
-
-  @Override
-  @Nullable
   public JssNumberSuffix getNumberSuffix() {
     return findChildByClass(JssNumberSuffix.class);
   }
@@ -97,6 +91,12 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
   @Nullable
   public PsiElement getSign() {
     return findChildByType(SIGN);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getUrl() {
+    return findChildByType(URL);
   }
 
 }

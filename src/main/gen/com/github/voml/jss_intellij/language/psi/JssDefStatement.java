@@ -5,7 +5,16 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssTypeHint extends PsiElement {
+public interface JssDefStatement extends PsiElement {
+
+  @Nullable
+  JssKeySymbol getKeySymbol();
+
+  @Nullable
+  JssPaired getPaired();
+
+  @NotNull
+  PsiElement getDefine();
 
   @NotNull
   PsiElement getSymbol();

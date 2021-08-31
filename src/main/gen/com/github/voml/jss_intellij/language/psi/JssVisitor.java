@@ -7,15 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public class JssVisitor extends PsiElementVisitor {
 
-  public void visitAnnotation(@NotNull JssAnnotation o) {
-    visitPsiElement(o);
-  }
-
-  public void visitAnnotationMark(@NotNull JssAnnotationMark o) {
-    visitPsiElement(o);
-  }
-
-  public void visitBackTop(@NotNull JssBackTop o) {
+  public void visitDefStatement(@NotNull JssDefStatement o) {
     visitPsiElement(o);
   }
 
@@ -27,7 +19,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitIncludeStatement(@NotNull JssIncludeStatement o) {
+  public void visitIdiomSymbol(@NotNull JssIdiomSymbol o) {
     visitPsiElement(o);
   }
 
@@ -60,10 +52,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitPaired(@NotNull JssPaired o) {
-    visitPsiElement(o);
-  }
-
-  public void visitPredefinedSymbol(@NotNull JssPredefinedSymbol o) {
     visitPsiElement(o);
   }
 
@@ -115,7 +103,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTypeHint(@NotNull JssTypeHint o) {
+  public void visitTypeSymbol(@NotNull JssTypeSymbol o) {
     visitPsiElement(o);
   }
 

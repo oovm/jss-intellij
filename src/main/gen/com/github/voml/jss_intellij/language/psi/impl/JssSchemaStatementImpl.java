@@ -29,6 +29,12 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
 
   @Override
   @Nullable
+  public JssDefStatement getDefStatement() {
+    return findChildByClass(JssDefStatement.class);
+  }
+
+  @Override
+  @Nullable
   public JssIdiomStatement getIdiomStatement() {
     return findChildByClass(JssIdiomStatement.class);
   }
@@ -37,6 +43,18 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
   @Nullable
   public JssPropertiesStatement getPropertiesStatement() {
     return findChildByClass(JssPropertiesStatement.class);
+  }
+
+  @Override
+  @NotNull
+  public JssTypeSymbol getTypeSymbol() {
+    return findNotNullChildByClass(JssTypeSymbol.class);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement getSymbol() {
+    return findNotNullChildByType(SYMBOL);
   }
 
 }

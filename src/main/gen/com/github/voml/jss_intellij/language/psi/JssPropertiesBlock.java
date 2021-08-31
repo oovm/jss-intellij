@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface JssPropertiesBlock extends PsiElement {
 
-  @NotNull
+  @Nullable
   PsiElement getSymbol();
 
 }

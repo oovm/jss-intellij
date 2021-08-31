@@ -28,21 +28,15 @@ public class JssIdiomStatementImpl extends ASTWrapperPsiElement implements JssId
   }
 
   @Override
-  @Nullable
-  public JssPredefinedSymbol getPredefinedSymbol() {
-    return findChildByClass(JssPredefinedSymbol.class);
+  @NotNull
+  public JssIdiomSymbol getIdiomSymbol() {
+    return findNotNullChildByClass(JssIdiomSymbol.class);
   }
 
   @Override
-  @Nullable
-  public JssStringInline getStringInline() {
-    return findChildByClass(JssStringInline.class);
-  }
-
-  @Override
-  @Nullable
-  public JssStringPrefix getStringPrefix() {
-    return findChildByClass(JssStringPrefix.class);
+  @NotNull
+  public JssValue getValue() {
+    return findNotNullChildByClass(JssValue.class);
   }
 
 }

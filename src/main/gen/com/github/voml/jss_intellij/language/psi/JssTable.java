@@ -11,6 +11,6 @@ public interface JssTable extends PsiElement {
   JssPaired getPaired();
 
   @Nullable
-  JssTypeHint getTypeHint();
+  JssTypeSymbol getTypeSymbol();
 
 }

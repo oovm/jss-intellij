@@ -14,6 +14,6 @@ public interface JssPropertiesStatement extends PsiElement {
   JssStringInline getStringInline();
 
   @NotNull
-  PsiElement getSymbol();
+  JssTypeSymbol getTypeSymbol();
 
 }

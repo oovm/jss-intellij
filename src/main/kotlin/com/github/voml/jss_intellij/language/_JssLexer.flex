@@ -28,9 +28,11 @@ WHITE_SPACE=\s+
 COMMENT_DOCUMENT=("///")[^\r\n]*
 COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
+DEFINE=def|define
 BOOLEAN=true|false
 SYMBOL=[\p{XID_Start}_][\p{XID_Continue}_]*
 STRING=\"([^\"\\]|\\.)*\"
+URL= [A-Za-z0-9]:"//"[\p{XID_Continue}./?&]+
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
@@ -41,9 +43,6 @@ NON_ESCAPE=[^\\]
 <YYINITIAL> {
   {WHITE_SPACE}           { return WHITE_SPACE; }
 
-  "@include"              { return INCLUDE; }
-  "@inherit"              { return INHERIT; }
-  "@import"               { return IMPORT; }
   "properties"            { return PROP; }
   "as"                    { return AS; }
   "schema"                { return SCHEMA; }
@@ -64,18 +63,21 @@ NON_ESCAPE=[^\\]
   ":"                     { return COLON; }
   ";"                     { return SEMICOLON; }
   ","                     { return COMMA; }
+  "$"                     { return DOLLAR; }
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }
-  "DOLLAR"                { return DOLLAR; }
+  "annotation"            { return ANNOTATION; }
   "CITE"                  { return CITE; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
   {COMMENT}               { return COMMENT; }
   {COMMENT_BLOCK}         { return COMMENT_BLOCK; }
+  {DEFINE}                { return DEFINE; }
   {BOOLEAN}               { return BOOLEAN; }
   {SYMBOL}                { return SYMBOL; }
   {STRING}                { return STRING; }
+  {URL}                   { return URL; }
   {BYTE}                  { return BYTE; }
   {INTEGER}               { return INTEGER; }
   {DECIMAL}               { return DECIMAL; }

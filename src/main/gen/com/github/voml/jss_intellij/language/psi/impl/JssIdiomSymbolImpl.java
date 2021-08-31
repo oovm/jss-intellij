@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPredefinedSymbolImpl extends ASTWrapperPsiElement implements JssPredefinedSymbol {
+public class JssIdiomSymbolImpl extends ASTWrapperPsiElement implements JssIdiomSymbol {
 
-  public JssPredefinedSymbolImpl(@NotNull ASTNode node) {
+  public JssIdiomSymbolImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPredefinedSymbol(this);
+    visitor.visitIdiomSymbol(this);
   }
 
   @Override

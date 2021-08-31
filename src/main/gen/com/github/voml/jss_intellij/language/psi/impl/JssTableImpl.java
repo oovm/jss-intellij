@@ -35,8 +35,8 @@ public class JssTableImpl extends ASTWrapperPsiElement implements JssTable {
 
   @Override
   @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
+  public JssTypeSymbol getTypeSymbol() {
+    return findChildByClass(JssTypeSymbol.class);
   }
 
 }

@@ -21,13 +21,11 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
     private fun getTokenColor(tokenType: IElementType): JssColor? {
         return when (tokenType) {
             //
-            INCLUDE, INHERIT, AS, SCHEMA, PROP -> JssColor.KEYWORD
-            ANNOTATION, ANNOTATION_MARK -> JssColor.ANNOTATION
-            PREDEFINED_SYMBOL -> JssColor.PREDEFINED
+            AS, SCHEMA, PROP -> JssColor.KEYWORD
+            ANNOTATION -> JssColor.ANNOTATION
             //
             STRING_PREFIX -> JssColor.STRING_HINT
             NUMBER_SUFFIX -> JssColor.NUMBER_HINT
-            TYPE_HINT -> JssColor.TYPE_HINT
             SCOPE_SYMBOL -> JssColor.SCOPE_SYMBOL
             SCOPE_MARK -> JssColor.SCOPE_MARK
             INSERT_DOT, INSERT_STAR -> JssColor.INSERT_MARK

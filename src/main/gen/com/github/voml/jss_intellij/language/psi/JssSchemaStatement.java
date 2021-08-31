@@ -8,9 +8,18 @@ import com.intellij.psi.PsiElement;
 public interface JssSchemaStatement extends PsiElement {
 
   @Nullable
+  JssDefStatement getDefStatement();
+
+  @Nullable
   JssIdiomStatement getIdiomStatement();
 
   @Nullable
   JssPropertiesStatement getPropertiesStatement();
+
+  @NotNull
+  JssTypeSymbol getTypeSymbol();
+
+  @NotNull
+  PsiElement getSymbol();
 
 }
