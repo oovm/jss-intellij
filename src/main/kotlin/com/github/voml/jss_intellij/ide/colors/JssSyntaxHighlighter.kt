@@ -21,11 +21,8 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
     private fun getTokenColor(tokenType: IElementType): JssColor? {
         return when (tokenType) {
             //
-            AS, SCHEMA, PROP -> JssColor.KEYWORD
-            ANNOTATION -> JssColor.ANNOTATION
-            //
-            STRING_PREFIX -> JssColor.STRING_HINT
-            NUMBER_SUFFIX -> JssColor.NUMBER_HINT
+            // AS, SCHEMA, PROP -> JssColor.KEYWORD
+            // ANNOTATION -> JssColor.ANNOTATION
             //
             PARENTHESIS_L, PARENTHESIS_R -> JssColor.PARENTHESES
             BRACKET_L, BRACKET_R -> JssColor.BRACKETS
@@ -33,14 +30,10 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             COLON, EQ -> JssColor.SET
             COMMA -> JssColor.COMMA
             // atom
-            NULL -> JssColor.NULL
-            BOOLEAN -> JssColor.BOOLEAN
 
-            NUMBER_SUFFIX -> JssColor.NUMBER_HINT
             INTEGER -> JssColor.INTEGER
             DECIMAL -> JssColor.DECIMAL
 
-            STRING_PREFIX -> JssColor.STRING_HINT
             STRING_INLINE -> JssColor.STRING
             STRING_MULTI -> JssColor.STRING
 

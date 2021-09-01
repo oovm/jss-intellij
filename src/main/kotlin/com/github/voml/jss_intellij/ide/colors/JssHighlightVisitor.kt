@@ -8,9 +8,25 @@ import com.intellij.codeInsight.daemon.impl.HighlightVisitor
 import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
+import com.intellij.psi.util.elementType
 
 class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
+
+    override fun visitSchemaStatement(o: JssSchemaStatement) {
+        highlight(o.firstChild, JssColor.KEYWORD)
+        super.visitSchemaStatement(o)
+    }
+
+
+    override fun visitPropertiesStatement(o: JssPropertiesStatement) {
+        val head = o.firstChild;
+        if (head.elementType == JssTypes.SYMBOL) {
+            highlight(head, JssColor.KEYWORD)
+        }
+
+        super.visitPropertiesStatement(o)
+    }
 
     override fun visitIdiomMark(o: JssIdiomMark) {
         highlight(o, JssColor.IDIOM_MARK)
@@ -19,6 +35,7 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     override fun visitIdiomSymbol(o: JssIdiomSymbol) {
         highlight(o, JssColor.ANNOTATION)
     }
+
 
 //    override fun visitInsertItem(o: VomlInsertItem) {
 //        for (symbol in o.children) {

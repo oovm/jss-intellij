@@ -7,14 +7,14 @@ import com.intellij.psi.PsiElement;
 
 public interface JssSchemaStatement extends PsiElement {
 
-  @Nullable
-  JssAnnoStatement getAnnoStatement();
+  @NotNull
+  List<JssAnnoStatement> getAnnoStatementList();
 
-  @Nullable
-  JssIdiomStatement getIdiomStatement();
+  @NotNull
+  List<JssIdiomStatement> getIdiomStatementList();
 
-  @Nullable
-  JssPropertiesStatement getPropertiesStatement();
+  @NotNull
+  List<JssPropertiesStatement> getPropertiesStatementList();
 
   @NotNull
   JssTypeSymbol getTypeSymbol();

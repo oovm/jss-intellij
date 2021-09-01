@@ -15,7 +15,6 @@ public interface JssTypes {
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
   IElementType KEY_SYMBOL = new JssElementType("KEY_SYMBOL");
-  IElementType NUMBER_SUFFIX = new JssElementType("NUMBER_SUFFIX");
   IElementType PAIR = new JssElementType("PAIR");
   IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
@@ -26,7 +25,6 @@ public interface JssTypes {
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
-  IElementType STRING_PREFIX = new JssElementType("STRING_PREFIX");
   IElementType SYMBOL_PATH = new JssElementType("SYMBOL_PATH");
   IElementType TABLE = new JssElementType("TABLE");
   IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
@@ -36,10 +34,8 @@ public interface JssTypes {
   IElementType ACCENT = new JssTokenType("^");
   IElementType ANGLE_L = new JssTokenType("<");
   IElementType ANGLE_R = new JssTokenType(">");
-  IElementType ANNOTATION = new JssTokenType("annotation");
-  IElementType AS = new JssTokenType("as");
+  IElementType AS = new JssTokenType("AS");
   IElementType AT = new JssTokenType("@");
-  IElementType BOOLEAN = new JssTokenType("BOOLEAN");
   IElementType BRACE_L = new JssTokenType("{");
   IElementType BRACE_R = new JssTokenType("}");
   IElementType BRACKET_L = new JssTokenType("[");
@@ -60,12 +56,9 @@ public interface JssTypes {
   IElementType INTEGER = new JssTokenType("INTEGER");
   IElementType NAN = new JssTokenType("nan");
   IElementType NON_ESCAPE = new JssTokenType("NON_ESCAPE");
-  IElementType NULL = new JssTokenType("null");
   IElementType PARENTHESIS_L = new JssTokenType("(");
   IElementType PARENTHESIS_R = new JssTokenType(")");
-  IElementType PROP = new JssTokenType("properties");
   IElementType QUOTATION = new JssTokenType("\"");
-  IElementType SCHEMA = new JssTokenType("schema");
   IElementType SEMICOLON = new JssTokenType(";");
   IElementType SIGN = new JssTokenType("SIGN");
   IElementType STAR = new JssTokenType("*");
@@ -97,9 +90,6 @@ public interface JssTypes {
       else if (type == KEY_SYMBOL) {
         return new JssKeySymbolImpl(node);
       }
-      else if (type == NUMBER_SUFFIX) {
-        return new JssNumberSuffixImpl(node);
-      }
       else if (type == PAIR) {
         return new JssPairImpl(node);
       }
@@ -129,9 +119,6 @@ public interface JssTypes {
       }
       else if (type == STRING_MULTI) {
         return new JssStringMultiImpl(node);
-      }
-      else if (type == STRING_PREFIX) {
-        return new JssStringPrefixImpl(node);
       }
       else if (type == SYMBOL_PATH) {
         return new JssSymbolPathImpl(node);

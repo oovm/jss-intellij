@@ -7,13 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface JssPropertiesBlock extends PsiElement {
 
-  @Nullable
-  JssAnnoStatement getAnnoStatement();
+  @NotNull
+  List<JssAnnoStatement> getAnnoStatementList();
 
-  @Nullable
-  JssIdiomStatement getIdiomStatement();
+  @NotNull
+  List<JssIdiomStatement> getIdiomStatementList();
 
-  @Nullable
-  JssPropertiesStatement getPropertiesStatement();
+  @NotNull
+  List<JssPropertiesStatement> getPropertiesStatementList();
 
 }

@@ -41,12 +41,6 @@ public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefS
 
   @Override
   @NotNull
-  public PsiElement getDefine() {
-    return findNotNullChildByType(DEFINE);
-  }
-
-  @Override
-  @NotNull
   public PsiElement getSymbol() {
     return findNotNullChildByType(SYMBOL);
   }

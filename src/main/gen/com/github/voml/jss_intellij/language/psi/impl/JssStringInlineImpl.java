@@ -29,8 +29,8 @@ public class JssStringInlineImpl extends ASTWrapperPsiElement implements JssStri
 
   @Override
   @NotNull
-  public List<JssEscaped> getEscapedList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssEscaped.class);
+  public PsiElement getString() {
+    return findNotNullChildByType(STRING);
   }
 
 }

@@ -14,9 +14,6 @@ public interface JssDefStatement extends PsiElement {
   JssPaired getPaired();
 
   @NotNull
-  PsiElement getDefine();
-
-  @NotNull
   PsiElement getSymbol();
 
 }

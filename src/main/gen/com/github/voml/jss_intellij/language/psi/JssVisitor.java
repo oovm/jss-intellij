@@ -35,10 +35,6 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitNumberSuffix(@NotNull JssNumberSuffix o) {
-    visitPsiElement(o);
-  }
-
   public void visitPair(@NotNull JssPair o) {
     visitPsiElement(o);
   }
@@ -76,10 +72,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitStringMulti(@NotNull JssStringMulti o) {
-    visitPsiElement(o);
-  }
-
-  public void visitStringPrefix(@NotNull JssStringPrefix o) {
     visitPsiElement(o);
   }
 

@@ -28,21 +28,21 @@ public class JssPropertiesBlockImpl extends ASTWrapperPsiElement implements JssP
   }
 
   @Override
-  @Nullable
-  public JssAnnoStatement getAnnoStatement() {
-    return findChildByClass(JssAnnoStatement.class);
+  @NotNull
+  public List<JssAnnoStatement> getAnnoStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssAnnoStatement.class);
   }
 
   @Override
-  @Nullable
-  public JssIdiomStatement getIdiomStatement() {
-    return findChildByClass(JssIdiomStatement.class);
+  @NotNull
+  public List<JssIdiomStatement> getIdiomStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssIdiomStatement.class);
   }
 
   @Override
-  @Nullable
-  public JssPropertiesStatement getPropertiesStatement() {
-    return findChildByClass(JssPropertiesStatement.class);
+  @NotNull
+  public List<JssPropertiesStatement> getPropertiesStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssPropertiesStatement.class);
   }
 
 }

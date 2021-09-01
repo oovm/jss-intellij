@@ -28,25 +28,19 @@ WHITE_SPACE=\s+
 COMMENT_DOCUMENT=("///")[^\r\n]*
 COMMENT=("//")[^\r\n]*
 COMMENT_BLOCK=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
-URL= [A-Za-z0-9]:"//"[\p{XID_Continue}./?&]+
+URL= [A-Za-z0-9]+:"//"[\-\p{XID_Continue}./?&#]+
 SYMBOL=[\p{XID_Start}_][\p{XID_Continue}_]*
 STRING=\"([^\"\\]|\\.)*\"
-BOOLEAN=true|false
 BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
 SIGN=[+-]
-DEFINE=def|define
 NON_ESCAPE=[^\\]
 
 %%
 <YYINITIAL> {
   {WHITE_SPACE}           { return WHITE_SPACE; }
 
-  "null"                  { return NULL; }
-  "properties"            { return PROP; }
-  "as"                    { return AS; }
-  "schema"                { return SCHEMA; }
   "("                     { return PARENTHESIS_L; }
   ")"                     { return PARENTHESIS_R; }
   "["                     { return BRACKET_L; }
@@ -67,7 +61,8 @@ NON_ESCAPE=[^\\]
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }
-  "annotation"            { return ANNOTATION; }
+  "DEFINE"                { return DEFINE; }
+  "AS"                    { return AS; }
   "CITE"                  { return CITE; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
@@ -76,12 +71,10 @@ NON_ESCAPE=[^\\]
   {URL}                   { return URL; }
   {SYMBOL}                { return SYMBOL; }
   {STRING}                { return STRING; }
-  {BOOLEAN}               { return BOOLEAN; }
   {BYTE}                  { return BYTE; }
   {INTEGER}               { return INTEGER; }
   {DECIMAL}               { return DECIMAL; }
   {SIGN}                  { return SIGN; }
-  {DEFINE}                { return DEFINE; }
   {NON_ESCAPE}            { return NON_ESCAPE; }
 
 }

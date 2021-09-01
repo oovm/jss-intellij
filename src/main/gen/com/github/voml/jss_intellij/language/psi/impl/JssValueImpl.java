@@ -29,12 +29,6 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
 
   @Override
   @Nullable
-  public JssNumberSuffix getNumberSuffix() {
-    return findChildByClass(JssNumberSuffix.class);
-  }
-
-  @Override
-  @Nullable
   public JssRef getRef() {
     return findChildByClass(JssRef.class);
   }
@@ -53,12 +47,6 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
 
   @Override
   @Nullable
-  public JssStringPrefix getStringPrefix() {
-    return findChildByClass(JssStringPrefix.class);
-  }
-
-  @Override
-  @Nullable
   public JssTable getTable() {
     return findChildByClass(JssTable.class);
   }
@@ -67,12 +55,6 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
   @Nullable
   public JssUrlMaybeValid getUrlMaybeValid() {
     return findChildByClass(JssUrlMaybeValid.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getBoolean() {
-    return findChildByType(BOOLEAN);
   }
 
   @Override

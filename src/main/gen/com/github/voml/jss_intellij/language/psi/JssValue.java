@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssValue extends PsiElement {
 
   @Nullable
-  JssNumberSuffix getNumberSuffix();
-
-  @Nullable
   JssRef getRef();
 
   @Nullable
@@ -20,16 +17,10 @@ public interface JssValue extends PsiElement {
   JssStringMulti getStringMulti();
 
   @Nullable
-  JssStringPrefix getStringPrefix();
-
-  @Nullable
   JssTable getTable();
 
   @Nullable
   JssUrlMaybeValid getUrlMaybeValid();
-
-  @Nullable
-  PsiElement getBoolean();
 
   @Nullable
   PsiElement getByte();
