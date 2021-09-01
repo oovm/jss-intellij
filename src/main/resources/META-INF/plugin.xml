@@ -1,9 +1,9 @@
 <idea-plugin>
-    <id>com.github.voml.jss_intellij</id>
-    <name>JSS Support</name>
-    <vendor>voml</vendor>
+	<id>com.github.voml.jss_intellij</id>
+	<name>JSS Support</name>
+	<vendor>voml</vendor>
 
-    <description><![CDATA[
+	<description><![CDATA[
 Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 
 ## Features
@@ -11,89 +11,90 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 - Braces Matcher
     ]]></description>
 
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
-<!--    <depends optional="true" config-file="plugin-with-rust.xml">org.rust.lang</depends>-->
-    <resource-bundle>messages.JssBundle</resource-bundle>
-    <extensions defaultExtensionNs="com.intellij">
-        <fileType
-                name="VOML"
-                implementationClass="com.github.voml.jss_intellij.language.JssFileType"
-                fieldName="INSTANCE"
-                language="JSS"
-                extensions="jss"
-        />
-        <lang.parserDefinition
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
-        />
-        <lang.syntaxHighlighter
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.colors.JssSyntaxHighlighter"
-        />
-        <colorSettingsPage
-                implementation="com.github.voml.jss_intellij.ide.colors.JssColorSettingsPage"
-        />
-        <lang.commenter
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.formatter.JssCommenter"
-        />
-        <lang.braceMatcher
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.braces.VomlBraceMatcher"
-        />
-        <lang.quoteHandler
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.VomlQuoteHandler"
-        />
-        <lang.foldingBuilder
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.folding.JssFoldingBuilder"
-        />
-        <indexPatternBuilder
-                implementation="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexPatternBuilder"
-        />
-        <todoIndexer
-                filetype="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexer"
-        />
-        <completion.contributor
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.completion.VomlOptionCompletionContributor"
-        />
-        <annotator
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.annotator.VomlHighlightingAnnotator"
-        />
-        <annotator
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"
-        />
-        <annotator
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.VomlTableCheckerAnnotator"
-        />
-        <additionalTextAttributes scheme="Default" file="colors/VomlDefault.xml"/>
-        <additionalTextAttributes scheme="Darcula" file="colors/VomlDarcula.xml"/>
-        <langCodeStyleSettingsProvider
-                implementation="com.github.voml.jss_intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"
-        />
-        <lang.formatter
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.formatter.VomlFormattingModelBuilder"
-        />
-        <lang.smartEnterProcessor
-                language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.assist.fixers.VomlSmartEnterProcessor"
-        />
-    </extensions>
-    <actions>
-        <action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
-                class="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
-                text="Voml File"
-                description="Create new Voml file">
-            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
-        </action>
-    </actions>
+	<!-- Product and plugin compatibility requirements -->
+	<!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+	<depends>com.intellij.modules.platform</depends>
+	<!--    <depends optional="true" config-file="plugin-with-rust.xml">org.rust.lang</depends>-->
+	<resource-bundle>messages.JssBundle</resource-bundle>
+	<extensions defaultExtensionNs="com.intellij">
+		<fileType
+			name="VOML"
+			implementationClass="com.github.voml.jss_intellij.language.JssFileType"
+			fieldName="INSTANCE"
+			language="JSS"
+			extensions="jss"
+		/>
+		<lang.parserDefinition
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
+		/>
+		<!-- Highlight -->
+		<colorSettingsPage implementation="com.github.voml.jss_intellij.ide.colors.JssColorSettingsPage"/>
+		<highlightVisitor implementation="com.github.voml.jss_intellij.ide.colors.JssHighlightVisitor"/>
+		<lang.syntaxHighlighter
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.colors.JssSyntaxHighlighter"
+		/>
+		<!-- Formatter -->
+		<lang.commenter
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssCommenter"
+		/>
+		<lang.braceMatcher
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.braces.VomlBraceMatcher"
+		/>
+		<lang.quoteHandler
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.VomlQuoteHandler"
+		/>
+		<lang.foldingBuilder
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.folding.JssFoldingBuilder"
+		/>
+		<indexPatternBuilder
+			implementation="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexPatternBuilder"
+		/>
+		<todoIndexer
+			filetype="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexer"
+		/>
+		<completion.contributor
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.completion.VomlOptionCompletionContributor"
+		/>
+		<annotator
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.annotator.VomlHighlightingAnnotator"
+		/>
+		<annotator
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"
+		/>
+		<annotator
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.VomlTableCheckerAnnotator"
+		/>
+		<additionalTextAttributes scheme="Default" file="colors/VomlDefault.xml"/>
+		<additionalTextAttributes scheme="Darcula" file="colors/VomlDarcula.xml"/>
+		<langCodeStyleSettingsProvider
+			implementation="com.github.voml.jss_intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"
+		/>
+		<lang.formatter
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.formatter.VomlFormattingModelBuilder"
+		/>
+		<lang.smartEnterProcessor
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.assist.fixers.VomlSmartEnterProcessor"
+		/>
+	</extensions>
+	<actions>
+		<action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
+		        class="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
+		        text="Voml File"
+		        description="Create new Voml file">
+			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
+		</action>
+	</actions>
 </idea-plugin>

@@ -15,7 +15,8 @@ import java.util.function.Supplier
 enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
     KEYWORD(OptionsBundle.messagePointer("options.language.defaults.keyword"), Default.KEYWORD),
-    IDIOM_MARK(JssBundle.messagePointer("color.token.idiom_mark"), KEYWORD.textAttributesKey),
+    ANNOTATION(OptionsBundle.messagePointer("options.java.attribute.descriptor.annotation.name"), Default.METADATA),
+    IDIOM_MARK(JssBundle.messagePointer("color.token.idiom_mark"), ANNOTATION.textAttributesKey),
     PROP_MARK(JssBundle.messagePointer("color.token.properties_mark"), KEYWORD.textAttributesKey),
     // 字面量
     NULL(JssBundle.messagePointer("color.settings.voml.null"), Default.KEYWORD),
@@ -30,7 +31,6 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     TYPE_HINT(JssBundle.messagePointer("color.settings.toml.type_hint"), Default.CLASS_NAME),
     KEY_SYMBOL(JssBundle.messagePointer("color.settings.voml.key_symbol"), Default.STATIC_FIELD),
     SCOPE_SYMBOL(JssBundle.messagePointer("color.settings.voml.scope_symbol"), Default.STATIC_METHOD),
-    ANNOTATION(OptionsBundle.messagePointer("options.java.attribute.descriptor.annotation.name"), Default.METADATA),
     PREDEFINED(OptionsBundle.messagePointer("options.language.defaults.predefined"), Default.PREDEFINED_SYMBOL),
     // 标点符号
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
