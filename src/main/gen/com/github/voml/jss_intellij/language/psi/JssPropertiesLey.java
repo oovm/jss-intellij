@@ -5,9 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssScopeSymbol extends PsiElement {
+public interface JssPropertiesLey extends PsiElement {
 
-  @NotNull
+  @Nullable
+  PsiElement getString();
+
+  @Nullable
   PsiElement getSymbol();
 
 }

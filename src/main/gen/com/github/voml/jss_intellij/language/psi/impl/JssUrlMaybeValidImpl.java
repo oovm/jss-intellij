@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssInsertPairImpl extends ASTWrapperPsiElement implements JssInsertPair {
+public class JssUrlMaybeValidImpl extends ASTWrapperPsiElement implements JssUrlMaybeValid {
 
-  public JssInsertPairImpl(@NotNull ASTNode node) {
+  public JssUrlMaybeValidImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitInsertPair(this);
+    visitor.visitUrlMaybeValid(this);
   }
 
   @Override
@@ -28,15 +28,9 @@ public class JssInsertPairImpl extends ASTWrapperPsiElement implements JssInsert
   }
 
   @Override
-  @Nullable
-  public JssInsertDot getInsertDot() {
-    return findChildByClass(JssInsertDot.class);
-  }
-
-  @Override
   @NotNull
-  public JssPair getPair() {
-    return findNotNullChildByClass(JssPair.class);
+  public PsiElement getUrl() {
+    return findNotNullChildByType(URL);
   }
 
 }

@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface JssIdiomStatement extends PsiElement {
 
   @NotNull
+  JssIdiomMark getIdiomMark();
+
+  @NotNull
   JssIdiomSymbol getIdiomSymbol();
 
   @NotNull

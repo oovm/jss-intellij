@@ -20,22 +20,24 @@
         COMMENT_DOCUMENT = 'regexp:(///)[^\r\n]*'
         COMMENT = 'regexp:(//)[^\r\n]*'
         COMMENT_BLOCK = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
+
+        // literal
+        URL = 'regexp: [A-Za-z0-9]://[\p{XID_Continue}./?&]+'
+        SYMBOL = 'regexp:[\p{XID_Start}_][\p{XID_Continue}_]*'
+        STRING = 'regexp:"([^"\\]|\\.)*"'
+        NULL = 'null'
+        BOOLEAN = 'regexp:true|false'
+
+        BYTE = 'regexp:(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)'
+        INTEGER = 'regexp:(0|[1-9][0-9_]*)'
+        DECIMAL = 'regexp:([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)'
+        SIGN = 'regexp:[+-]'
+
         // keywords
         DEFINE = 'regexp:def|define'
         PROP = 'properties'
         AS = "as"
         SCHEMA = "schema"
-        // literal
-        NULL = 'null'
-        BOOLEAN = 'regexp:true|false'
-
-        SYMBOL = 'regexp:[\p{XID_Start}_][\p{XID_Continue}_]*'
-        STRING = 'regexp:"([^"\\]|\\.)*"'
-        URL = 'regexp: [A-Za-z0-9]://[\p{XID_Continue}./?&]+'
-        BYTE = 'regexp:(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)'
-        INTEGER = 'regexp:(0|[1-9][0-9_]*)'
-        DECIMAL = 'regexp:([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)'
-        SIGN = 'regexp:[+-]'
 
         PARENTHESIS_L = '('
         PARENTHESIS_R = ')'
@@ -68,23 +70,33 @@ Jss ::= statement*;
 private statement ::=
     schema_statement
   | properties_statement
-  | COMMENT_DOCUMENT
-  | SEMICOLON;
-// ------------------------------------
-schema_statement ::= SCHEMA SYMBOL type_hint <<brace schema_inner>>;
-private schema_inner ::=
-    idiom_statement
-  | properties_statement
   | def_statement
-  | SEMICOLON;
-// properties productId: integer { }
-properties_statement ::= (PROP|DOT) properties_ley type_hint [properties_block];
+  | COMMENT_DOCUMENT
+  | ignore;
+private ignore ::= SEMICOLON | COMMA;
+// ---------------------------------------------------------------------------------------------------------------------
+// schema <ID>: <TYPE> { }
+schema_statement ::= SCHEMA SYMBOL type_hint <<brace properties_inner>>;
+// ---------------------------------------------------------------------------------------------------------------------
+// properties <ID>: <TYPE> { }
+properties_statement ::= (PROP|properties_mark) properties_ley type_hint [properties_block];
+properties_mark ::= DOT;
 properties_block ::= <<brace [properties_inner]>>;
 properties_ley ::= STRING | SYMBOL;
-private properties_inner ::= SYMBOL;
+private properties_inner ::=
+    idiom_statement
+  | properties_statement
+  | anno_statement
+  | ignore;
+// ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
-idiom_statement ::= DOLLAR idiom_symbol [COLON] value;
+idiom_statement ::= idiom_mark idiom_symbol [COLON] value;
+idiom_mark ::= DOLLAR;
 idiom_symbol ::= SYMBOL;
+// -------------------------------------
+anno_statement ::= anno_key set value;
+private set ::= COLON;
+private anno_key ::= STRING | SYMBOL;
 // -------------------------------G-----
 def_statement ::= DEFINE SYMBOL (AS key_symbol | <<paired include_inner>>);
 private include_inner ::= key_symbol*;
@@ -98,7 +110,8 @@ private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
 key_symbol ::= SYMBOL;
 // ------------------------------------
-value ::= NULL | BOOLEAN | num | ref | str | table | annotation | URL;
+value ::= NULL | BOOLEAN | num | ref | str | table | annotation | url_maybe_valid;
+url_maybe_valid ::= URL;
 
 string_prefix ::= SYMBOL;
 number_suffix ::= SYMBOL;

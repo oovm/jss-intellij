@@ -5,12 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssInsertPair extends PsiElement {
-
-  @Nullable
-  JssInsertDot getInsertDot();
+public interface JssAnnoStatement extends PsiElement {
 
   @NotNull
-  JssPair getPair();
+  JssValue getValue();
+
+  @Nullable
+  PsiElement getString();
+
+  @Nullable
+  PsiElement getSymbol();
 
 }

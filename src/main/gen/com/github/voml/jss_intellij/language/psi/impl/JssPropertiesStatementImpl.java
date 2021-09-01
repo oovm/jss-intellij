@@ -35,8 +35,14 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public JssStringInline getStringInline() {
-    return findNotNullChildByClass(JssStringInline.class);
+  public JssPropertiesLey getPropertiesLey() {
+    return findNotNullChildByClass(JssPropertiesLey.class);
+  }
+
+  @Override
+  @Nullable
+  public JssPropertiesMark getPropertiesMark() {
+    return findChildByClass(JssPropertiesMark.class);
   }
 
   @Override

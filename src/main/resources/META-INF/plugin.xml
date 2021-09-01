@@ -68,7 +68,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
         />
         <annotator
                 language="JSS"
-                implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.VomlScopeCheckerAnnotator"
+                implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"
         />
         <annotator
                 language="JSS"

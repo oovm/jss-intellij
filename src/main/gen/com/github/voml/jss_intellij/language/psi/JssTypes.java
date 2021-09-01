@@ -8,31 +8,29 @@ import com.github.voml.jss_intellij.language.psi.impl.*;
 
 public interface JssTypes {
 
+  IElementType ANNO_STATEMENT = new JssElementType("ANNO_STATEMENT");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType ESCAPED = new JssElementType("ESCAPED");
+  IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
-  IElementType INSERT_DOT = new JssElementType("INSERT_DOT");
-  IElementType INSERT_ITEM = new JssElementType("INSERT_ITEM");
-  IElementType INSERT_PAIR = new JssElementType("INSERT_PAIR");
-  IElementType INSERT_STAR = new JssElementType("INSERT_STAR");
   IElementType KEY_SYMBOL = new JssElementType("KEY_SYMBOL");
   IElementType NUMBER_SUFFIX = new JssElementType("NUMBER_SUFFIX");
   IElementType PAIR = new JssElementType("PAIR");
   IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
+  IElementType PROPERTIES_LEY = new JssElementType("PROPERTIES_LEY");
+  IElementType PROPERTIES_MARK = new JssElementType("PROPERTIES_MARK");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
   IElementType REF = new JssElementType("REF");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
-  IElementType SCOPE = new JssElementType("SCOPE");
-  IElementType SCOPE_MARK = new JssElementType("SCOPE_MARK");
-  IElementType SCOPE_SYMBOL = new JssElementType("SCOPE_SYMBOL");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
   IElementType STRING_PREFIX = new JssElementType("STRING_PREFIX");
   IElementType SYMBOL_PATH = new JssElementType("SYMBOL_PATH");
   IElementType TABLE = new JssElementType("TABLE");
   IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
+  IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
   IElementType ACCENT = new JssTokenType("^");
@@ -78,29 +76,23 @@ public interface JssTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == DEF_STATEMENT) {
+      if (type == ANNO_STATEMENT) {
+        return new JssAnnoStatementImpl(node);
+      }
+      else if (type == DEF_STATEMENT) {
         return new JssDefStatementImpl(node);
       }
       else if (type == ESCAPED) {
         return new JssEscapedImpl(node);
+      }
+      else if (type == IDIOM_MARK) {
+        return new JssIdiomMarkImpl(node);
       }
       else if (type == IDIOM_STATEMENT) {
         return new JssIdiomStatementImpl(node);
       }
       else if (type == IDIOM_SYMBOL) {
         return new JssIdiomSymbolImpl(node);
-      }
-      else if (type == INSERT_DOT) {
-        return new JssInsertDotImpl(node);
-      }
-      else if (type == INSERT_ITEM) {
-        return new JssInsertItemImpl(node);
-      }
-      else if (type == INSERT_PAIR) {
-        return new JssInsertPairImpl(node);
-      }
-      else if (type == INSERT_STAR) {
-        return new JssInsertStarImpl(node);
       }
       else if (type == KEY_SYMBOL) {
         return new JssKeySymbolImpl(node);
@@ -117,6 +109,12 @@ public interface JssTypes {
       else if (type == PROPERTIES_BLOCK) {
         return new JssPropertiesBlockImpl(node);
       }
+      else if (type == PROPERTIES_LEY) {
+        return new JssPropertiesLeyImpl(node);
+      }
+      else if (type == PROPERTIES_MARK) {
+        return new JssPropertiesMarkImpl(node);
+      }
       else if (type == PROPERTIES_STATEMENT) {
         return new JssPropertiesStatementImpl(node);
       }
@@ -125,15 +123,6 @@ public interface JssTypes {
       }
       else if (type == SCHEMA_STATEMENT) {
         return new JssSchemaStatementImpl(node);
-      }
-      else if (type == SCOPE) {
-        return new JssScopeImpl(node);
-      }
-      else if (type == SCOPE_MARK) {
-        return new JssScopeMarkImpl(node);
-      }
-      else if (type == SCOPE_SYMBOL) {
-        return new JssScopeSymbolImpl(node);
       }
       else if (type == STRING_INLINE) {
         return new JssStringInlineImpl(node);
@@ -152,6 +141,9 @@ public interface JssTypes {
       }
       else if (type == TYPE_SYMBOL) {
         return new JssTypeSymbolImpl(node);
+      }
+      else if (type == URL_MAYBE_VALID) {
+        return new JssUrlMaybeValidImpl(node);
       }
       else if (type == VALUE) {
         return new JssValueImpl(node);

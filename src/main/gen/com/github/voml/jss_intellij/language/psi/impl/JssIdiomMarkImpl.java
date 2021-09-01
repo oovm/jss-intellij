@@ -11,32 +11,20 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssInsertItemImpl extends ASTWrapperPsiElement implements JssInsertItem {
+public class JssIdiomMarkImpl extends ASTWrapperPsiElement implements JssIdiomMark {
 
-  public JssInsertItemImpl(@NotNull ASTNode node) {
+  public JssIdiomMarkImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitInsertItem(this);
+    visitor.visitIdiomMark(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssInsertStar getInsertStar() {
-    return findNotNullChildByClass(JssInsertStar.class);
-  }
-
-  @Override
-  @NotNull
-  public JssValue getValue() {
-    return findNotNullChildByClass(JssValue.class);
   }
 
 }

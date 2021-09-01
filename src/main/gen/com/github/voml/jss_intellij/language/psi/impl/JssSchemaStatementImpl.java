@@ -29,8 +29,8 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
 
   @Override
   @Nullable
-  public JssDefStatement getDefStatement() {
-    return findChildByClass(JssDefStatement.class);
+  public JssAnnoStatement getAnnoStatement() {
+    return findChildByClass(JssAnnoStatement.class);
   }
 
   @Override

@@ -5,9 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssScope extends PsiElement {
-
-  @NotNull
-  JssPaired getPaired();
+public interface JssPropertiesMark extends PsiElement {
 
 }

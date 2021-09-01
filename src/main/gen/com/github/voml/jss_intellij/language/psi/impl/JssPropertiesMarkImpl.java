@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssInsertDotImpl extends ASTWrapperPsiElement implements JssInsertDot {
+public class JssPropertiesMarkImpl extends ASTWrapperPsiElement implements JssPropertiesMark {
 
-  public JssInsertDotImpl(@NotNull ASTNode node) {
+  public JssPropertiesMarkImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitInsertDot(this);
+    visitor.visitPropertiesMark(this);
   }
 
   @Override

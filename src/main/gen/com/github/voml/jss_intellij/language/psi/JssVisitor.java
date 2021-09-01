@@ -7,6 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public class JssVisitor extends PsiElementVisitor {
 
+  public void visitAnnoStatement(@NotNull JssAnnoStatement o) {
+    visitPsiElement(o);
+  }
+
   public void visitDefStatement(@NotNull JssDefStatement o) {
     visitPsiElement(o);
   }
@@ -15,27 +19,15 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitIdiomMark(@NotNull JssIdiomMark o) {
+    visitPsiElement(o);
+  }
+
   public void visitIdiomStatement(@NotNull JssIdiomStatement o) {
     visitPsiElement(o);
   }
 
   public void visitIdiomSymbol(@NotNull JssIdiomSymbol o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInsertDot(@NotNull JssInsertDot o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInsertItem(@NotNull JssInsertItem o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInsertPair(@NotNull JssInsertPair o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInsertStar(@NotNull JssInsertStar o) {
     visitPsiElement(o);
   }
 
@@ -59,6 +51,14 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitPropertiesLey(@NotNull JssPropertiesLey o) {
+    visitPsiElement(o);
+  }
+
+  public void visitPropertiesMark(@NotNull JssPropertiesMark o) {
+    visitPsiElement(o);
+  }
+
   public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
     visitPsiElement(o);
   }
@@ -68,18 +68,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitSchemaStatement(@NotNull JssSchemaStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitScope(@NotNull JssScope o) {
-    visitPsiElement(o);
-  }
-
-  public void visitScopeMark(@NotNull JssScopeMark o) {
-    visitPsiElement(o);
-  }
-
-  public void visitScopeSymbol(@NotNull JssScopeSymbol o) {
     visitPsiElement(o);
   }
 
@@ -104,6 +92,10 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitTypeSymbol(@NotNull JssTypeSymbol o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUrlMaybeValid(@NotNull JssUrlMaybeValid o) {
     visitPsiElement(o);
   }
 

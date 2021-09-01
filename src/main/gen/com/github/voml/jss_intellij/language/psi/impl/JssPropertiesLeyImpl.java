@@ -11,20 +11,32 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssScopeMarkImpl extends ASTWrapperPsiElement implements JssScopeMark {
+public class JssPropertiesLeyImpl extends ASTWrapperPsiElement implements JssPropertiesLey {
 
-  public JssScopeMarkImpl(@NotNull ASTNode node) {
+  public JssPropertiesLeyImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitScopeMark(this);
+    visitor.visitPropertiesLey(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getString() {
+    return findChildByType(STRING);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getSymbol() {
+    return findChildByType(SYMBOL);
   }
 
 }

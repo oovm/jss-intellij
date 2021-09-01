@@ -65,6 +65,12 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
 
   @Override
   @Nullable
+  public JssUrlMaybeValid getUrlMaybeValid() {
+    return findChildByClass(JssUrlMaybeValid.class);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getBoolean() {
     return findChildByType(BOOLEAN);
   }
@@ -91,12 +97,6 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
   @Nullable
   public PsiElement getSign() {
     return findChildByType(SIGN);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getUrl() {
-    return findChildByType(URL);
   }
 
 }

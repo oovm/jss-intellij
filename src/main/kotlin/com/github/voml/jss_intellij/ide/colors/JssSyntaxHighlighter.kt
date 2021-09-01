@@ -26,9 +26,6 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             //
             STRING_PREFIX -> JssColor.STRING_HINT
             NUMBER_SUFFIX -> JssColor.NUMBER_HINT
-            SCOPE_SYMBOL -> JssColor.SCOPE_SYMBOL
-            SCOPE_MARK -> JssColor.SCOPE_MARK
-            INSERT_DOT, INSERT_STAR -> JssColor.INSERT_MARK
             //
             PARENTHESIS_L, PARENTHESIS_R -> JssColor.PARENTHESES
             BRACKET_L, BRACKET_R -> JssColor.BRACKETS

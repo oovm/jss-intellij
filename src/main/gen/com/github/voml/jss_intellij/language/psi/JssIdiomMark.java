@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssInsertItem extends PsiElement {
-
-  @NotNull
-  JssInsertStar getInsertStar();
-
-  @NotNull
-  JssValue getValue();
+public interface JssIdiomMark extends PsiElement {
 
 }

@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface JssPropertiesBlock extends PsiElement {
 
   @Nullable
-  PsiElement getSymbol();
+  JssAnnoStatement getAnnoStatement();
+
+  @Nullable
+  JssIdiomStatement getIdiomStatement();
+
+  @Nullable
+  JssPropertiesStatement getPropertiesStatement();
 
 }

@@ -4,18 +4,18 @@ import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
-class VomlScopeCheckerAnnotator : CheckerAnnotator() {
+class JssUrlChecker : CheckerAnnotator() {
     override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult =
         if (holder.isBatchMode) {
             CheckerAnnotatorResult.Ok
         } else {
             when (element) {
-                is JssScope -> checkScope(element)
+                is JssUrlMaybeValid -> checkUrl(element)
                 else -> CheckerAnnotatorResult.Ok
             }
         }
 
-    private fun checkScope(objectEntry: JssScope): CheckerAnnotatorResult {
+    private fun checkUrl(objectEntry: JssUrlMaybeValid): CheckerAnnotatorResult {
 //        val filteredEntries = (objectEntry.parent as VomlObjectBody)
 //            .objectEntryList
 //            .asSequence()

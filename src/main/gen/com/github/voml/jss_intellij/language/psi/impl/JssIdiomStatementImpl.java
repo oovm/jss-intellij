@@ -29,6 +29,12 @@ public class JssIdiomStatementImpl extends ASTWrapperPsiElement implements JssId
 
   @Override
   @NotNull
+  public JssIdiomMark getIdiomMark() {
+    return findNotNullChildByClass(JssIdiomMark.class);
+  }
+
+  @Override
+  @NotNull
   public JssIdiomSymbol getIdiomSymbol() {
     return findNotNullChildByClass(JssIdiomSymbol.class);
   }

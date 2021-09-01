@@ -26,6 +26,9 @@ public interface JssValue extends PsiElement {
   JssTable getTable();
 
   @Nullable
+  JssUrlMaybeValid getUrlMaybeValid();
+
+  @Nullable
   PsiElement getBoolean();
 
   @Nullable
@@ -39,8 +42,5 @@ public interface JssValue extends PsiElement {
 
   @Nullable
   PsiElement getSign();
-
-  @Nullable
-  PsiElement getUrl();
 
 }
