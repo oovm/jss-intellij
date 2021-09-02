@@ -9,12 +9,14 @@ import com.github.voml.jss_intellij.language.psi.impl.*;
 public interface JssTypes {
 
   IElementType ANNO_STATEMENT = new JssElementType("ANNO_STATEMENT");
+  IElementType BOOLEAN = new JssElementType("BOOLEAN");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType ESCAPED = new JssElementType("ESCAPED");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
   IElementType KEY_SYMBOL = new JssElementType("KEY_SYMBOL");
+  IElementType NULL = new JssElementType("NULL");
   IElementType PAIR = new JssElementType("PAIR");
   IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
@@ -72,6 +74,9 @@ public interface JssTypes {
       if (type == ANNO_STATEMENT) {
         return new JssAnnoStatementImpl(node);
       }
+      else if (type == BOOLEAN) {
+        return new JssBooleanImpl(node);
+      }
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementImpl(node);
       }
@@ -89,6 +94,9 @@ public interface JssTypes {
       }
       else if (type == KEY_SYMBOL) {
         return new JssKeySymbolImpl(node);
+      }
+      else if (type == NULL) {
+        return new JssNullImpl(node);
       }
       else if (type == PAIR) {
         return new JssPairImpl(node);

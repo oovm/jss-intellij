@@ -39,5 +39,5 @@ properties dimensions: object {
     .width: number
     .height: number
 
-    required: [length, width, height]
+    required: ["length", "width", "height"]
 }

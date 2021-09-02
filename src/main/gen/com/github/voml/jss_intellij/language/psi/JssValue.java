@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface JssValue extends PsiElement {
 
   @Nullable
+  JssBoolean getBoolean();
+
+  @Nullable
+  JssNull getNull();
+
+  @Nullable
   JssRef getRef();
 
   @Nullable

@@ -82,7 +82,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<lang.formatter
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.formatter.VomlFormattingModelBuilder"
+			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssFormattingModelBuilder"
 		/>
 		<lang.smartEnterProcessor
 			language="JSS"

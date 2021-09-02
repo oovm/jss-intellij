@@ -9,21 +9,32 @@ import com.intellij.codeInsight.daemon.impl.analysis.HighlightInfoHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
+import com.intellij.psi.util.nextLeaf
 
 class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
 
     override fun visitSchemaStatement(o: JssSchemaStatement) {
-        highlight(o.firstChild, JssColor.KEYWORD)
+        //
+        val head = o.firstChild;
+        highlight(head, JssColor.KEYWORD)
+        //
+        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
+        highlight(prop, JssColor.SYM_SCHEMA)
+
         super.visitSchemaStatement(o)
     }
 
 
     override fun visitPropertiesStatement(o: JssPropertiesStatement) {
+        //
         val head = o.firstChild;
-        if (head.elementType == JssTypes.SYMBOL) {
-            highlight(head, JssColor.KEYWORD)
+        when (head.elementType) {
+            JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
         }
+        //
+        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
+        highlight(prop, JssColor.SYM_PROP)
 
         super.visitPropertiesStatement(o)
     }
@@ -33,11 +44,13 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     }
 
     override fun visitIdiomSymbol(o: JssIdiomSymbol) {
-        highlight(o, JssColor.ANNOTATION)
+        highlight(o, JssColor.IDIOM_SYMBOL)
     }
 
 
     override fun visitAnnoStatement(o: JssAnnoStatement) {
+        highlight(o.firstChild, JssColor.SYM_ANNO)
+
         super.visitAnnoStatement(o)
     }
 
@@ -45,17 +58,11 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     override fun visitValue(o: JssValue) {
         val head = o.firstChild;
         when (head.elementType) {
-            JssTypes.SYMBOL -> {
-                when (head.toString()) {
-                    "null" -> highlight(head, JssColor.NULL)
-                    "true" -> highlight(head, JssColor.BOOLEAN)
-                    "false" -> highlight(head, JssColor.BOOLEAN)
-                }
-            }
+            JssTypes.NULL -> highlight(head, JssColor.NULL)
+            JssTypes.BOOLEAN -> highlight(head, JssColor.BOOLEAN)
+            else -> super.visitValue(o)
         }
-        super.visitValue(o)
     }
-
 
     private fun highlight(element: PsiElement, color: JssColor) {
         val builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION)

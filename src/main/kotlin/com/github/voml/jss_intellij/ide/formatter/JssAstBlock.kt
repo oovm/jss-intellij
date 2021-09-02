@@ -11,7 +11,7 @@ import com.intellij.psi.codeStyle.CodeStyleSettings
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings
 import com.intellij.psi.formatter.FormatterUtil
 
-class VomlAstBlock(
+class JssAstBlock(
     private val node: ASTNode,
     private val alignment: Alignment?,
     private val indent: Indent?,
@@ -48,7 +48,7 @@ class VomlAstBlock(
         node.getChildren(null).any {
             it.elementType is PsiErrorElement
         }
-        || FormatterUtil.isIncomplete(node)
+                || FormatterUtil.isIncomplete(node)
     }
 
     private val mySubBlocks: List<Block> by lazy { buildChildren() }
@@ -87,7 +87,7 @@ private fun Block.computeSpacing(child1: Block?, child2: Block, ctx: VomlFormatt
 
 private fun ASTNode?.isWhitespaceOrEmpty() = this == null || textLength == 0 || elementType == TokenType.WHITE_SPACE
 
-private fun VomlAstBlock.computeIndent(child: ASTNode): Indent? {
+private fun JssAstBlock.computeIndent(child: ASTNode): Indent? {
     val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
     return when (node.elementType) {
         JssTypes.TABLE -> when {
@@ -98,11 +98,11 @@ private fun VomlAstBlock.computeIndent(child: ASTNode): Indent? {
     }
 }
 
-private fun VomlAstBlock.buildChildren(): List<Block> {
+private fun JssAstBlock.buildChildren(): List<Block> {
     return node.getChildren(null)
         .filter { !it.isWhitespaceOrEmpty() }
         .map { childNode ->
-            VomlFormattingModelBuilder.createBlock(
+            JssFormattingModelBuilder.createBlock(
                 node = childNode,
                 alignment = null,
                 indent = computeIndent(childNode),

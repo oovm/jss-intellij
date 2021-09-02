@@ -73,6 +73,18 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // "true" | "false"
+  public static boolean boolean_$(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "boolean_$")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, BOOLEAN, "<boolean $>");
+    r = consumeToken(b, "true");
+    if (!r) r = consumeToken(b, "false");
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // BRACE_L <<param>> BRACE_R
   static boolean brace(PsiBuilder b, int l, Parser _param) {
     if (!recursion_guard_(b, l, "brace")) return false;
@@ -268,6 +280,17 @@ public class JssParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, SYMBOL);
     exit_section_(b, m, KEY_SYMBOL, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // "null"
+  public static boolean null_$(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "null_$")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, NULL, "<null $>");
+    r = consumeToken(b, "null");
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -765,14 +788,13 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // "null" | "true" | "false" | num | ref | str | table | url_maybe_valid
+  // null | boolean | num | ref | str | table | url_maybe_valid
   public static boolean value(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "value")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, VALUE, "<value>");
-    r = consumeToken(b, "null");
-    if (!r) r = consumeToken(b, "true");
-    if (!r) r = consumeToken(b, "false");
+    r = null_$(b, l + 1);
+    if (!r) r = boolean_$(b, l + 1);
     if (!r) r = num(b, l + 1);
     if (!r) r = ref(b, l + 1);
     if (!r) r = str(b, l + 1);

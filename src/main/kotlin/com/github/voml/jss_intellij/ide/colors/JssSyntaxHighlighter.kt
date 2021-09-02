@@ -34,6 +34,7 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             INTEGER -> JssColor.INTEGER
             DECIMAL -> JssColor.DECIMAL
 
+            URL -> JssColor.URL
             STRING_INLINE -> JssColor.STRING
             STRING_MULTI -> JssColor.STRING
 

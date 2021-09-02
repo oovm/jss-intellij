@@ -11,6 +11,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitBoolean(@NotNull JssBoolean o) {
+    visitPsiElement(o);
+  }
+
   public void visitDefStatement(@NotNull JssDefStatement o) {
     visitPsiElement(o);
   }
@@ -32,6 +36,10 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitKeySymbol(@NotNull JssKeySymbol o) {
+    visitPsiElement(o);
+  }
+
+  public void visitNull(@NotNull JssNull o) {
     visitPsiElement(o);
   }
 

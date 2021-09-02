@@ -103,7 +103,9 @@ private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
 key_symbol ::= SYMBOL;
 // ------------------------------------
-value ::= "null" | "true" | "false" | num | ref | str | table | url_maybe_valid;
+value ::= null | boolean | num | ref | str | table | url_maybe_valid;
+null ::= "null";
+boolean ::= "true" | "false";
 url_maybe_valid ::= URL;
 // ------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE | other_num;

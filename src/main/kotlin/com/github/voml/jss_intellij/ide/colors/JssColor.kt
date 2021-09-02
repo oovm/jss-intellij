@@ -15,8 +15,8 @@ import java.util.function.Supplier
 enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>, default: TextAttributesKey? = null) {
     // 特殊关键词
     KEYWORD(OptionsBundle.messagePointer("options.language.defaults.keyword"), Default.KEYWORD),
-    ANNOTATION(OptionsBundle.messagePointer("options.java.attribute.descriptor.annotation.name"), Default.METADATA),
-    IDIOM_MARK(JssBundle.messagePointer("color.token.idiom_mark"), ANNOTATION.textAttributesKey),
+    IDIOM_SYMBOL(JssBundle.messagePointer("color.token.symbol.idiom"), Default.METADATA),
+    IDIOM_MARK(JssBundle.messagePointer("color.token.idiom_mark"), IDIOM_SYMBOL.textAttributesKey),
     PROP_MARK(JssBundle.messagePointer("color.token.properties_mark"), KEYWORD.textAttributesKey),
     // 字面量
     NULL(JssBundle.messagePointer("color.token.null"), Default.KEYWORD),
@@ -27,18 +27,19 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     URL(JssBundle.messagePointer("color.token.url"), STRING.textAttributesKey),
     // 标识符
     IDENTIFIER(OptionsBundle.messagePointer("options.language.defaults.identifier"), Default.IDENTIFIER),
-    KEY_SYMBOL(JssBundle.messagePointer("color.settings.voml.key_symbol"), Default.STATIC_FIELD),
-    SCOPE_SYMBOL(JssBundle.messagePointer("color.settings.voml.scope_symbol"), Default.STATIC_METHOD),
+    SYM_ANNO(JssBundle.messagePointer("color.token.symbol.annotation"), Default.STATIC_METHOD),
+    SYM_PROP(JssBundle.messagePointer("color.token.symbol.property"), Default.STATIC_FIELD),
+    SYM_SCHEMA(JssBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),
+
     //
     TYPE_HINT(JssBundle.messagePointer("color.settings.toml.type_hint"), Default.CLASS_NAME),
-    PREDEFINED(OptionsBundle.messagePointer("options.language.defaults.predefined"), Default.PREDEFINED_SYMBOL),
     // 标点符号
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
     BRACKETS(OptionsBundle.messagePointer("options.language.defaults.brackets"), Default.BRACKETS),
     BRACES(OptionsBundle.messagePointer("options.language.defaults.braces"), Default.BRACES),
     DOT(OptionsBundle.messagePointer("options.language.defaults.dot"), Default.DOT),
     COMMA(OptionsBundle.messagePointer("options.language.defaults.comma"), Default.COMMA),
-    SET(JssBundle.messagePointer("color.settings.voml.set"), Default.OPERATION_SIGN),
+    SET(JssBundle.messagePointer("color.token.set"), Default.OPERATION_SIGN),
     SEMICOLON(OptionsBundle.messagePointer("options.language.defaults.semicolon"), Default.SEMICOLON),
     // 注释
     LINE_COMMENT(OptionsBundle.messagePointer("options.language.defaults.line.comment"), Default.LINE_COMMENT),
