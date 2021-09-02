@@ -37,19 +37,25 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     }
 
 
-//    override fun visitInsertItem(o: VomlInsertItem) {
-//        for (symbol in o.children) {
-//            val color = when (symbol) {
-//                is VomlInsertDot -> VomlColor.INSERT_MARK
-//                is VomlInsertStar -> VomlColor.INSERT_MARK
-//                else -> null
-//            }
-//            if (color != null) {
-//                highlight(symbol, color)
-//            }
-//        }
-//        super.visitInsertItem(o)
-//    }
+    override fun visitAnnoStatement(o: JssAnnoStatement) {
+        super.visitAnnoStatement(o)
+    }
+
+
+    override fun visitValue(o: JssValue) {
+        val head = o.firstChild;
+        when (head.elementType) {
+            JssTypes.SYMBOL -> {
+                when (head.toString()) {
+                    "null" -> highlight(head, JssColor.NULL)
+                    "true" -> highlight(head, JssColor.BOOLEAN)
+                    "false" -> highlight(head, JssColor.BOOLEAN)
+                }
+            }
+        }
+        super.visitValue(o)
+    }
+
 
     private fun highlight(element: PsiElement, color: JssColor) {
         val builder = HighlightInfo.newHighlightInfo(HighlightInfoType.INFORMATION)

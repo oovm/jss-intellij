@@ -92,8 +92,8 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 	<actions>
 		<action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
 		        class="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
-		        text="Voml File"
-		        description="Create new Voml file">
+		        text="Jss File"
+		        description="Create new Jss file">
 			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
 		</action>
 	</actions>

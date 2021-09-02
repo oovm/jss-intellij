@@ -21,16 +21,16 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     // 字面量
     NULL(JssBundle.messagePointer("color.token.null"), Default.KEYWORD),
     BOOLEAN(JssBundle.messagePointer("color.token.boolean"), Default.KEYWORD),
-    NUMBER_HINT(JssBundle.messagePointer("color.settings.toml.number_hint"), Default.METADATA),
     DECIMAL(JssBundle.messagePointer("color.token.decimal"), Default.NUMBER),
     INTEGER(JssBundle.messagePointer("color.token.integer"), Default.NUMBER),
-    STRING_HINT(JssBundle.messagePointer("color.settings.toml.string_hint"), Default.KEYWORD),
-    STRING(OptionsBundle.messagePointer("options.language.defaults.string"), Default.STRING),
+    STRING(JssBundle.messagePointer("color.token.string"), Default.STRING),
+    URL(JssBundle.messagePointer("color.token.url"), STRING.textAttributesKey),
+    // 标识符
     IDENTIFIER(OptionsBundle.messagePointer("options.language.defaults.identifier"), Default.IDENTIFIER),
-    //
-    TYPE_HINT(JssBundle.messagePointer("color.settings.toml.type_hint"), Default.CLASS_NAME),
     KEY_SYMBOL(JssBundle.messagePointer("color.settings.voml.key_symbol"), Default.STATIC_FIELD),
     SCOPE_SYMBOL(JssBundle.messagePointer("color.settings.voml.scope_symbol"), Default.STATIC_METHOD),
+    //
+    TYPE_HINT(JssBundle.messagePointer("color.settings.toml.type_hint"), Default.CLASS_NAME),
     PREDEFINED(OptionsBundle.messagePointer("options.language.defaults.predefined"), Default.PREDEFINED_SYMBOL),
     // 标点符号
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
