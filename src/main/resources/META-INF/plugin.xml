@@ -18,22 +18,22 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 	<resource-bundle>messages.JssBundle</resource-bundle>
 	<extensions defaultExtensionNs="com.intellij">
 		<fileType
-			name="VOML"
-			implementationClass="com.github.voml.jss_intellij.language.JssFileType"
-			fieldName="INSTANCE"
+			name="JSS"
 			language="JSS"
 			extensions="jss"
+			implementationClass="com.github.voml.jss_intellij.language.JssFileType"
+			fieldName="INSTANCE"
 		/>
 		<lang.parserDefinition
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
 		/>
 		<!-- Highlight -->
-		<colorSettingsPage implementation="com.github.voml.jss_intellij.ide.colors.JssColorSettingsPage"/>
-		<highlightVisitor implementation="com.github.voml.jss_intellij.ide.colors.JssHighlightVisitor"/>
+		<colorSettingsPage implementation="com.github.voml.jss_intellij.ide.highlight.JssColorSettingsPage"/>
+		<highlightVisitor implementation="com.github.voml.jss_intellij.ide.highlight.JssHighlightVisitor"/>
 		<lang.syntaxHighlighter
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.colors.JssSyntaxHighlighter"
+			implementationClass="com.github.voml.jss_intellij.ide.highlight.JssSyntaxHighlighter"
 		/>
 		<!-- Formatter -->
 		<lang.commenter
@@ -42,15 +42,15 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<lang.braceMatcher
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.braces.JssBraceMatcher"
+			implementationClass="com.github.voml.jss_intellij.ide.matcher.JssBraceMatcher"
 		/>
 		<lang.quoteHandler
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.VomlQuoteHandler"
+			implementationClass="com.github.voml.jss_intellij.ide.matcher.JssQuoteHandler"
 		/>
 		<lang.foldingBuilder
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.folding.JssFoldingBuilder"
+			implementationClass="com.github.voml.jss_intellij.ide.matcher.JssFoldingBuilder"
 		/>
 		<indexPatternBuilder
 			implementation="com.github.voml.jss_intellij.ide.todo.VomlTodoIndexPatternBuilder"

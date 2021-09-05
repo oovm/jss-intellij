@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.folding
+package com.github.voml.jss_intellij.ide.matcher
 
 import com.github.voml.jss_intellij.language.JssFile
 import com.github.voml.jss_intellij.language.psi.*
@@ -28,8 +28,9 @@ class JssFoldingBuilder : CustomFoldingBuilder(), DumbAware {
 
     override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) =
         when (node.elementType) {
-            JssTypes.SCHEMA_STATEMENT -> "scheme {...}"
-            else -> "{...}"
+            JssTypes.BRACKET_PAIR -> "[...]"
+            JssTypes.BRACE_BLOCK -> "{...}"
+            else -> "..."
         }
 
     override fun isRegionCollapsedByDefault(node: ASTNode) = false

@@ -14,7 +14,7 @@ class JssFormattingModelBuilder : FormattingModelBuilder {
     override fun createModel(formattingContext: FormattingContext): FormattingModel {
         val settings = formattingContext.codeStyleSettings
         val element = formattingContext.psiElement
-        val ctx = VomlFormatterContext.create(settings)
+        val ctx = JssFormatterContext.create(settings)
         val block = createBlock(element.node, null, Indent.getNoneIndent(), null, ctx)
         return FormattingModelProvider.createFormattingModelForPsiFile(element.containingFile, block, settings)
     }
@@ -25,7 +25,7 @@ class JssFormattingModelBuilder : FormattingModelBuilder {
             alignment: Alignment?,
             indent: Indent?,
             wrap: Wrap?,
-            ctx: VomlFormatterContext
+            ctx: JssFormatterContext
         ): ASTBlock = JssAstBlock(node, alignment, indent, wrap, ctx)
     }
 }

@@ -68,18 +68,18 @@ private statement ::=
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= "schema" SYMBOL type_hint <<brace_block properties_inner*>>;
+schema_statement ::= "schema" SYMBOL type_hint <<brace_block properties_inner ignore>>;
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
 properties_statement ::= ("properties"|properties_mark) properties_ley type_hint [properties_block];
 properties_mark ::= DOT;
-properties_block ::= <<brace_block properties_inner*>>;
+properties_block ::= <<brace_block properties_inner ignore>>;
 properties_ley ::= STRING | SYMBOL;
 private properties_inner ::=
     idiom_statement
   | properties_statement
-  | anno_statement
-  | ignore;
+  | COMMENT_DOCUMENT
+  | anno_statement;
 // ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
 idiom_statement ::= idiom_mark idiom_symbol [COLON] value;
@@ -91,7 +91,7 @@ anno_statement ::= anno_key set value;
 private set ::= COLON;
 private anno_key ::= STRING | SYMBOL;
 // -------------------------------G-----
-def_statement ::= DEFINE SYMBOL (AS key_symbol | <<paired include_inner>>);
+def_statement ::= DEFINE SYMBOL (AS key_symbol | <<parenthesis include_inner>>);
 private include_inner ::= key_symbol*;
 // -------------------------------G-----
 private type_hint ::= COLON type_symbol;
@@ -124,14 +124,10 @@ ref ::= CITE symbol_path;
 // ------------------------------------
 array ::= <<bracket_pair value ignore>>;
 // ------------------------------------
-meta paired ::=
-    PARENTHESIS_L <<param>> PARENTHESIS_R
-  | BRACKET_L <<param>> BRACKET_R
-  | BRACE_L <<param>> BRACE_R
-// brace { }
+// parenthesis ( )
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
 // bracket [ ]
 meta bracket_pair ::= BRACKET_L [<<item>> (<<sp>> <<item>>)* [<<sp>>]] BRACKET_R;
 // brace { }
-meta brace_block ::= BRACE_L <<param>> BRACE_R;
+meta brace_block ::=BRACE_L (<<item>>|<<sp>>)* BRACE_R;
 

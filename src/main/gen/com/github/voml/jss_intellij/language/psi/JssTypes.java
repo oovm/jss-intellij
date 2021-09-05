@@ -21,7 +21,6 @@ public interface JssTypes {
   IElementType KEY_SYMBOL = new JssElementType("KEY_SYMBOL");
   IElementType NULL = new JssElementType("NULL");
   IElementType PAIR = new JssElementType("PAIR");
-  IElementType PAIRED = new JssElementType("PAIRED");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
   IElementType PROPERTIES_LEY = new JssElementType("PROPERTIES_LEY");
   IElementType PROPERTIES_MARK = new JssElementType("PROPERTIES_MARK");
@@ -111,9 +110,6 @@ public interface JssTypes {
       }
       else if (type == PAIR) {
         return new JssPairImpl(node);
-      }
-      else if (type == PAIRED) {
-        return new JssPairedImpl(node);
       }
       else if (type == PROPERTIES_BLOCK) {
         return new JssPropertiesBlockImpl(node);

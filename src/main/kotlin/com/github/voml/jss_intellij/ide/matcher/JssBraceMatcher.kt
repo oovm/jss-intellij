@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.braces
+package com.github.voml.jss_intellij.ide.matcher
 
 import com.github.voml.jss_intellij.language.JssFileType
 import com.github.voml.jss_intellij.language.JssLanguage

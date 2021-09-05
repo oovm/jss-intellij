@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.colors
+package com.github.voml.jss_intellij.ide.highlight
 
 import com.github.voml.jss_intellij.language.JssFile
 import com.github.voml.jss_intellij.language.psi.*

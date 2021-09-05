@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.colors
+package com.github.voml.jss_intellij.ide.highlight
 
 import com.github.voml.jss_intellij.language.JssBundle
 import com.intellij.lang.annotation.HighlightSeverity

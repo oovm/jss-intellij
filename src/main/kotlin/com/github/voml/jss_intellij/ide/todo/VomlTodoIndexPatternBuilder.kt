@@ -10,14 +10,17 @@ import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.TokenSet
 
 class VomlTodoIndexPatternBuilder : IndexPatternBuilder {
-    override fun getIndexingLexer(file: PsiFile): Lexer? =
-        if (file is JssFile) JssLexerAdapter() else null
+    override fun getIndexingLexer(file: PsiFile): Lexer? {
+        return if (file is JssFile) JssLexerAdapter() else null
+    }
 
-    override fun getCommentTokenSet(file: PsiFile): TokenSet? =
-        if (file is JssFile) JSS_COMMENT else null
+    override fun getCommentTokenSet(file: PsiFile): TokenSet? {
+        return if (file is JssFile) JSS_COMMENT else null
+    }
 
-    override fun getCommentStartDelta(tokenType: IElementType?): Int =
-        if (tokenType in JSS_COMMENT) 2 else 0
+    override fun getCommentStartDelta(tokenType: IElementType?): Int {
+        return if (tokenType in JSS_COMMENT) 2 else 0
+    }
 
     override fun getCommentEndDelta(tokenType: IElementType?): Int = 0
 }

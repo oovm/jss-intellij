@@ -1,7 +1,6 @@
-package com.github.voml.jss_intellij.ide.colors
+package com.github.voml.jss_intellij.ide.highlight
 
 import com.github.voml.jss_intellij.language.JssLexerAdapter
-import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.github.voml.jss_intellij.language.psi.JssTypes.*
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.colors.TextAttributesKey

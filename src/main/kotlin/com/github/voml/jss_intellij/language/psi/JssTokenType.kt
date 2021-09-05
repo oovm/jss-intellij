@@ -7,4 +7,3 @@ class JssTokenType(debugName: String) : IElementType(debugName, JssLanguage.INST
     override fun toString(): String = "JssTokenType.${super.toString()}"
 }
 
-

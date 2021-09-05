@@ -187,9 +187,7 @@ inline val <T : StubElement<*>> StubBasedPsiElement<T>.greenStub: T?
     get() = (this as? StubBasedPsiElementBase<T>)?.greenStub
 
 
-fun tokenSetOf(vararg tokens: IElementType) = TokenSet.create(*tokens)
-
-val JSS_COMMENT = tokenSetOf(
+val JSS_COMMENT = TokenSet.create(
     JssTypes.COMMENT,
     JssTypes.COMMENT_BLOCK,
     JssTypes.COMMENT_DOCUMENT

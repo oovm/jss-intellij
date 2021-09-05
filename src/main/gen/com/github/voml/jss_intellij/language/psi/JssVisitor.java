@@ -59,10 +59,6 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitPaired(@NotNull JssPaired o) {
-    visitPsiElement(o);
-  }
-
   public void visitPropertiesBlock(@NotNull JssPropertiesBlock o) {
     visitPsiElement(o);
   }
