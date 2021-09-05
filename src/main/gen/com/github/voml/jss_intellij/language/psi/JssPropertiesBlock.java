@@ -8,12 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssPropertiesBlock extends PsiElement {
 
   @NotNull
-  List<JssAnnoStatement> getAnnoStatementList();
-
-  @NotNull
-  List<JssIdiomStatement> getIdiomStatementList();
-
-  @NotNull
-  List<JssPropertiesStatement> getPropertiesStatementList();
+  JssBraceBlock getBraceBlock();
 
 }

@@ -11,32 +11,20 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssTableImpl extends ASTWrapperPsiElement implements JssTable {
+public class JssBracketPairImpl extends ASTWrapperPsiElement implements JssBracketPair {
 
-  public JssTableImpl(@NotNull ASTNode node) {
+  public JssBracketPairImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitTable(this);
+    visitor.visitBracketPair(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssPaired getPaired() {
-    return findNotNullChildByClass(JssPaired.class);
-  }
-
-  @Override
-  @Nullable
-  public JssTypeSymbol getTypeSymbol() {
-    return findChildByClass(JssTypeSymbol.class);
   }
 
 }

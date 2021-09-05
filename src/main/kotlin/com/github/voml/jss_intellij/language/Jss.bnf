@@ -68,12 +68,12 @@ private statement ::=
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= "schema" SYMBOL type_hint <<brace properties_inner*>>;
+schema_statement ::= "schema" SYMBOL type_hint <<brace_block properties_inner*>>;
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
 properties_statement ::= ("properties"|properties_mark) properties_ley type_hint [properties_block];
 properties_mark ::= DOT;
-properties_block ::= <<brace properties_inner*>>;
+properties_block ::= <<brace_block properties_inner*>>;
 properties_ley ::= STRING | SYMBOL;
 private properties_inner ::=
     idiom_statement
@@ -103,7 +103,7 @@ private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
 key_symbol ::= SYMBOL;
 // ------------------------------------
-value ::= null | boolean | num | ref | str | table | url_maybe_valid;
+value ::= null | boolean | num | ref | str | array | url_maybe_valid;
 null ::= "null";
 boolean ::= "true" | "false";
 url_maybe_valid ::= URL;
@@ -122,15 +122,16 @@ ref ::= CITE symbol_path;
 //annotation ::= annotation_mark [COLON] <<paired table_inner>>;
 //annotation_mark ::= DOLLAR SYMBOL;
 // ------------------------------------
-table ::= [type_hint] <<paired table_inner>>;
-private table_inner ::= [table_item (COMMA table_item)* [COMMA]];
-private table_item ::= pair | value;
+array ::= <<bracket_pair value ignore>>;
 // ------------------------------------
 meta paired ::=
     PARENTHESIS_L <<param>> PARENTHESIS_R
   | BRACKET_L <<param>> BRACKET_R
   | BRACE_L <<param>> BRACE_R
+// brace { }
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
-private meta bracket ::= BRACKET_L <<param>> BRACKET_R;
-private meta brace ::= BRACE_L <<param>> BRACE_R;
+// bracket [ ]
+meta bracket_pair ::= BRACKET_L [<<item>> (<<sp>> <<item>>)* [<<sp>>]] BRACKET_R;
+// brace { }
+meta brace_block ::= BRACE_L <<param>> BRACE_R;
 

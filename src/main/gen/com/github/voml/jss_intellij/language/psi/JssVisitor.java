@@ -11,7 +11,19 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitArray(@NotNull JssArray o) {
+    visitPsiElement(o);
+  }
+
   public void visitBoolean(@NotNull JssBoolean o) {
+    visitPsiElement(o);
+  }
+
+  public void visitBraceBlock(@NotNull JssBraceBlock o) {
+    visitPsiElement(o);
+  }
+
+  public void visitBracketPair(@NotNull JssBracketPair o) {
     visitPsiElement(o);
   }
 
@@ -84,10 +96,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitSymbolPath(@NotNull JssSymbolPath o) {
-    visitPsiElement(o);
-  }
-
-  public void visitTable(@NotNull JssTable o) {
     visitPsiElement(o);
   }
 

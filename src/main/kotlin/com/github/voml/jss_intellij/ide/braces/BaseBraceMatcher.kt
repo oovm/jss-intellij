@@ -10,11 +10,12 @@ import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.TokenSet
 
-class VomlBaseBraceMatcher : PairedBraceMatcher {
+class BaseBraceMatcher : PairedBraceMatcher {
     override fun getPairs(): Array<BracePair> = PAIRS
 
-    override fun isPairedBracesAllowedBeforeType(lbraceType: IElementType, next: IElementType?): Boolean =
-        next in InsertPairBraceBefore
+    override fun isPairedBracesAllowedBeforeType(lbraceType: IElementType, next: IElementType?): Boolean {
+        return next in InsertPairBraceBefore
+    }
 
     override fun getCodeConstructStart(file: PsiFile?, openingBraceOffset: Int): Int = openingBraceOffset
 
@@ -34,7 +35,6 @@ class VomlBaseBraceMatcher : PairedBraceMatcher {
                 JssTypes.PARENTHESIS_R,
                 JssTypes.BRACKET_R,
                 JssTypes.BRACE_R,
-                JssTypes.BRACE_L
             )
         )
     }

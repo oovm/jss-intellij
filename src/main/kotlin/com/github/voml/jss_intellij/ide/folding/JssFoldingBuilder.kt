@@ -21,13 +21,14 @@ class JssFoldingBuilder : CustomFoldingBuilder(), DumbAware {
         if (root !is JssFile) return
         val visitor = JssFoldingVisitor(descriptors)
         PsiTreeUtil.processElements(root) {
-            it.accept(visitor); true
+            it.accept(visitor);
+            true
         }
     }
 
     override fun getLanguagePlaceholderText(node: ASTNode, range: TextRange) =
         when (node.elementType) {
-            JssTypes.TABLE -> "[...]"
+            JssTypes.SCHEMA_STATEMENT -> "scheme {...}"
             else -> "{...}"
         }
 

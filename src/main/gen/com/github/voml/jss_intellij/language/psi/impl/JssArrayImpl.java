@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssSchemaStatement {
+public class JssArrayImpl extends ASTWrapperPsiElement implements JssArray {
 
-  public JssSchemaStatementImpl(@NotNull ASTNode node) {
+  public JssArrayImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitSchemaStatement(this);
+    visitor.visitArray(this);
   }
 
   @Override
@@ -29,20 +29,8 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
 
   @Override
   @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
-  }
-
-  @Override
-  @NotNull
-  public JssTypeSymbol getTypeSymbol() {
-    return findNotNullChildByClass(JssTypeSymbol.class);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+  public JssBracketPair getBracketPair() {
+    return findNotNullChildByClass(JssBracketPair.class);
   }
 
 }

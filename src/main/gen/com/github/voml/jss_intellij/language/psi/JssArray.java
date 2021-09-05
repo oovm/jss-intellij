@@ -5,15 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssSchemaStatement extends PsiElement {
+public interface JssArray extends PsiElement {
 
   @NotNull
-  JssBraceBlock getBraceBlock();
-
-  @NotNull
-  JssTypeSymbol getTypeSymbol();
-
-  @NotNull
-  PsiElement getSymbol();
+  JssBracketPair getBracketPair();
 
 }

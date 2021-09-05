@@ -9,7 +9,10 @@ import com.github.voml.jss_intellij.language.psi.impl.*;
 public interface JssTypes {
 
   IElementType ANNO_STATEMENT = new JssElementType("ANNO_STATEMENT");
+  IElementType ARRAY = new JssElementType("ARRAY");
   IElementType BOOLEAN = new JssElementType("BOOLEAN");
+  IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
+  IElementType BRACKET_PAIR = new JssElementType("BRACKET_PAIR");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
   IElementType ESCAPED = new JssElementType("ESCAPED");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
@@ -28,7 +31,6 @@ public interface JssTypes {
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
   IElementType SYMBOL_PATH = new JssElementType("SYMBOL_PATH");
-  IElementType TABLE = new JssElementType("TABLE");
   IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
@@ -74,8 +76,17 @@ public interface JssTypes {
       if (type == ANNO_STATEMENT) {
         return new JssAnnoStatementImpl(node);
       }
+      else if (type == ARRAY) {
+        return new JssArrayImpl(node);
+      }
       else if (type == BOOLEAN) {
         return new JssBooleanImpl(node);
+      }
+      else if (type == BRACE_BLOCK) {
+        return new JssBraceBlockImpl(node);
+      }
+      else if (type == BRACKET_PAIR) {
+        return new JssBracketPairImpl(node);
       }
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementImpl(node);
@@ -130,9 +141,6 @@ public interface JssTypes {
       }
       else if (type == SYMBOL_PATH) {
         return new JssSymbolPathImpl(node);
-      }
-      else if (type == TABLE) {
-        return new JssTableImpl(node);
       }
       else if (type == TYPE_SYMBOL) {
         return new JssTypeSymbolImpl(node);

@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface JssValue extends PsiElement {
 
   @Nullable
+  JssArray getArray();
+
+  @Nullable
   JssBoolean getBoolean();
 
   @Nullable
@@ -21,9 +24,6 @@ public interface JssValue extends PsiElement {
 
   @Nullable
   JssStringMulti getStringMulti();
-
-  @Nullable
-  JssTable getTable();
 
   @Nullable
   JssUrlMaybeValid getUrlMaybeValid();

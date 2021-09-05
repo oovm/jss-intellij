@@ -42,7 +42,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<lang.braceMatcher
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.braces.VomlBraceMatcher"
+			implementationClass="com.github.voml.jss_intellij.ide.braces.JssBraceMatcher"
 		/>
 		<lang.quoteHandler
 			language="JSS"

@@ -36,7 +36,7 @@ class JssAstBlock(
 
     override fun getChildAttributes(newChildIndex: Int): ChildAttributes {
         val indent = when (node.elementType) {
-            JssTypes.TABLE -> Indent.getNormalIndent()
+            JssTypes.ARRAY -> Indent.getNormalIndent()
             else -> Indent.getNoneIndent()
         }
         return ChildAttributes(indent, null)
@@ -90,7 +90,7 @@ private fun ASTNode?.isWhitespaceOrEmpty() = this == null || textLength == 0 || 
 private fun JssAstBlock.computeIndent(child: ASTNode): Indent? {
     val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
     return when (node.elementType) {
-        JssTypes.TABLE -> when {
+        JssTypes.ARRAY -> when {
             isCornerChild || child.elementType == JssTypes.COMMA -> Indent.getNoneIndent()
             else -> Indent.getNormalIndent()
         }

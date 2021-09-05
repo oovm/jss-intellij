@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssTable extends PsiElement {
-
-  @NotNull
-  JssPaired getPaired();
-
-  @Nullable
-  JssTypeSymbol getTypeSymbol();
+public interface JssBracketPair extends PsiElement {
 
 }
