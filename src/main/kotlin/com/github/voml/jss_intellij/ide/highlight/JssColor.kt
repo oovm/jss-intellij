@@ -32,7 +32,7 @@ enum class JssColor(humanName: Supplier<@NlsContexts.AttributeDescriptor String>
     SYM_SCHEMA(JssBundle.messagePointer("color.token.symbol.schema"), Default.PREDEFINED_SYMBOL),
 
     //
-    TYPE_HINT(JssBundle.messagePointer("color.settings.toml.type_hint"), Default.CLASS_NAME),
+    TYPE_HINT(JssBundle.messagePointer("color.token.symbol.type"), Default.CLASS_NAME),
     // 标点符号
     PARENTHESES(OptionsBundle.messagePointer("options.language.defaults.parentheses"), Default.PARENTHESES),
     BRACKETS(OptionsBundle.messagePointer("options.language.defaults.brackets"), Default.BRACKETS),

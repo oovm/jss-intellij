@@ -43,35 +43,21 @@ class JssAstBlock(
     override fun isIncomplete(): Boolean = myIsIncomplete
 
     private val myIsIncomplete: Boolean by lazy {
-        node.getChildren(null).any {
-            it.elementType is PsiErrorElement
-        }
-                || FormatterUtil.isIncomplete(node)
+        node.getChildren(null).any { it.elementType is PsiErrorElement } || FormatterUtil.isIncomplete(node)
     }
 
     private val mySubBlocks: List<Block> by lazy { buildChildren() }
 }
 
-fun createSpacingBuilder(commonSettings: CommonCodeStyleSettings): SpacingBuilder =
-    SpacingBuilder(commonSettings)
-        // ,
-        .after(JssTypes.COMMA).spacing(1, 1, 0, true, 0)
-        .before(JssTypes.COMMA).spaceIf(false)
-        // [ ]
-        .after(JssTypes.BRACKET_L).spaceIf(false)
-        .before(JssTypes.BRACKET_R).spaceIf(false)
-        // { }
-        .after(JssTypes.BRACE_L).spaceIf(false)
-        .before(JssTypes.BRACE_R).spaceIf(false)
-        // ( )
-        .after(JssTypes.PARENTHESIS_L).spaceIf(false)
-        .before(JssTypes.PARENTHESIS_R).spaceIf(false)
-
 private fun JssAstBlock.computeIndent(child: ASTNode): Indent? {
     val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
     return when (node.elementType) {
-        JssTypes.ARRAY -> when {
-            isCornerChild || child.isSeparator() -> Indent.getNoneIndent()
+        JssTypes.BRACKET_BLOCK -> when {
+            isCornerChild -> Indent.getNoneIndent()
+            else -> Indent.getNormalIndent()
+        }
+        JssTypes.BRACE_BLOCK -> when {
+            isCornerChild -> Indent.getNoneIndent()
             else -> Indent.getNormalIndent()
         }
         else -> Indent.getNoneIndent()

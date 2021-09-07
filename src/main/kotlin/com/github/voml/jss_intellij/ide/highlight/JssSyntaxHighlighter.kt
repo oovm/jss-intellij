@@ -29,14 +29,10 @@ class JssSyntaxHighlighter : SyntaxHighlighterBase() {
             COLON, EQ -> JssColor.SET
             COMMA -> JssColor.COMMA
             // atom
-
             INTEGER -> JssColor.INTEGER
             DECIMAL -> JssColor.DECIMAL
-
             URL -> JssColor.URL
-            STRING_INLINE -> JssColor.STRING
-            STRING_MULTI -> JssColor.STRING
-
+            STRING -> JssColor.STRING
             SYMBOL -> JssColor.IDENTIFIER
             // 注释
             COMMENT -> JssColor.LINE_COMMENT
