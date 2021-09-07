@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPairImpl extends ASTWrapperPsiElement implements JssPair {
+public class JssPropertiesKeyImpl extends ASTWrapperPsiElement implements JssPropertiesKey {
 
-  public JssPairImpl(@NotNull ASTNode node) {
+  public JssPropertiesKeyImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPair(this);
+    visitor.visitPropertiesKey(this);
   }
 
   @Override
@@ -28,15 +28,15 @@ public class JssPairImpl extends ASTWrapperPsiElement implements JssPair {
   }
 
   @Override
-  @NotNull
-  public JssSymbolPath getSymbolPath() {
-    return findNotNullChildByClass(JssSymbolPath.class);
+  @Nullable
+  public PsiElement getString() {
+    return findChildByType(STRING);
   }
 
   @Override
-  @NotNull
-  public JssValue getValue() {
-    return findNotNullChildByClass(JssValue.class);
+  @Nullable
+  public PsiElement getSymbol() {
+    return findChildByType(SYMBOL);
   }
 
 }

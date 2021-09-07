@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssDefStatement extends PsiElement {
 
   @NotNull
-  List<JssKeySymbol> getKeySymbolList();
-
-  @NotNull
   PsiElement getSymbol();
 
 }

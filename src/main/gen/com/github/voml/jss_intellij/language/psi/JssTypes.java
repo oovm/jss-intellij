@@ -12,24 +12,21 @@ public interface JssTypes {
   IElementType ARRAY = new JssElementType("ARRAY");
   IElementType BOOLEAN = new JssElementType("BOOLEAN");
   IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
-  IElementType BRACKET_PAIR = new JssElementType("BRACKET_PAIR");
+  IElementType BRACKET_BLOCK = new JssElementType("BRACKET_BLOCK");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
-  IElementType ESCAPED = new JssElementType("ESCAPED");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
-  IElementType KEY_SYMBOL = new JssElementType("KEY_SYMBOL");
+  IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType NULL = new JssElementType("NULL");
-  IElementType PAIR = new JssElementType("PAIR");
+  IElementType OBJECT = new JssElementType("OBJECT");
   IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
-  IElementType PROPERTIES_LEY = new JssElementType("PROPERTIES_LEY");
+  IElementType PROPERTIES_KEY = new JssElementType("PROPERTIES_KEY");
   IElementType PROPERTIES_MARK = new JssElementType("PROPERTIES_MARK");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
-  IElementType REF = new JssElementType("REF");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
-  IElementType SYMBOL_PATH = new JssElementType("SYMBOL_PATH");
   IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
@@ -44,7 +41,6 @@ public interface JssTypes {
   IElementType BRACKET_L = new JssTokenType("[");
   IElementType BRACKET_R = new JssTokenType("]");
   IElementType BYTE = new JssTokenType("BYTE");
-  IElementType CITE = new JssTokenType("CITE");
   IElementType COLON = new JssTokenType(":");
   IElementType COMMA = new JssTokenType(",");
   IElementType COMMENT = new JssTokenType("COMMENT");
@@ -55,13 +51,11 @@ public interface JssTypes {
   IElementType DOLLAR = new JssTokenType("$");
   IElementType DOT = new JssTokenType(".");
   IElementType EQ = new JssTokenType("=");
-  IElementType ESCAPE = new JssTokenType("\\");
   IElementType INTEGER = new JssTokenType("INTEGER");
-  IElementType NAN = new JssTokenType("nan");
-  IElementType NON_ESCAPE = new JssTokenType("NON_ESCAPE");
+  IElementType KEY_SYMBOL = new JssTokenType("key_symbol");
   IElementType PARENTHESIS_L = new JssTokenType("(");
   IElementType PARENTHESIS_R = new JssTokenType(")");
-  IElementType QUOTATION = new JssTokenType("\"");
+  IElementType REF = new JssTokenType("ref");
   IElementType SEMICOLON = new JssTokenType(";");
   IElementType SIGN = new JssTokenType("SIGN");
   IElementType STAR = new JssTokenType("*");
@@ -84,14 +78,11 @@ public interface JssTypes {
       else if (type == BRACE_BLOCK) {
         return new JssBraceBlockImpl(node);
       }
-      else if (type == BRACKET_PAIR) {
-        return new JssBracketPairImpl(node);
+      else if (type == BRACKET_BLOCK) {
+        return new JssBracketBlockImpl(node);
       }
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementImpl(node);
-      }
-      else if (type == ESCAPED) {
-        return new JssEscapedImpl(node);
       }
       else if (type == IDIOM_MARK) {
         return new JssIdiomMarkImpl(node);
@@ -102,29 +93,26 @@ public interface JssTypes {
       else if (type == IDIOM_SYMBOL) {
         return new JssIdiomSymbolImpl(node);
       }
-      else if (type == KEY_SYMBOL) {
-        return new JssKeySymbolImpl(node);
+      else if (type == KV_PAIR) {
+        return new JssKvPairImpl(node);
       }
       else if (type == NULL) {
         return new JssNullImpl(node);
       }
-      else if (type == PAIR) {
-        return new JssPairImpl(node);
+      else if (type == OBJECT) {
+        return new JssObjectImpl(node);
       }
       else if (type == PROPERTIES_BLOCK) {
         return new JssPropertiesBlockImpl(node);
       }
-      else if (type == PROPERTIES_LEY) {
-        return new JssPropertiesLeyImpl(node);
+      else if (type == PROPERTIES_KEY) {
+        return new JssPropertiesKeyImpl(node);
       }
       else if (type == PROPERTIES_MARK) {
         return new JssPropertiesMarkImpl(node);
       }
       else if (type == PROPERTIES_STATEMENT) {
         return new JssPropertiesStatementImpl(node);
-      }
-      else if (type == REF) {
-        return new JssRefImpl(node);
       }
       else if (type == SCHEMA_STATEMENT) {
         return new JssSchemaStatementImpl(node);
@@ -134,9 +122,6 @@ public interface JssTypes {
       }
       else if (type == STRING_MULTI) {
         return new JssStringMultiImpl(node);
-      }
-      else if (type == SYMBOL_PATH) {
-        return new JssSymbolPathImpl(node);
       }
       else if (type == TYPE_SYMBOL) {
         return new JssTypeSymbolImpl(node);

@@ -5,9 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssEscaped extends PsiElement {
+public interface JssKvPair extends PsiElement {
 
   @Nullable
-  PsiElement getNonEscape();
+  JssStringInline getStringInline();
+
+  @NotNull
+  JssValue getValue();
+
+  @Nullable
+  PsiElement getSymbol();
 
 }

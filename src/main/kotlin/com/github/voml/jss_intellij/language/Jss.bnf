@@ -37,14 +37,10 @@
         BRACKET_R = ']'
         BRACE_L = '{'
         BRACE_R = '}'
-        ACCENT = '^'
         ANGLE_L = '<'
         ANGLE_R = '>'
-        QUOTATION = '"'
-        ESCAPE = '\'
-        NON_ESCAPE = 'regexp:[^\\]'
+        ACCENT = '^'
         EQ = '='
-        NAN = "nan"
         COLON = ':'
         SEMICOLON = ';'
         COMMA = ','
@@ -64,22 +60,25 @@ private statement ::=
   | properties_statement
   | def_statement
   | COMMENT_DOCUMENT
+  | object
   | ignore;
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= "schema" SYMBOL type_hint <<brace_block properties_inner ignore>>;
+schema_statement ::= "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>>;
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= ("properties"|properties_mark) properties_ley type_hint [properties_block];
+properties_statement ::= ("properties"|properties_mark) properties_key [type_hint] [properties_block];
 properties_mark ::= DOT;
 properties_block ::= <<brace_block properties_inner ignore>>;
-properties_ley ::= STRING | SYMBOL;
+properties_key ::= STRING | SYMBOL;
 private properties_inner ::=
     idiom_statement
   | properties_statement
+  | anno_statement
   | COMMENT_DOCUMENT
-  | anno_statement;
+  | kv_pair // consider as anno
+  ;
 // ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
 idiom_statement ::= idiom_mark idiom_symbol [COLON] value;
@@ -97,37 +96,29 @@ private include_inner ::= key_symbol*;
 private type_hint ::= COLON type_symbol;
 type_symbol ::= SYMBOL;
 // ------------------------------------
-pair ::= symbol_path eq value;
-symbol_path ::= key (DOT key)*;
-private key ::= string_inline | key_symbol | INTEGER;
+//symbol_path ::= key (DOT key)*;
+//private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
-key_symbol ::= SYMBOL;
 // ------------------------------------
-value ::= null | boolean | num | ref | str | array | url_maybe_valid;
+value ::= null | boolean | num | ref | str | array | object | url_maybe_valid;
 null ::= "null";
 boolean ::= "true" | "false";
 url_maybe_valid ::= URL;
 // ------------------------------------
-private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE | other_num;
-private other_num ::= NAN;
+private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
 // ------------------------------------
 private str ::= (string_inline|string_multi);
 string_inline ::= STRING;
-string_multi ::= QUOTATION char* QUOTATION;
-private char ::= escaped | NON_ESCAPE;
-escaped ::= ESCAPE (ESCAPE|NON_ESCAPE);
+string_multi ::= STRING;
 // ------------------------------------
-ref ::= CITE symbol_path;
-// ------------------------------------
-//annotation ::= annotation_mark [COLON] <<paired table_inner>>;
-//annotation_mark ::= DOLLAR SYMBOL;
-// ------------------------------------
-array ::= <<bracket_pair value ignore>>;
+array ::= <<bracket_block value ignore>>;
+object ::= <<brace_block kv_pair ignore>>;
+kv_pair ::= (string_inline|SYMBOL) eq value;
 // ------------------------------------
 // parenthesis ( )
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
 // bracket [ ]
-meta bracket_pair ::= BRACKET_L [<<item>> (<<sp>> <<item>>)* [<<sp>>]] BRACKET_R;
+meta bracket_block ::= BRACKET_L [<<item>> (<<sp>> <<item>>)* [<<sp>>]] BRACKET_R;
 // brace { }
 meta brace_block ::=BRACE_L (<<item>>|<<sp>>)* BRACE_R;
 

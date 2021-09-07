@@ -5,15 +5,13 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
 class JssUrlChecker : CheckerAnnotator() {
-    override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult =
-        if (holder.isBatchMode) {
-            CheckerAnnotatorResult.Ok
-        } else {
-            when (element) {
-                is JssUrlMaybeValid -> checkUrl(element)
-                else -> CheckerAnnotatorResult.Ok
-            }
+    override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult = when {
+        holder.isBatchMode -> CheckerAnnotatorResult.Ok
+        else -> when (element) {
+            is JssUrlMaybeValid -> checkUrl(element)
+            else -> CheckerAnnotatorResult.Ok
         }
+    }
 
     private fun checkUrl(objectEntry: JssUrlMaybeValid): CheckerAnnotatorResult {
 //        val filteredEntries = (objectEntry.parent as VomlObjectBody)

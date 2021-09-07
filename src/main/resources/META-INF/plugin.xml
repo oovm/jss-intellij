@@ -73,7 +73,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<annotator
 			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.VomlTableCheckerAnnotator"
+			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssStringChecker"
 		/>
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>

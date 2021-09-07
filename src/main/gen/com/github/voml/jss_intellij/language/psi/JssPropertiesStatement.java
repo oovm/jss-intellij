@@ -11,12 +11,12 @@ public interface JssPropertiesStatement extends PsiElement {
   JssPropertiesBlock getPropertiesBlock();
 
   @NotNull
-  JssPropertiesLey getPropertiesLey();
+  JssPropertiesKey getPropertiesKey();
 
   @Nullable
   JssPropertiesMark getPropertiesMark();
 
-  @NotNull
+  @Nullable
   JssTypeSymbol getTypeSymbol();
 
 }

@@ -35,7 +35,6 @@ BYTE=(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)
 INTEGER=(0|[1-9][0-9_]*)
 DECIMAL=([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)
 SIGN=[+-]
-NON_ESCAPE=[^\\]
 
 %%
 <YYINITIAL> {
@@ -47,13 +46,10 @@ NON_ESCAPE=[^\\]
   "]"                     { return BRACKET_R; }
   "{"                     { return BRACE_L; }
   "}"                     { return BRACE_R; }
-  "^"                     { return ACCENT; }
   "<"                     { return ANGLE_L; }
   ">"                     { return ANGLE_R; }
-  "\""                    { return QUOTATION; }
-  "\\"                    { return ESCAPE; }
+  "^"                     { return ACCENT; }
   "="                     { return EQ; }
-  "nan"                   { return NAN; }
   ":"                     { return COLON; }
   ";"                     { return SEMICOLON; }
   ","                     { return COMMA; }
@@ -63,7 +59,8 @@ NON_ESCAPE=[^\\]
   "@"                     { return AT; }
   "DEFINE"                { return DEFINE; }
   "AS"                    { return AS; }
-  "CITE"                  { return CITE; }
+  "key_symbol"            { return KEY_SYMBOL; }
+  "ref"                   { return REF; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
   {COMMENT}               { return COMMENT; }
@@ -75,7 +72,6 @@ NON_ESCAPE=[^\\]
   {INTEGER}               { return INTEGER; }
   {DECIMAL}               { return DECIMAL; }
   {SIGN}                  { return SIGN; }
-  {NON_ESCAPE}            { return NON_ESCAPE; }
 
 }
 

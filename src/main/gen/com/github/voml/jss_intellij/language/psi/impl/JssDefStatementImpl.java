@@ -29,12 +29,6 @@ public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefS
 
   @Override
   @NotNull
-  public List<JssKeySymbol> getKeySymbolList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssKeySymbol.class);
-  }
-
-  @Override
-  @NotNull
   public PsiElement getSymbol() {
     return findNotNullChildByType(SYMBOL);
   }

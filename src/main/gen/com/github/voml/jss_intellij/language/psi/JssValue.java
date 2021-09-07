@@ -17,7 +17,7 @@ public interface JssValue extends PsiElement {
   JssNull getNull();
 
   @Nullable
-  JssRef getRef();
+  JssObject getObject();
 
   @Nullable
   JssStringInline getStringInline();

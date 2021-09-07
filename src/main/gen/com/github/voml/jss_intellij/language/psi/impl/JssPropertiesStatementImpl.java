@@ -35,8 +35,8 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public JssPropertiesLey getPropertiesLey() {
-    return findNotNullChildByClass(JssPropertiesLey.class);
+  public JssPropertiesKey getPropertiesKey() {
+    return findNotNullChildByClass(JssPropertiesKey.class);
   }
 
   @Override
@@ -46,9 +46,9 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @NotNull
+  @Nullable
   public JssTypeSymbol getTypeSymbol() {
-    return findNotNullChildByClass(JssTypeSymbol.class);
+    return findChildByClass(JssTypeSymbol.class);
   }
 
 }

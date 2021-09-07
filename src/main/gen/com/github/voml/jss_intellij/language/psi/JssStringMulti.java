@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssStringMulti extends PsiElement {
 
   @NotNull
-  List<JssEscaped> getEscapedList();
+  PsiElement getString();
 
 }

@@ -34,9 +34,9 @@ public class JssSchemaStatementImpl extends ASTWrapperPsiElement implements JssS
   }
 
   @Override
-  @NotNull
+  @Nullable
   public JssTypeSymbol getTypeSymbol() {
-    return findNotNullChildByClass(JssTypeSymbol.class);
+    return findChildByClass(JssTypeSymbol.class);
   }
 
   @Override

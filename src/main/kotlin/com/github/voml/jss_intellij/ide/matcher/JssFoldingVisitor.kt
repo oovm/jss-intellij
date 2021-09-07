@@ -17,9 +17,9 @@ class JssFoldingVisitor(private val descriptors: MutableList<FoldingDescriptor>)
         super.visitBraceBlock(o)
     }
 
-    override fun visitPair(o: JssPair) {
+    override fun visitBracketBlock(o: JssBracketBlock) {
         fold(o)
-        super.visitPair(o)
+        super.visitBracketBlock(o)
     }
 
 

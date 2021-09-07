@@ -23,15 +23,11 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitBracketPair(@NotNull JssBracketPair o) {
+  public void visitBracketBlock(@NotNull JssBracketBlock o) {
     visitPsiElement(o);
   }
 
   public void visitDefStatement(@NotNull JssDefStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitEscaped(@NotNull JssEscaped o) {
     visitPsiElement(o);
   }
 
@@ -47,7 +43,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitKeySymbol(@NotNull JssKeySymbol o) {
+  public void visitKvPair(@NotNull JssKvPair o) {
     visitPsiElement(o);
   }
 
@@ -55,7 +51,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitPair(@NotNull JssPair o) {
+  public void visitObject(@NotNull JssObject o) {
     visitPsiElement(o);
   }
 
@@ -63,7 +59,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitPropertiesLey(@NotNull JssPropertiesLey o) {
+  public void visitPropertiesKey(@NotNull JssPropertiesKey o) {
     visitPsiElement(o);
   }
 
@@ -72,10 +68,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitRef(@NotNull JssRef o) {
     visitPsiElement(o);
   }
 
@@ -88,10 +80,6 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitStringMulti(@NotNull JssStringMulti o) {
-    visitPsiElement(o);
-  }
-
-  public void visitSymbolPath(@NotNull JssSymbolPath o) {
     visitPsiElement(o);
   }
 

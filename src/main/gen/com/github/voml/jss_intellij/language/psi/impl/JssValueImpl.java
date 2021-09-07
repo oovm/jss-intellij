@@ -47,8 +47,8 @@ public class JssValueImpl extends ASTWrapperPsiElement implements JssValue {
 
   @Override
   @Nullable
-  public JssRef getRef() {
-    return findChildByClass(JssRef.class);
+  public JssObject getObject() {
+    return findChildByClass(JssObject.class);
   }
 
   @Override

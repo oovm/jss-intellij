@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssSymbolPathImpl extends ASTWrapperPsiElement implements JssSymbolPath {
+public class JssObjectImpl extends ASTWrapperPsiElement implements JssObject {
 
-  public JssSymbolPathImpl(@NotNull ASTNode node) {
+  public JssObjectImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitSymbolPath(this);
+    visitor.visitObject(this);
   }
 
   @Override
@@ -29,14 +29,8 @@ public class JssSymbolPathImpl extends ASTWrapperPsiElement implements JssSymbol
 
   @Override
   @NotNull
-  public List<JssKeySymbol> getKeySymbolList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssKeySymbol.class);
-  }
-
-  @Override
-  @NotNull
-  public List<JssStringInline> getStringInlineList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssStringInline.class);
+  public JssBraceBlock getBraceBlock() {
+    return findNotNullChildByClass(JssBraceBlock.class);
   }
 
 }

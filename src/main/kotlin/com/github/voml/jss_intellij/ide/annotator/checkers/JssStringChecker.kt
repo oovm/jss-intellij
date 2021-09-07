@@ -5,18 +5,22 @@ import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
 
-class VomlTableCheckerAnnotator : CheckerAnnotator() {
-    override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult =
-        if (holder.isBatchMode) {
-            CheckerAnnotatorResult.Ok
-        } else {
-            when (element) {
-                is JssPair -> checkPair(element)
-                else -> CheckerAnnotatorResult.Ok
-            }
+class JssStringChecker : CheckerAnnotator() {
+    override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult = when {
+        holder.isBatchMode -> CheckerAnnotatorResult.Ok
+        else -> when (element) {
+            is JssStringInline -> checkInline(element)
+            is JssStringMulti -> checkMulti(element)
+            else -> CheckerAnnotatorResult.Ok
         }
+    }
 
-    private fun checkPair(mapEntry: JssPair): CheckerAnnotatorResult {
+    private fun checkInline(mapEntry: JssStringInline): CheckerAnnotatorResult {
+        return CheckerAnnotatorResult.Ok
+    }
+
+
+    private fun checkMulti(mapEntry: JssStringMulti): CheckerAnnotatorResult {
 //        val filteredEntries = (mapEntry.parent as VomlMap)
 //            .mapEntryList
 //            .asSequence()

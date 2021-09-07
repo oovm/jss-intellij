@@ -29,8 +29,8 @@ public class JssArrayImpl extends ASTWrapperPsiElement implements JssArray {
 
   @Override
   @NotNull
-  public JssBracketPair getBracketPair() {
-    return findNotNullChildByClass(JssBracketPair.class);
+  public JssBracketBlock getBracketBlock() {
+    return findNotNullChildByClass(JssBracketBlock.class);
   }
 
 }

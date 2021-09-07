@@ -5,9 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssRef extends PsiElement {
-
-  @NotNull
-  JssSymbolPath getSymbolPath();
+public interface JssBracketBlock extends PsiElement {
 
 }

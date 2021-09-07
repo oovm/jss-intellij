@@ -5,6 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssPaired extends PsiElement {
+public interface JssPropertiesKey extends PsiElement {
+
+  @Nullable
+  PsiElement getString();
+
+  @Nullable
+  PsiElement getSymbol();
 
 }

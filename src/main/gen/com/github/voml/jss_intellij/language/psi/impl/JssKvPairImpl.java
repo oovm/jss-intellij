@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPropertiesLeyImpl extends ASTWrapperPsiElement implements JssPropertiesLey {
+public class JssKvPairImpl extends ASTWrapperPsiElement implements JssKvPair {
 
-  public JssPropertiesLeyImpl(@NotNull ASTNode node) {
+  public JssKvPairImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesLey(this);
+    visitor.visitKvPair(this);
   }
 
   @Override
@@ -29,8 +29,14 @@ public class JssPropertiesLeyImpl extends ASTWrapperPsiElement implements JssPro
 
   @Override
   @Nullable
-  public PsiElement getString() {
-    return findChildByType(STRING);
+  public JssStringInline getStringInline() {
+    return findChildByClass(JssStringInline.class);
+  }
+
+  @Override
+  @NotNull
+  public JssValue getValue() {
+    return findNotNullChildByClass(JssValue.class);
   }
 
   @Override

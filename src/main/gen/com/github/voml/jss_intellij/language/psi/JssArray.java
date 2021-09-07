@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface JssArray extends PsiElement {
 
   @NotNull
-  JssBracketPair getBracketPair();
+  JssBracketBlock getBracketBlock();
 
 }

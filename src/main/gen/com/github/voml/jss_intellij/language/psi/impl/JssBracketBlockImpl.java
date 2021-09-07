@@ -11,26 +11,20 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssRefImpl extends ASTWrapperPsiElement implements JssRef {
+public class JssBracketBlockImpl extends ASTWrapperPsiElement implements JssBracketBlock {
 
-  public JssRefImpl(@NotNull ASTNode node) {
+  public JssBracketBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitRef(this);
+    visitor.visitBracketBlock(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssSymbolPath getSymbolPath() {
-    return findNotNullChildByClass(JssSymbolPath.class);
   }
 
 }
