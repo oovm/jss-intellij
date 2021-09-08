@@ -8,6 +8,7 @@ import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.TokenType
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings
 import com.intellij.psi.formatter.FormatterUtil
+import com.intellij.psi.tree.TokenSet
 
 class JssAstBlock(
     private val node: ASTNode,
@@ -80,13 +81,6 @@ private fun JssAstBlock.buildChildren(): List<Block> {
 
 private fun ASTNode?.isWhitespaceOrEmpty(): Boolean {
     return this == null || textLength == 0 || elementType == TokenType.WHITE_SPACE
-}
-
-private fun ASTNode.isSeparator(): Boolean {
-    return when (this.psi) {
-        JssTypes.COMMA, JssTypes.SEMICOLON -> true
-        else -> false
-    }
 }
 
 private fun Block.computeSpacing(child1: Block?, child2: Block, ctx: JssFormatterContext): Spacing? {

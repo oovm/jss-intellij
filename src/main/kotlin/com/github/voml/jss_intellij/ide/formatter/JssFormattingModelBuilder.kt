@@ -3,13 +3,10 @@ package com.github.voml.jss_intellij.ide.formatter
 import com.intellij.formatting.*
 import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
+import com.intellij.psi.PsiFile
 
 class JssFormattingModelBuilder : FormattingModelBuilder {
-    override fun getRangeAffectingIndent(
-        file: com.intellij.psi.PsiFile?,
-        offset: Int,
-        elementAtOffset: ASTNode?
-    ): TextRange? = null
+    override fun getRangeAffectingIndent(file: PsiFile?, offset: Int, elementAtOffset: ASTNode?): TextRange? = null
 
     override fun createModel(formattingContext: FormattingContext): FormattingModel {
         val settings = formattingContext.codeStyleSettings
