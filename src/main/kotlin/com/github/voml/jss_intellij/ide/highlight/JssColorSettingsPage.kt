@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.highlight
 
-import com.github.voml.jss_intellij.ide.icons.VomlIcons
 import com.github.voml.jss_intellij.language.JssBundle
+import com.github.voml.jss_intellij.language.JssIcons
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 
@@ -19,7 +19,7 @@ class JssColorSettingsPage : ColorSettingsPage {
 
     override fun getDisplayName() = JssBundle.message("filetype.name")
 
-    override fun getIcon() = VomlIcons.FILE
+    override fun getIcon() = JssIcons.FILE
 
     override fun getHighlighter() = JssSyntaxHighlighter()
 

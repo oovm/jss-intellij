@@ -11,15 +11,11 @@ data class JssFormatterContext(
     val commonSettings: CommonCodeStyleSettings,
     val spacingBuilder: SpacingBuilder
 ) {
-
     companion object {
-
-
         fun create(settings: CodeStyleSettings): JssFormatterContext {
             val commonSettings = settings.getCommonSettings(JssLanguage.INSTANCE)
             return JssFormatterContext(commonSettings, createSpacingBuilder(commonSettings))
         }
-
 
         private val remove_space_before = TokenSet.create(
             JssTypes.PARENTHESIS_R,
@@ -41,12 +37,12 @@ data class JssFormatterContext(
                 // ,
                 .after(separators).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
                 // k: v
-                .after(JssTypes.COLON).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
+                .after(JssTypes.COLON).spacing(1, 1, 0, false, 0)
                 // k = v
                 .around(JssTypes.EQ).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
                 // SpacingBuilder { }
                 .before(JssTypes.PROPERTIES_BLOCK).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
-            
+
             return custom
                 .before(remove_space_before).spaceIf(false)
                 .after(remove_space_after).spaceIf(false)

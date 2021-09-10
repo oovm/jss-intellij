@@ -28,6 +28,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
 		/>
+		<projectViewNestingRulesProvider implementation="com.github.voml.jss_intellij.language.JssFileGroup"/>
 		<!-- Highlight -->
 		<colorSettingsPage implementation="com.github.voml.jss_intellij.ide.highlight.JssColorSettingsPage"/>
 		<highlightVisitor implementation="com.github.voml.jss_intellij.ide.highlight.JssHighlightVisitor"/>
