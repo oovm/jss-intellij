@@ -41,6 +41,14 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssCommenter"
 		/>
+
+		<!-- Document -->
+		<!--documentationProvider implementation="com.github.voml.jss_intellij.ide.doc.JssDocumentationExtender"-->
+		<lang.documentationProvider
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.doc.JssDocumentationProvider"
+		/>
+
 		<lang.braceMatcher
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.matcher.JssBraceMatcher"
@@ -64,14 +72,10 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.completion.VomlOptionCompletionContributor"
 		/>
-		<annotator
-			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.annotator.VomlHighlightingAnnotator"
-		/>
-		<annotator
-			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"
-		/>
+		<annotator language="JSS"
+		           implementationClass="com.github.voml.jss_intellij.ide.annotator.VomlHighlightingAnnotator"/>
+		<annotator language="JSS" implementationClass="com.github.voml.jss_intellij.ide.annotator.SimpleAnnotator"/>
+		<annotator language="JSS" implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"/>
 		<annotator
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssStringChecker"
