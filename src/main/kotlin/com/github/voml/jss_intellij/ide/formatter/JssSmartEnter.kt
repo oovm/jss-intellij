@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.assist.fixers
+package com.github.voml.jss_intellij.ide.formatter
 
 import com.github.voml.jss_intellij.language.JssFile
 import com.intellij.lang.SmartEnterProcessorWithFixers
@@ -7,10 +7,10 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 
-class VomlSmartEnterProcessor : SmartEnterProcessorWithFixers() {
+class JssSmartEnter : SmartEnterProcessorWithFixers() {
     init {
         addFixers(
-            CommaFixer()
+            JssCommaFixer()
         )
         addEnterProcessors(
             PlainEnterProcessor()

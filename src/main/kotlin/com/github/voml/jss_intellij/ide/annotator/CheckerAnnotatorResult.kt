@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.annotator.checkers
+package com.github.voml.jss_intellij.ide.annotator
 
 import com.intellij.openapi.util.TextRange
 

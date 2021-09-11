@@ -1,11 +1,11 @@
-package com.github.voml.jss_intellij.ide.annotator.checkers
+package com.github.voml.jss_intellij.ide.annotator
 
 import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.psi.PsiElement
 
 
-class JssStringChecker : CheckerAnnotator() {
+class JssStringChecker : CheckerBase() {
     override fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult = when {
         holder.isBatchMode -> CheckerAnnotatorResult.Ok
         else -> when (element) {

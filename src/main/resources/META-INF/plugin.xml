@@ -30,6 +30,8 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<projectViewNestingRulesProvider implementation="com.github.voml.jss_intellij.language.JssFileGroup"/>
 		<!-- Highlight -->
+		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
+		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
 		<colorSettingsPage implementation="com.github.voml.jss_intellij.ide.highlight.JssColorSettingsPage"/>
 		<highlightVisitor implementation="com.github.voml.jss_intellij.ide.highlight.JssHighlightVisitor"/>
 		<lang.syntaxHighlighter
@@ -37,11 +39,18 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			implementationClass="com.github.voml.jss_intellij.ide.highlight.JssSyntaxHighlighter"
 		/>
 		<!-- Formatter -->
+		<lang.formatter
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssFormattingModelBuilder"
+		/>
 		<lang.commenter
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssCommenter"
 		/>
-
+		<lang.smartEnterProcessor
+			language="JSS"
+			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssSmartEnter"
+		/>
 		<!-- Document -->
 		<!--documentationProvider implementation="com.github.voml.jss_intellij.ide.doc.JssDocumentationExtender"-->
 		<lang.documentationProvider
@@ -72,27 +81,13 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.completion.VomlOptionCompletionContributor"
 		/>
-		<annotator language="JSS"
-		           implementationClass="com.github.voml.jss_intellij.ide.annotator.VomlHighlightingAnnotator"/>
-		<annotator language="JSS" implementationClass="com.github.voml.jss_intellij.ide.annotator.SimpleAnnotator"/>
-		<annotator language="JSS" implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssUrlChecker"/>
-		<annotator
-			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.annotator.checkers.JssStringChecker"
-		/>
-		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
-		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
+
+		<annotator language="JSS" implementationClass="com.github.voml.jss_intellij.ide.annotator.LiteralChecker"/>
+
 		<langCodeStyleSettingsProvider
 			implementation="com.github.voml.jss_intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"
 		/>
-		<lang.formatter
-			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.formatter.JssFormattingModelBuilder"
-		/>
-		<lang.smartEnterProcessor
-			language="JSS"
-			implementationClass="com.github.voml.jss_intellij.ide.assist.fixers.VomlSmartEnterProcessor"
-		/>
+
 	</extensions>
 	<actions>
 		<action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"

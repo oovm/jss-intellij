@@ -1,11 +1,10 @@
-package com.github.voml.jss_intellij.ide.annotator.checkers
+package com.github.voml.jss_intellij.ide.annotator
 
-import com.github.voml.jss_intellij.ide.annotator.AnnotatorBase
 import com.intellij.lang.annotation.AnnotationHolder
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.psi.PsiElement
 
-abstract class CheckerAnnotator : AnnotatorBase() {
+abstract class CheckerBase : AnnotatorBase() {
     protected abstract fun check(element: PsiElement, holder: AnnotationHolder): CheckerAnnotatorResult
     override fun annotateInternal(element: PsiElement, holder: AnnotationHolder) {
         when (val result = check(element, holder)) {

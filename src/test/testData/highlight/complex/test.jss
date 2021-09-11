@@ -3,8 +3,8 @@ schema Product: object {
     $schema: https://json-schema.org/draft/2020-12/schema
     $id: https://example.com/product.schema.json
     "required": [
-        "中中\中",
-        "productName",
+        "\中中\中",
+        "p\ro\duct\Name",
         "price",
     ]
 }

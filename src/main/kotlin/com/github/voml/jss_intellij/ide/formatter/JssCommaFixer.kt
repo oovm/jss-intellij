@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.ide.assist.fixers
+package com.github.voml.jss_intellij.ide.formatter
 
 import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.SmartEnterProcessorWithFixers
@@ -8,8 +8,8 @@ import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.source.tree.LeafPsiElement
 
-class CommaFixer : SmartEnterProcessorWithFixers.Fixer<VomlSmartEnterProcessor>() {
-    override fun apply(editor: Editor, processor: VomlSmartEnterProcessor, element: PsiElement) {
+class JssCommaFixer : SmartEnterProcessorWithFixers.Fixer<JssSmartEnter>() {
+    override fun apply(editor: Editor, processor: JssSmartEnter, element: PsiElement) {
         element.isValid
         val current = if (element is LeafPsiElement && element.parent !is PsiFile) {
             element.parent
