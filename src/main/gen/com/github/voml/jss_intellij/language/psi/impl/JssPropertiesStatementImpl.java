@@ -47,8 +47,8 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @Nullable
-  public JssTypeSymbol getTypeSymbol() {
-    return findChildByClass(JssTypeSymbol.class);
+  public JssTypeHint getTypeHint() {
+    return findChildByClass(JssTypeHint.class);
   }
 
 }

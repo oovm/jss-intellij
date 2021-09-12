@@ -27,7 +27,7 @@ public interface JssTypes {
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
-  IElementType TYPE_SYMBOL = new JssElementType("TYPE_SYMBOL");
+  IElementType TYPE_HINT = new JssElementType("TYPE_HINT");
   IElementType URL_MAYBE_VALID = new JssElementType("URL_MAYBE_VALID");
   IElementType VALUE = new JssElementType("VALUE");
 
@@ -123,8 +123,8 @@ public interface JssTypes {
       else if (type == STRING_MULTI) {
         return new JssStringMultiImpl(node);
       }
-      else if (type == TYPE_SYMBOL) {
-        return new JssTypeSymbolImpl(node);
+      else if (type == TYPE_HINT) {
+        return new JssTypeHintImpl(node);
       }
       else if (type == URL_MAYBE_VALID) {
         return new JssUrlMaybeValidImpl(node);

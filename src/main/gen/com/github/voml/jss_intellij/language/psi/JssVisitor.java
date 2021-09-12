@@ -83,7 +83,7 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTypeSymbol(@NotNull JssTypeSymbol o) {
+  public void visitTypeHint(@NotNull JssTypeHint o) {
     visitPsiElement(o);
   }
 

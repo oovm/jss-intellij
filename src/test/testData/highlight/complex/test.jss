@@ -2,35 +2,16 @@
 schema Product: object {
     $schema: https://json-schema.org/draft/2020-12/schema
     $id: https://example.com/product.schema.json
-    "required": [
-        "\中中\中",
-        "p\ro\duct\Name",
-        "price",
-    ]
-}
-
-/// The unique identifier for a product
-properties productId: integer {
-
-}
-
-/// Name of the product
-properties productName: string {
-
-}
-
-/// The price of the product
-properties productName: number {
-    exclusiveMinimum: 0
+    "required": ["productId", "productName", "price"]
 }
 
 /// Tags for the product
 properties tags: array {
     minItems: 1,
     uniqueItems: true
-    "items": {
-        "type": "string"
-    },
+    items: {
+        type: "string"
+    }
 }
 
 /// Tags for the product
@@ -41,13 +22,3 @@ properties dimensions: object {
 
     required: ["length", "width", "height"]
 }
-
-
-
-
-
-
-
-
-
-

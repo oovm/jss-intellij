@@ -21,14 +21,14 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 			name="JSS"
 			language="JSS"
 			extensions="jss"
-			implementationClass="com.github.voml.jss_intellij.language.JssFileType"
+			implementationClass="com.github.voml.jss_intellij.ide.file_view.JssFileType"
 			fieldName="INSTANCE"
 		/>
 		<lang.parserDefinition
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.language.JssParserDefinition"
 		/>
-		<projectViewNestingRulesProvider implementation="com.github.voml.jss_intellij.language.JssFileGroup"/>
+		<projectViewNestingRulesProvider implementation="com.github.voml.jss_intellij.ide.file_view.JssFileGroup"/>
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
@@ -96,5 +96,13 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		        description="Create new Jss file">
 			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
 		</action>
+		<action id="com.github.voml.jss_intellij.ide.actions.JssConvertJson"
+		        class="com.github.voml.jss_intellij.ide.actions.JssConvertJson"
+		        text="Jss File"
+		        description="Create new Jss file">
+			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
+		</action>
+
+
 	</actions>
 </idea-plugin>

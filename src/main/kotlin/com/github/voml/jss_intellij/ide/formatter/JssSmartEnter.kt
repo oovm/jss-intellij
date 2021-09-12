@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.formatter
 
-import com.github.voml.jss_intellij.language.JssFile
+import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.intellij.lang.SmartEnterProcessorWithFixers
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project

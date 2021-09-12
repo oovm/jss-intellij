@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.highlight
 
 import com.github.voml.jss_intellij.language.JssBundle
-import com.github.voml.jss_intellij.language.JssIcons
+import com.github.voml.jss_intellij.ide.file_view.JssIcons
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 

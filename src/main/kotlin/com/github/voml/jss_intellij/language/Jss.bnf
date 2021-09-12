@@ -93,8 +93,8 @@ private anno_key ::= STRING | SYMBOL;
 def_statement ::= DEFINE SYMBOL (AS key_symbol | <<parenthesis include_inner>>);
 private include_inner ::= key_symbol*;
 // -------------------------------G-----
-private type_hint ::= COLON type_symbol;
-type_symbol ::= SYMBOL;
+type_hint ::= COLON type_symbol;
+private type_symbol ::= SYMBOL;
 // ------------------------------------
 //symbol_path ::= key (DOT key)*;
 //private key ::= string_inline | key_symbol | INTEGER;

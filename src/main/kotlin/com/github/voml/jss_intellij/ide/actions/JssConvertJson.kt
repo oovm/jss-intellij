@@ -7,8 +7,8 @@ import com.intellij.ide.actions.CreateFileFromTemplateDialog
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
 
-class JssCreateFile :
-    CreateFileFromTemplateAction(NAME, JssBundle.message("action.create_file.description"), JssIcons.FILE) {
+class JssConvertJson :
+    CreateFileFromTemplateAction(NAME, JssBundle.message("action.convert_json.description"), JssIcons.FILE) {
     override fun buildDialog(project: Project, directory: PsiDirectory, builder: CreateFileFromTemplateDialog.Builder) {
         builder
             .setTitle(NAME)
@@ -19,6 +19,6 @@ class JssCreateFile :
     override fun getActionName(directory: PsiDirectory, newName: String, templateName: String): String = NAME
 
     companion object {
-        private val NAME = JssBundle.message("action.create_file")
+        private val NAME = JssBundle.message("action.convert_json")
     }
 }

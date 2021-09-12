@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssTypeSymbol extends PsiElement {
+public interface JssTypeHint extends PsiElement {
 
   @NotNull
   PsiElement getSymbol();

@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.todo
 
-import com.github.voml.jss_intellij.language.JssFile
+import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.github.voml.jss_intellij.language.JssLexerAdapter
 import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
 import com.intellij.lexer.Lexer

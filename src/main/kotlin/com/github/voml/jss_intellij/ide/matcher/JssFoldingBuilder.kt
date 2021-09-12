@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.matcher
 
-import com.github.voml.jss_intellij.language.JssFile
+import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.lang.ASTNode
 import com.intellij.lang.folding.CustomFoldingBuilder

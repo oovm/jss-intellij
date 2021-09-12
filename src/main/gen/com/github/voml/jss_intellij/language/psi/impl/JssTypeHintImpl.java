@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssTypeSymbolImpl extends ASTWrapperPsiElement implements JssTypeSymbol {
+public class JssTypeHintImpl extends ASTWrapperPsiElement implements JssTypeHint {
 
-  public JssTypeSymbolImpl(@NotNull ASTNode node) {
+  public JssTypeHintImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitTypeSymbol(this);
+    visitor.visitTypeHint(this);
   }
 
   @Override

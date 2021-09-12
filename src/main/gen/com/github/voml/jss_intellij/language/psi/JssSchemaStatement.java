@@ -11,7 +11,7 @@ public interface JssSchemaStatement extends PsiElement {
   JssBraceBlock getBraceBlock();
 
   @Nullable
-  JssTypeSymbol getTypeSymbol();
+  JssTypeHint getTypeHint();
 
   @NotNull
   PsiElement getSymbol();

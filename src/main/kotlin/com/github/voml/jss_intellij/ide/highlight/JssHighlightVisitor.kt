@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.highlight
 
-import com.github.voml.jss_intellij.language.JssFile
+import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.github.voml.jss_intellij.language.psi.*
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType
@@ -39,6 +39,13 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         super.visitPropertiesStatement(o)
     }
 
+    override fun visitTypeHint(o: JssTypeHint) {
+        val ty = o.lastChild;
+        highlight(ty, JssColor.TYPE_HINT)
+
+        super.visitTypeHint(o)
+    }
+
     override fun visitIdiomMark(o: JssIdiomMark) {
         highlight(o, JssColor.IDIOM_MARK)
     }
@@ -54,6 +61,12 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         super.visitAnnoStatement(o)
     }
 
+
+
+    override fun visitKvPair(o: JssKvPair) {
+        highlight(o.firstChild, JssColor.SYM_PROP)
+        super.visitKvPair(o)
+    }
 
     override fun visitValue(o: JssValue) {
         val head = o.firstChild;
