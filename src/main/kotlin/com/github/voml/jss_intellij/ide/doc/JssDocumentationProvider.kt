@@ -6,7 +6,7 @@
 package com.github.voml.jss_intellij.ide.doc
 
 import com.intellij.lang.documentation.AbstractDocumentationProvider
-import com.intellij.psi.*
+import com.intellij.psi.PsiElement
 
 
 class JssDocumentationProvider : AbstractDocumentationProvider() {

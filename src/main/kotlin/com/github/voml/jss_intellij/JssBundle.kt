@@ -1,13 +1,11 @@
-package com.github.voml.jss_intellij.language
+package com.github.voml.jss_intellij
 
+import com.github.voml.jss_intellij.JssLanguage.Companion.BUNDLE
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.Nls
-import org.jetbrains.annotations.NonNls
 import org.jetbrains.annotations.PropertyKey
 import java.util.function.Supplier
 
-@NonNls
-private const val BUNDLE = "messages.JssBundle"
 
 object JssBundle : DynamicBundle(BUNDLE) {
 

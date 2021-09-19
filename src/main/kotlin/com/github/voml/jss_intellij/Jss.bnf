@@ -1,6 +1,6 @@
 {
     parserClass = "com.github.voml.jss_intellij.language.parser.JssParser"
-    parserUtilClass = "com.github.voml.jss_intellij.language.psi.JssParserUtil"
+    parserUtilClass = "com.github.voml.jss_intellij.psi.JssParserUtil"
 
     extends = "com.intellij.extapi.psi.ASTWrapperPsiElement"
 
@@ -10,8 +10,8 @@
     psiImplPackage = "com.github.voml.jss_intellij.language.psi.impl"
 
     elementTypeHolderClass = "com.github.voml.jss_intellij.language.psi.JssTypes"
-    elementTypeClass = "com.github.voml.jss_intellij.language.psi.JssElementType"
-    tokenTypeClass = "com.github.voml.jss_intellij.language.psi.JssTokenType"
+    elementTypeClass = "com.github.voml.jss_intellij.psi.JssElementType"
+    tokenTypeClass = "com.github.voml.jss_intellij.psi.JssTokenType"
 
     psiImplUtilClass = "com.github.voml.jss_intellij.language.psi.impl.JssPsiImplUtil"
 
@@ -90,8 +90,8 @@ anno_statement ::= anno_key set value;
 private set ::= COLON;
 private anno_key ::= STRING | SYMBOL;
 // -------------------------------G-----
-def_statement ::= DEFINE SYMBOL (AS key_symbol | <<parenthesis include_inner>>);
-private include_inner ::= key_symbol*;
+def_statement ::= DEFINE SYMBOL (AS key_symbol | <<parenthesis def_inner>>);
+private def_inner ::= key_symbol*;
 // -------------------------------G-----
 type_hint ::= COLON type_symbol;
 private type_symbol ::= SYMBOL;

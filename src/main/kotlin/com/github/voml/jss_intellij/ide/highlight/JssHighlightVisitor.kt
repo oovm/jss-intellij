@@ -62,7 +62,6 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     }
 
 
-
     override fun visitKvPair(o: JssKvPair) {
         highlight(o.firstChild, JssColor.SYM_PROP)
         super.visitKvPair(o)

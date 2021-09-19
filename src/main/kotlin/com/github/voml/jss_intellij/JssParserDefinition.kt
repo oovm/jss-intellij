@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.language
+package com.github.voml.jss_intellij
 
 import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.github.voml.jss_intellij.language.parser.JssParser
@@ -6,7 +6,6 @@ import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser
-import com.intellij.lexer.FlexAdapter
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
@@ -14,9 +13,6 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-
-
-class JssLexerAdapter : FlexAdapter(_JssLexer())
 
 
 class JssParserDefinition : ParserDefinition {

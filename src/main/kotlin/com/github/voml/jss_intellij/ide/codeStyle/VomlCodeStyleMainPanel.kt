@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.codeStyle
 
-import com.github.voml.jss_intellij.language.JssLanguage
+import com.github.voml.jss_intellij.JssLanguage
 import com.intellij.application.options.GenerationCodeStylePanel
 import com.intellij.application.options.TabbedLanguageCodeStylePanel
 import com.intellij.psi.codeStyle.CodeStyleSettings

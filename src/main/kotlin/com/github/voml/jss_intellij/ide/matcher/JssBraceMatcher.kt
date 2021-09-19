@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.matcher
 
+import com.github.voml.jss_intellij.JssLanguage
 import com.github.voml.jss_intellij.ide.file_view.JssFileType
-import com.github.voml.jss_intellij.language.JssLanguage
 import com.intellij.codeInsight.highlighting.PairedBraceMatcherAdapter
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
 import com.intellij.openapi.fileTypes.FileType

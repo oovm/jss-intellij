@@ -1,6 +1,8 @@
 package com.github.voml.jss_intellij.ide.matcher
 
-import com.github.voml.jss_intellij.language.psi.*
+import com.github.voml.jss_intellij.language.psi.JssBraceBlock
+import com.github.voml.jss_intellij.language.psi.JssBracketBlock
+import com.github.voml.jss_intellij.psi.JssRecursiveVisitor
 import com.intellij.lang.folding.FoldingDescriptor
 import com.intellij.psi.PsiElement
 

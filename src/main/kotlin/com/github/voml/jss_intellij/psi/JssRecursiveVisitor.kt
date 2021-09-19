@@ -1,5 +1,6 @@
-package com.github.voml.jss_intellij.language.psi
+package com.github.voml.jss_intellij.psi
 
+import com.github.voml.jss_intellij.language.psi.JssVisitor
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiRecursiveVisitor

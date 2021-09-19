@@ -36,7 +36,7 @@ class VomlOptionCompletionContributor : CompletionContributor() {
                         LookupElementBuilder
                             .create("Some()")
                             .withInsertHandler { ctx, _ ->
-                                EditorModificationUtil.moveCaretRelatively(ctx.editor, - 1)
+                                EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
                             }
                     )
                     resultSet.addElement(LookupElementBuilder.create("None()"))

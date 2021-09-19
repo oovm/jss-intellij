@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.language.psi
+package com.github.voml.jss_intellij.psi
 
 import com.intellij.lang.parser.GeneratedParserUtilBase
 

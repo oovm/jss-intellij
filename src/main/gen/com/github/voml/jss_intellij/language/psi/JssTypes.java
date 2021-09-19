@@ -1,6 +1,8 @@
 // This is a generated file. Not intended for manual editing.
 package com.github.voml.jss_intellij.language.psi;
 
+import com.github.voml.jss_intellij.psi.JssElementType;
+import com.github.voml.jss_intellij.psi.JssTokenType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;

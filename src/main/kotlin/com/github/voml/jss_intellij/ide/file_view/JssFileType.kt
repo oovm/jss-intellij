@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.file_view
 
-import com.github.voml.jss_intellij.language.JssBundle
-import com.github.voml.jss_intellij.language.JssLanguage
+import com.github.voml.jss_intellij.JssBundle
+import com.github.voml.jss_intellij.JssLanguage
 import com.intellij.openapi.fileTypes.LanguageFileType
 import javax.swing.Icon
 

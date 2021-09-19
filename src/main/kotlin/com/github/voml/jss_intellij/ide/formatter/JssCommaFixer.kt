@@ -1,6 +1,9 @@
 package com.github.voml.jss_intellij.ide.formatter
 
-import com.github.voml.jss_intellij.language.psi.*
+import com.github.voml.jss_intellij.psi.endOffset
+import com.github.voml.jss_intellij.psi.getNextNonCommentSibling
+import com.github.voml.jss_intellij.psi.getPrevNonCommentSibling
+import com.github.voml.jss_intellij.psi.getPrevNonWhitespaceSibling
 import com.intellij.lang.SmartEnterProcessorWithFixers
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement
@@ -24,7 +27,7 @@ class JssCommaFixer : SmartEnterProcessorWithFixers.Fixer<JssSmartEnter>() {
             val commaIsExpected = expectedId >= 0 && commaExpectationId in 0 until expectedId
 
             val siblingOnLeft = errorElement.getPrevNonCommentSibling()
-            if(siblingOnLeft != null && commaIsExpected) {
+            if (siblingOnLeft != null && commaIsExpected) {
                 editor.document.insertString(siblingOnLeft.endOffset, ",")
             }
         }

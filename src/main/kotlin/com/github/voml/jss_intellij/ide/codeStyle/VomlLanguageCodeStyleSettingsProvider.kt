@@ -1,13 +1,9 @@
 package com.github.voml.jss_intellij.ide.codeStyle
 
-import com.github.voml.jss_intellij.language.JssLanguage
+import com.github.voml.jss_intellij.JssLanguage
 import com.intellij.application.options.CodeStyleAbstractConfigurable
 import com.intellij.application.options.SmartIndentOptionsEditor
-import com.intellij.psi.codeStyle.CodeStyleConfigurable
-import com.intellij.psi.codeStyle.CodeStyleSettings
-import com.intellij.psi.codeStyle.CodeStyleSettingsCustomizable
-import com.intellij.psi.codeStyle.CommonCodeStyleSettings
-import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider
+import com.intellij.psi.codeStyle.*
 
 class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider() {
     override fun getLanguage() = JssLanguage.INSTANCE
@@ -45,7 +41,7 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
             SettingsType.LANGUAGE_SPECIFIC -> {
                 consumer.showStandardOptions()
             }
-            else -> { }
+            else -> {}
         }
     }
 
@@ -63,7 +59,7 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
     }
 
     override fun getCodeSample(settingsType: SettingsType) =
-"""@inherit user;
+        """@inherit user;
 
 @include json "some/path/test.json" as json;
 @include "https://example.org/test.voml" {

@@ -4,10 +4,9 @@ package com.github.voml.jss_intellij.language.parser;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
 import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
-import static com.github.voml.jss_intellij.language.psi.JssParserUtil.*;
+import static com.github.voml.jss_intellij.psi.JssParserUtil.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.TokenSet;
 import com.intellij.lang.PsiParser;
 import com.intellij.lang.LightPsiParser;
 
@@ -589,27 +588,21 @@ public class JssParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // COLON type_symbol
-  static boolean type_hint(PsiBuilder b, int l) {
+  public static boolean type_hint(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "type_hint")) return false;
     if (!nextTokenIs(b, COLON)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, COLON);
     r = r && type_symbol(b, l + 1);
-    exit_section_(b, m, null, r);
+    exit_section_(b, m, TYPE_HINT, r);
     return r;
   }
 
   /* ********************************************************** */
   // SYMBOL
-  public static boolean type_symbol(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "type_symbol")) return false;
-    if (!nextTokenIs(b, SYMBOL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, SYMBOL);
-    exit_section_(b, m, TYPE_SYMBOL, r);
-    return r;
+  static boolean type_symbol(PsiBuilder b, int l) {
+    return consumeToken(b, SYMBOL);
   }
 
   /* ********************************************************** */

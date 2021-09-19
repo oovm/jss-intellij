@@ -6,9 +6,7 @@ import com.intellij.lang.ASTNode
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.TokenType
-import com.intellij.psi.codeStyle.CommonCodeStyleSettings
 import com.intellij.psi.formatter.FormatterUtil
-import com.intellij.psi.tree.TokenSet
 
 class JssAstBlock(
     private val node: ASTNode,
