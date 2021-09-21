@@ -1,18 +1,38 @@
 package com.github.voml.jss_intellij.ide.actions
 
 import com.github.voml.jss_intellij.JssBundle
-import com.intellij.codeInsight.CodeInsightActionHandler
-import com.intellij.codeInsight.actions.BaseCodeInsightAction
+import com.github.voml.jss_intellij.ide.file_view.JssFileType
+import com.github.voml.jss_intellij.ide.file_view.JssIcons
+import com.intellij.ide.actions.CreateFileAction
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
-import com.intellij.openapi.actionSystem.ActionPlaces
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.editor.Editor
-import com.intellij.openapi.project.Project
-import com.intellij.psi.PsiFile
+import com.intellij.openapi.actionSystem.LangDataKeys
+import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.openapi.project.DumbAwareAction
+import com.intellij.psi.*
 
 
-class JssConvertJson : BaseCodeInsightAction() {
+
+class JssConvertJson : DumbAwareAction(name, description, JssIcons.FILE) {
+    companion object {
+        private val name = JssBundle.message("action.convert_json")
+        private val description = JssBundle.message("action.convert_json.description")
+
+        fun tryGetJsonSchema(file: PsiFile): JsonObject? {
+            if (file is JsonFile) {
+                when (val root = file.topLevelValue) {
+                    is JsonObject -> {
+                        if (root.findProperty("\$schema") != null) {
+                            return root
+                        }
+                    }
+                }
+            }
+            return null
+        }
+    }
+
     override fun update(event: AnActionEvent) {
         super.update(event)
 //        if (ActionPlaces.isPopupPlace(event.place)) {
@@ -21,24 +41,26 @@ class JssConvertJson : BaseCodeInsightAction() {
 //        }
     }
 
-    override fun isValidForFile(project: Project, editor: Editor, file: PsiFile): Boolean {
-        return JssConvertJsonHandler.tryGetJsonSchema(file) != null
-    }
 
-    override fun getCommandName(): String {
-        return "JssConvertJson"
-    }
+    override fun actionPerformed(e: AnActionEvent) {
+        val file = LangDataKeys.PSI_FILE.getData(e.dataContext)
+        val document = file?.let { tryGetJsonSchema(it) } ?: return;
+        val buffer = StringBuilder()
+        buffer.append(
+            """${document.propertyList}
+"""
+        )
 
-    override fun getTemplateText(): String? {
-        return super.getTemplateText()
-    }
+        var name: String = file.name;
+        if (name.endsWith(".json")) {
+            name = name.substring(0, file.name.length - 5)
+        }
+        name = "$name.jss"
+        val fileVirtual =
+            PsiFileFactory.getInstance(file.project).createFileFromText(name, JssFileType.INSTANCE, buffer)
+        val doc = PsiDocumentManager.getInstance(fileVirtual.project).getDocument(fileVirtual)!!
+        FileDocumentManager.getInstance().saveDocument(doc)
 
-    override fun getHandler(): CodeInsightActionHandler {
-        return JssConvertJsonHandler()
-    }
-
-    companion object {
-        private val NAME = JssBundle.message("action.convert_json")
     }
 }
 
