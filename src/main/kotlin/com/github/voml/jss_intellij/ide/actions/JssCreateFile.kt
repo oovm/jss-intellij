@@ -4,12 +4,14 @@ import com.github.voml.jss_intellij.JssBundle
 import com.github.voml.jss_intellij.ide.file_view.JssIcons
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog
+import com.intellij.ide.actions.CreateFileFromTemplateDialog.*
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
+import com.intellij.psi.PsiFile
 
 class JssCreateFile :
     CreateFileFromTemplateAction(NAME, JssBundle.message("action.create_file.description"), JssIcons.FILE) {
-    override fun buildDialog(project: Project, directory: PsiDirectory, builder: CreateFileFromTemplateDialog.Builder) {
+    override fun buildDialog(project: Project, directory: PsiDirectory, builder: Builder) {
         builder
             .setTitle(NAME)
             // See [resources/colors/fileTemplate]

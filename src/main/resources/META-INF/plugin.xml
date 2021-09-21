@@ -90,19 +90,18 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 
 	</extensions>
 	<actions>
-		<action id="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
-		        class="com.github.voml.jss_intellij.ide.actions.JssCreateFile"
-		        text="Jss File"
-		        description="Create new Jss file">
-			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
+		<action id="NewJssFile"		        class="com.github.voml.jss_intellij.ide.actions.JssCreateFile">
+			<add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewHtmlFile"/>
 		</action>
-		<action id="com.github.voml.jss_intellij.ide.actions.JssConvertJson"
-		        class="com.github.voml.jss_intellij.ide.actions.JssConvertJson"
-		        text="Jss File"
-		        description="Create new Jss file">
-			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
-		</action>
-
-
+		<action id="jss.JssConvertJson"
+		        class="com.github.voml.jss_intellij.ide.actions.JssConvertJson"/>
+		<group id="jss.JssGenerator" popup="true" text="JssGenerator">
+			<reference ref="NewJssFile"/>
+			<reference ref="jss.JssConvertJson"/>
+			<add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="Github.Create.Gist"/>
+			<add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="Github.Create.Gist"/>
+			<add-to-group group-id="EditorTabPopupMenu" anchor="after" relative-to-action="Github.Create.Gist"/>
+			<add-to-group group-id="ConsoleEditorPopupMenu" anchor="after" relative-to-action="Github.Create.Gist"/>
+		</group>
 	</actions>
 </idea-plugin>
