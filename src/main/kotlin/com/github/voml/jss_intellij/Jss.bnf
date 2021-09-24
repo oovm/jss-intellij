@@ -68,7 +68,8 @@ private ignore ::= SEMICOLON | COMMA;
 schema_statement ::= "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>>;
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= ("properties"|properties_mark) properties_key [type_hint] [properties_block];
+properties_statement ::= ("properties" | "property" | "prop"| "field" | DOT) properties_key [type_hint] [properties_block];
+// used in formatter
 properties_mark ::= DOT;
 properties_block ::= <<brace_block properties_inner ignore>>;
 properties_key ::= STRING | SYMBOL;
@@ -80,6 +81,8 @@ private properties_inner ::=
   | kv_pair // consider as anno
   ;
 // ---------------------------------------------------------------------------------------------------------------------
+def_statement ::= ("def"|"define"|"definition") properties_key [type_hint] [properties_block];
+// ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
 idiom_statement ::= idiom_mark idiom_symbol [COLON] value;
 idiom_mark ::= DOLLAR;
@@ -89,20 +92,18 @@ idiom_symbol ::= SYMBOL;
 anno_statement ::= anno_key set value;
 private set ::= COLON;
 private anno_key ::= STRING | SYMBOL;
-// -------------------------------G-----
-def_statement ::= DEFINE SYMBOL (AS key_symbol | <<parenthesis def_inner>>);
-private def_inner ::= key_symbol*;
-// -------------------------------G-----
+// ---------------------------------------------------------------------------------------------------------------------
 type_hint ::= COLON type_symbol;
-private type_symbol ::= SYMBOL;
+private type_symbol ::= SYMBOL | STRING;
 // ------------------------------------
 //symbol_path ::= key (DOT key)*;
 //private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
 // ------------------------------------
-value ::= null | boolean | num | ref | str | array | object | url_maybe_valid;
+value ::= null | boolean | num | str | array | object | url_maybe_valid;
 null ::= "null";
 boolean ::= "true" | "false";
+// used in annotation
 url_maybe_valid ::= URL;
 // ------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;

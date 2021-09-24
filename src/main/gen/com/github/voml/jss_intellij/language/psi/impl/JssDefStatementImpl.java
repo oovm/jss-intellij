@@ -28,9 +28,21 @@ public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefS
   }
 
   @Override
+  @Nullable
+  public JssPropertiesBlock getPropertiesBlock() {
+    return findChildByClass(JssPropertiesBlock.class);
+  }
+
+  @Override
   @NotNull
-  public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+  public JssPropertiesKey getPropertiesKey() {
+    return findNotNullChildByClass(JssPropertiesKey.class);
+  }
+
+  @Override
+  @Nullable
+  public JssTypeHint getTypeHint() {
+    return findChildByClass(JssTypeHint.class);
   }
 
 }

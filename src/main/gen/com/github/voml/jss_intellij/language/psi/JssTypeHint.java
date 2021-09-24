@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface JssTypeHint extends PsiElement {
 
-  @NotNull
+  @Nullable
+  PsiElement getString();
+
+  @Nullable
   PsiElement getSymbol();
 
 }

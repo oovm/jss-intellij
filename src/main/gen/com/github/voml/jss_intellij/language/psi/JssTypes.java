@@ -1,11 +1,11 @@
 // This is a generated file. Not intended for manual editing.
 package com.github.voml.jss_intellij.language.psi;
 
-import com.github.voml.jss_intellij.psi.JssElementType;
-import com.github.voml.jss_intellij.psi.JssTokenType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
+import com.github.voml.jss_intellij.psi.JssElementType;
+import com.github.voml.jss_intellij.psi.JssTokenType;
 import com.github.voml.jss_intellij.language.psi.impl.*;
 
 public interface JssTypes {
@@ -36,7 +36,6 @@ public interface JssTypes {
   IElementType ACCENT = new JssTokenType("^");
   IElementType ANGLE_L = new JssTokenType("<");
   IElementType ANGLE_R = new JssTokenType(">");
-  IElementType AS = new JssTokenType("AS");
   IElementType AT = new JssTokenType("@");
   IElementType BRACE_L = new JssTokenType("{");
   IElementType BRACE_R = new JssTokenType("}");
@@ -49,15 +48,12 @@ public interface JssTypes {
   IElementType COMMENT_BLOCK = new JssTokenType("COMMENT_BLOCK");
   IElementType COMMENT_DOCUMENT = new JssTokenType("COMMENT_DOCUMENT");
   IElementType DECIMAL = new JssTokenType("DECIMAL");
-  IElementType DEFINE = new JssTokenType("DEFINE");
   IElementType DOLLAR = new JssTokenType("$");
   IElementType DOT = new JssTokenType(".");
   IElementType EQ = new JssTokenType("=");
   IElementType INTEGER = new JssTokenType("INTEGER");
-  IElementType KEY_SYMBOL = new JssTokenType("key_symbol");
   IElementType PARENTHESIS_L = new JssTokenType("(");
   IElementType PARENTHESIS_R = new JssTokenType(")");
-  IElementType REF = new JssTokenType("ref");
   IElementType SEMICOLON = new JssTokenType(";");
   IElementType SIGN = new JssTokenType("SIGN");
   IElementType STAR = new JssTokenType("*");

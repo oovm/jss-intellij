@@ -39,6 +39,23 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         super.visitPropertiesStatement(o)
     }
 
+    override fun visitDefStatement(o: JssDefStatement) {
+        //
+        val head = o.firstChild;
+        when (head.elementType) {
+            JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
+        }
+        //
+        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
+        highlight(prop, JssColor.SYM_PROP)
+
+        super.visitDefStatement(o)
+    }
+
+    override fun visitPropertiesMark(o: JssPropertiesMark) {
+        highlight(o, JssColor.PROP_MARK)
+    }
+
     override fun visitTypeHint(o: JssTypeHint) {
         val ty = o.lastChild;
         highlight(ty, JssColor.TYPE_HINT)

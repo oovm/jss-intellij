@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.language;
+package com.github.voml.jss_intellij;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
@@ -57,10 +57,7 @@ SIGN=[+-]
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }
-  "DEFINE"                { return DEFINE; }
-  "AS"                    { return AS; }
-  "key_symbol"            { return KEY_SYMBOL; }
-  "ref"                   { return REF; }
+  "REF"                   { return REF; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
   {COMMENT}               { return COMMENT; }

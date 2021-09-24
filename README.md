@@ -18,28 +18,15 @@
 
 <!-- Plugin description -->
 
-Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
+Intellij plugin for [JSS](https://github.com/voml/jss), support all IDEs.
 
 ## Features
-- Syntax Highlight
-- Braces Matcher
+- Syntax Highlight & Semantic Highlight
+- Braces Matcher & Smart Enter
+- Pretty format
+
+## License
+
+The while project license under MPL2.0
 
 <!-- Plugin description end -->
-
-## Installation
-
-- Using IDE built-in plugin system:
-  
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "voml-intellij"</kbd> >
-  <kbd>Install Plugin</kbd>
-  
-- Manually:
-
-  Download the [latest release](https://github.com/voml/voml-intellij/releases/latest) and install it manually using
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
-
-
----
-Plugin based on the [IntelliJ Platform Plugin Template][template].
-
-[template]: https://github.com/JetBrains/intellij-platform-plugin-template

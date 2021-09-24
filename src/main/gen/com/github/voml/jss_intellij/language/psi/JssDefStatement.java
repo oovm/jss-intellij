@@ -7,7 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface JssDefStatement extends PsiElement {
 
+  @Nullable
+  JssPropertiesBlock getPropertiesBlock();
+
   @NotNull
-  PsiElement getSymbol();
+  JssPropertiesKey getPropertiesKey();
+
+  @Nullable
+  JssTypeHint getTypeHint();
 
 }

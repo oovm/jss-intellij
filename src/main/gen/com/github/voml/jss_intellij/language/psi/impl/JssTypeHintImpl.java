@@ -28,9 +28,15 @@ public class JssTypeHintImpl extends ASTWrapperPsiElement implements JssTypeHint
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public PsiElement getString() {
+    return findChildByType(STRING);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+    return findChildByType(SYMBOL);
   }
 
 }

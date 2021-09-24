@@ -41,12 +41,6 @@ public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @Nullable
-  public JssPropertiesMark getPropertiesMark() {
-    return findChildByClass(JssPropertiesMark.class);
-  }
-
-  @Override
-  @Nullable
   public JssTypeHint getTypeHint() {
     return findChildByClass(JssTypeHint.class);
   }
