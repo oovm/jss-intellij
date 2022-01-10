@@ -57,7 +57,6 @@ SIGN=[+-]
   "."                     { return DOT; }
   "*"                     { return STAR; }
   "@"                     { return AT; }
-  "REF"                   { return REF; }
 
   {COMMENT_DOCUMENT}      { return COMMENT_DOCUMENT; }
   {COMMENT}               { return COMMENT; }
