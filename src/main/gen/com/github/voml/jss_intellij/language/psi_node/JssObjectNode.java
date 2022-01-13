@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssIdiomStatementImpl extends ASTWrapperPsiElement implements JssIdiomStatement {
+public class JssObjectNode extends ASTWrapperPsiElement implements JssObject {
 
-  public JssIdiomStatementImpl(@NotNull ASTNode node) {
+  public JssObjectNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitIdiomStatement(this);
+    visitor.visitObject(this);
   }
 
   @Override
@@ -29,20 +29,8 @@ public class JssIdiomStatementImpl extends ASTWrapperPsiElement implements JssId
 
   @Override
   @NotNull
-  public JssIdiomMark getIdiomMark() {
-    return findNotNullChildByClass(JssIdiomMark.class);
-  }
-
-  @Override
-  @NotNull
-  public JssIdiomSymbol getIdiomSymbol() {
-    return findNotNullChildByClass(JssIdiomSymbol.class);
-  }
-
-  @Override
-  @NotNull
-  public JssValue getValue() {
-    return findNotNullChildByClass(JssValue.class);
+  public JssBraceBlock getBraceBlock() {
+    return findNotNullChildByClass(JssBraceBlock.class);
   }
 
 }

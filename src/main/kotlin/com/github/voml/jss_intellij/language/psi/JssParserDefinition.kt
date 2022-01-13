@@ -1,8 +1,8 @@
-package com.github.voml.jss_intellij
+package com.github.voml.jss_intellij.language.psi
 
+import com.github.voml.jss_intellij.JssLanguage
 import com.github.voml.jss_intellij.ide.file_view.JssFile
 import com.github.voml.jss_intellij.language.parser.JssParser
-import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser

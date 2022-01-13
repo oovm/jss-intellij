@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssStringMultiImpl extends ASTWrapperPsiElement implements JssStringMulti {
+public class JssSchemaStatementNode extends ASTWrapperPsiElement implements JssSchemaStatement {
 
-  public JssStringMultiImpl(@NotNull ASTNode node) {
+  public JssSchemaStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitStringMulti(this);
+    visitor.visitSchemaStatement(this);
   }
 
   @Override
@@ -29,8 +29,20 @@ public class JssStringMultiImpl extends ASTWrapperPsiElement implements JssStrin
 
   @Override
   @NotNull
-  public PsiElement getString() {
-    return findNotNullChildByType(STRING);
+  public JssBraceBlock getBraceBlock() {
+    return findNotNullChildByClass(JssBraceBlock.class);
+  }
+
+  @Override
+  @Nullable
+  public JssTypeHint getTypeHint() {
+    return findChildByClass(JssTypeHint.class);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement getSymbol() {
+    return findNotNullChildByType(SYMBOL);
   }
 
 }

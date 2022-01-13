@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij.psi
+package com.github.voml.jss_intellij.language.psi
 
 import com.github.voml.jss_intellij.language.psi.JssVisitor
 import com.intellij.openapi.progress.ProgressManager

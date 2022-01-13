@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,38 +11,20 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPropertiesStatementImpl extends ASTWrapperPsiElement implements JssPropertiesStatement {
+public class JssIdiomMarkNode extends ASTWrapperPsiElement implements JssIdiomMark {
 
-  public JssPropertiesStatementImpl(@NotNull ASTNode node) {
+  public JssIdiomMarkNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesStatement(this);
+    visitor.visitIdiomMark(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public JssPropertiesBlock getPropertiesBlock() {
-    return findChildByClass(JssPropertiesBlock.class);
-  }
-
-  @Override
-  @NotNull
-  public JssPropertiesKey getPropertiesKey() {
-    return findNotNullChildByClass(JssPropertiesKey.class);
-  }
-
-  @Override
-  @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
   }
 
 }

@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefStatement {
+public class JssStringMultiNode extends ASTWrapperPsiElement implements JssStringMulti {
 
-  public JssDefStatementImpl(@NotNull ASTNode node) {
+  public JssStringMultiNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitDefStatement(this);
+    visitor.visitStringMulti(this);
   }
 
   @Override
@@ -28,21 +28,9 @@ public class JssDefStatementImpl extends ASTWrapperPsiElement implements JssDefS
   }
 
   @Override
-  @Nullable
-  public JssPropertiesBlock getPropertiesBlock() {
-    return findChildByClass(JssPropertiesBlock.class);
-  }
-
-  @Override
   @NotNull
-  public JssPropertiesKey getPropertiesKey() {
-    return findNotNullChildByClass(JssPropertiesKey.class);
-  }
-
-  @Override
-  @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
+  public PsiElement getString() {
+    return findNotNullChildByType(STRING);
   }
 
 }

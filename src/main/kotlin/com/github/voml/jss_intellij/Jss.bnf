@@ -1,19 +1,19 @@
 {
     parserClass = "com.github.voml.jss_intellij.language.parser.JssParser"
-    parserUtilClass = "com.github.voml.jss_intellij.psi.JssParserUtil"
+    parserUtilClass = "com.github.voml.jss_intellij.language.psi.JssParserUtil"
 
     extends = "com.intellij.extapi.psi.ASTWrapperPsiElement"
 
     psiClassPrefix = "Jss"
-    psiImplClassSuffix = "Impl"
+    psiImplClassSuffix = "Node"
     psiPackage = "com.github.voml.jss_intellij.language.psi"
-    psiImplPackage = "com.github.voml.jss_intellij.language.psi.impl"
+    psiImplPackage = "com.github.voml.jss_intellij.language.psi_node"
 
     elementTypeHolderClass = "com.github.voml.jss_intellij.language.psi.JssTypes"
-    elementTypeClass = "com.github.voml.jss_intellij.psi.JssElementType"
-    tokenTypeClass = "com.github.voml.jss_intellij.psi.JssTokenType"
+    elementTypeClass = "com.github.voml.jss_intellij.language.psi.JssElementType"
+    tokenTypeClass = "com.github.voml.jss_intellij.language.psi.JssTokenType"
 
-    psiImplUtilClass = "com.github.voml.jss_intellij.language.psi.impl.JssPsiImplUtil"
+    psiImplUtilClass = "com.github.voml.jss_intellij.language.psi_node.JssPsiImplUtil"
 
     tokens = [
         // comment

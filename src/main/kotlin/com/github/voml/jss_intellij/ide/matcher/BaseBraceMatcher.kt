@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.matcher
 
 import com.github.voml.jss_intellij.language.psi.JssTypes
-import com.github.voml.jss_intellij.psi.JSS_COMMENT
+import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
 import com.intellij.lang.BracePair
 import com.intellij.lang.PairedBraceMatcher
 import com.intellij.psi.PsiFile

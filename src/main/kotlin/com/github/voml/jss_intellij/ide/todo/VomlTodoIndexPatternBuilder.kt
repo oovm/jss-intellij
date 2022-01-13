@@ -1,8 +1,8 @@
 package com.github.voml.jss_intellij.ide.todo
 
-import com.github.voml.jss_intellij.JssLexerAdapter
+import com.github.voml.jss_intellij.language.psi.JssLexerAdapter
 import com.github.voml.jss_intellij.ide.file_view.JssFile
-import com.github.voml.jss_intellij.psi.JSS_COMMENT
+import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
 import com.intellij.lexer.Lexer
 import com.intellij.psi.PsiFile
 import com.intellij.psi.impl.search.IndexPatternBuilder

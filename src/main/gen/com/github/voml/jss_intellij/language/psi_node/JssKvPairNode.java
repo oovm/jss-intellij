@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssObjectImpl extends ASTWrapperPsiElement implements JssObject {
+public class JssKvPairNode extends ASTWrapperPsiElement implements JssKvPair {
 
-  public JssObjectImpl(@NotNull ASTNode node) {
+  public JssKvPairNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitObject(this);
+    visitor.visitKvPair(this);
   }
 
   @Override
@@ -28,9 +28,21 @@ public class JssObjectImpl extends ASTWrapperPsiElement implements JssObject {
   }
 
   @Override
+  @Nullable
+  public JssStringInline getStringInline() {
+    return findChildByClass(JssStringInline.class);
+  }
+
+  @Override
   @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
+  public JssValue getValue() {
+    return findNotNullChildByClass(JssValue.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getSymbol() {
+    return findChildByType(SYMBOL);
   }
 
 }

@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPropertiesBlockImpl extends ASTWrapperPsiElement implements JssPropertiesBlock {
+public class JssArrayNode extends ASTWrapperPsiElement implements JssArray {
 
-  public JssPropertiesBlockImpl(@NotNull ASTNode node) {
+  public JssArrayNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesBlock(this);
+    visitor.visitArray(this);
   }
 
   @Override
@@ -29,8 +29,8 @@ public class JssPropertiesBlockImpl extends ASTWrapperPsiElement implements JssP
 
   @Override
   @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
+  public JssBracketBlock getBracketBlock() {
+    return findNotNullChildByClass(JssBracketBlock.class);
   }
 
 }

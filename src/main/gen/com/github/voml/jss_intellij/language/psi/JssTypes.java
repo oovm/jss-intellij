@@ -4,9 +4,7 @@ package com.github.voml.jss_intellij.language.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
-import com.github.voml.jss_intellij.psi.JssElementType;
-import com.github.voml.jss_intellij.psi.JssTokenType;
-import com.github.voml.jss_intellij.language.psi.impl.*;
+import com.github.voml.jss_intellij.language.psi_node.*;
 
 public interface JssTypes {
 
@@ -65,70 +63,70 @@ public interface JssTypes {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
       if (type == ANNO_STATEMENT) {
-        return new JssAnnoStatementImpl(node);
+        return new JssAnnoStatementNode(node);
       }
       else if (type == ARRAY) {
-        return new JssArrayImpl(node);
+        return new JssArrayNode(node);
       }
       else if (type == BOOLEAN) {
-        return new JssBooleanImpl(node);
+        return new JssBooleanNode(node);
       }
       else if (type == BRACE_BLOCK) {
-        return new JssBraceBlockImpl(node);
+        return new JssBraceBlockNode(node);
       }
       else if (type == BRACKET_BLOCK) {
-        return new JssBracketBlockImpl(node);
+        return new JssBracketBlockNode(node);
       }
       else if (type == DEF_STATEMENT) {
-        return new JssDefStatementImpl(node);
+        return new JssDefStatementNode(node);
       }
       else if (type == IDIOM_MARK) {
-        return new JssIdiomMarkImpl(node);
+        return new JssIdiomMarkNode(node);
       }
       else if (type == IDIOM_STATEMENT) {
-        return new JssIdiomStatementImpl(node);
+        return new JssIdiomStatementNode(node);
       }
       else if (type == IDIOM_SYMBOL) {
-        return new JssIdiomSymbolImpl(node);
+        return new JssIdiomSymbolNode(node);
       }
       else if (type == KV_PAIR) {
-        return new JssKvPairImpl(node);
+        return new JssKvPairNode(node);
       }
       else if (type == NULL) {
-        return new JssNullImpl(node);
+        return new JssNullNode(node);
       }
       else if (type == OBJECT) {
-        return new JssObjectImpl(node);
+        return new JssObjectNode(node);
       }
       else if (type == PROPERTIES_BLOCK) {
-        return new JssPropertiesBlockImpl(node);
+        return new JssPropertiesBlockNode(node);
       }
       else if (type == PROPERTIES_KEY) {
-        return new JssPropertiesKeyImpl(node);
+        return new JssPropertiesKeyNode(node);
       }
       else if (type == PROPERTIES_MARK) {
-        return new JssPropertiesMarkImpl(node);
+        return new JssPropertiesMarkNode(node);
       }
       else if (type == PROPERTIES_STATEMENT) {
-        return new JssPropertiesStatementImpl(node);
+        return new JssPropertiesStatementNode(node);
       }
       else if (type == SCHEMA_STATEMENT) {
-        return new JssSchemaStatementImpl(node);
+        return new JssSchemaStatementNode(node);
       }
       else if (type == STRING_INLINE) {
-        return new JssStringInlineImpl(node);
+        return new JssStringInlineNode(node);
       }
       else if (type == STRING_MULTI) {
-        return new JssStringMultiImpl(node);
+        return new JssStringMultiNode(node);
       }
       else if (type == TYPE_HINT) {
-        return new JssTypeHintImpl(node);
+        return new JssTypeHintNode(node);
       }
       else if (type == URL_MAYBE_VALID) {
-        return new JssUrlMaybeValidImpl(node);
+        return new JssUrlMaybeValidNode(node);
       }
       else if (type == VALUE) {
-        return new JssValueImpl(node);
+        return new JssValueNode(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

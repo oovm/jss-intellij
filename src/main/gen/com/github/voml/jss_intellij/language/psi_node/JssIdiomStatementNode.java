@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi.impl;
+package com.github.voml.jss_intellij.language.psi_node;
 
 import java.util.List;
 import org.jetbrains.annotations.*;
@@ -11,14 +11,14 @@ import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssKvPairImpl extends ASTWrapperPsiElement implements JssKvPair {
+public class JssIdiomStatementNode extends ASTWrapperPsiElement implements JssIdiomStatement {
 
-  public JssKvPairImpl(@NotNull ASTNode node) {
+  public JssIdiomStatementNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitKvPair(this);
+    visitor.visitIdiomStatement(this);
   }
 
   @Override
@@ -28,21 +28,21 @@ public class JssKvPairImpl extends ASTWrapperPsiElement implements JssKvPair {
   }
 
   @Override
-  @Nullable
-  public JssStringInline getStringInline() {
-    return findChildByClass(JssStringInline.class);
+  @NotNull
+  public JssIdiomMark getIdiomMark() {
+    return findNotNullChildByClass(JssIdiomMark.class);
+  }
+
+  @Override
+  @NotNull
+  public JssIdiomSymbol getIdiomSymbol() {
+    return findNotNullChildByClass(JssIdiomSymbol.class);
   }
 
   @Override
   @NotNull
   public JssValue getValue() {
     return findNotNullChildByClass(JssValue.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getSymbol() {
-    return findChildByType(SYMBOL);
   }
 
 }
