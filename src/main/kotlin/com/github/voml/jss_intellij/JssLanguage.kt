@@ -7,9 +7,6 @@ class JssLanguage private constructor() : Language("JSS") {
     companion object {
         @JvmStatic
         val INSTANCE = JssLanguage()
-
-        @NonNls
-        const val BUNDLE = "messages.JssBundle"
     }
 }
 

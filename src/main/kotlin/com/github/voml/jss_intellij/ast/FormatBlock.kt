@@ -8,7 +8,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiErrorElement
 import com.intellij.psi.formatter.FormatterUtil
 
-class JssAstBlock(
+class FormatBlock(
     private val node: ASTNode,
     private val alignment: Alignment?,
     private val indent: Indent?,

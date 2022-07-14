@@ -9,7 +9,7 @@ import com.intellij.formatting.Spacing
 import com.intellij.lang.ASTNode
 import com.intellij.psi.TokenType
 
-private fun JssAstBlock.computeIndent(child: ASTNode): Indent? {
+private fun FormatBlock.computeIndent(child: ASTNode): Indent? {
     val isCornerChild = node.firstChildNode == child || node.lastChildNode == child
     return when (node.elementType) {
         JssTypes.BRACKET_BLOCK -> when {
@@ -24,7 +24,7 @@ private fun JssAstBlock.computeIndent(child: ASTNode): Indent? {
     }
 }
 
-fun JssAstBlock.buildChildren(): List<Block> {
+fun FormatBlock.buildChildren(): List<Block> {
     return node.getChildren(null)
         .filter { !it.isWhitespaceOrEmpty() }
         .map { childNode ->
