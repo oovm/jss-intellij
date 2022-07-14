@@ -1,10 +1,10 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi;
+package jss.intellij.language.psi;
 
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
-import com.github.voml.jss_intellij.language.psi_node.*;
+import jss.intellij.language.psi_node.*;
 
 public interface JssTypes {
 

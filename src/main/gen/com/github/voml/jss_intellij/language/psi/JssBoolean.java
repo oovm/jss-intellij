@@ -1,5 +1,5 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi;
+package jss.intellij.language.psi;
 
 import java.util.List;
 import org.jetbrains.annotations.*;

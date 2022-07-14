@@ -1,18 +1,19 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.psi_node;
+package jss.intellij.language.psi_node;
 
+import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
-
-import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
-import com.github.voml.jss_intellij.language.mixin.MixinKey;
-import com.github.voml.jss_intellij.language.psi.*;
+import com.intellij.psi.util.PsiTreeUtil;
+import static jss.intellij.language.psi.JssTypes.*;
+import jss.intellij.language.mixin.MixinKey;
+import jss.intellij.language.psi.*;
 
 public class JssPropertiesKeyNode extends MixinKey implements JssPropertiesKey {
 
-  public JssPropertiesKeyNode(@NotNull ASTNode node) {
+  public JssPropertiesKeyNode(ASTNode node) {
     super(node);
   }
 
