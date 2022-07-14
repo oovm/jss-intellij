@@ -36,8 +36,8 @@ public class JssDefStatementNode extends ASTWrapperPsiElement implements JssDefS
 
   @Override
   @NotNull
-  public JssPropertiesKey getPropertiesKey() {
-    return findNotNullChildByClass(JssPropertiesKey.class);
+  public JssKey getKey() {
+    return findNotNullChildByClass(JssKey.class);
   }
 
   @Override

@@ -7,6 +7,7 @@ import jss.intellij.ide.view.JssViewElement
 import jss.intellij.language.ast.DeclareNode
 import jss.intellij.language.file.JssIcons
 import jss.intellij.language.psi.searchChildrenOfType
+import jss.intellij.language.psi_node.JssKeyNode
 import jss.intellij.language.psi_node.JssPropertiesStatementNode
 import javax.swing.Icon
 
@@ -15,8 +16,8 @@ open class MixinProperty(node: ASTNode) : DeclareNode(node) {
         return this as JssPropertiesStatementNode
     }
 
-    override fun getNameIdentifier(): PsiElement {
-        return originalElement.propertiesKey
+    override fun getNameIdentifier(): JssKeyNode {
+        return originalElement.key as JssKeyNode
     }
 
     override fun getIcon(flags: Int): Icon = JssIcons.PROPERTY

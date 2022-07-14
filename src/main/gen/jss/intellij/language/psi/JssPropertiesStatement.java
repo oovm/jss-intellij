@@ -11,7 +11,7 @@ public interface JssPropertiesStatement extends PsiElement {
   JssBraceBlock getBraceBlock();
 
   @NotNull
-  JssPropertiesKey getPropertiesKey();
+  JssKey getKey();
 
   @NotNull
   JssProperty getProperty();

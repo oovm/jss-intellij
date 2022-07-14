@@ -22,10 +22,8 @@ public interface JssTypes {
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
   IElementType OBJECT = new JssElementType("OBJECT");
-  IElementType PROPERTIES_KEY = new JssElementType("PROPERTIES_KEY");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
   IElementType PROPERTY = new JssElementType("PROPERTY");
-  IElementType PROPERTY_MARK = new JssElementType("PROPERTY_MARK");
   IElementType SCHEMA = new JssElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
@@ -107,17 +105,11 @@ public interface JssTypes {
       else if (type == OBJECT) {
         return new JssObjectNode(node);
       }
-      else if (type == PROPERTIES_KEY) {
-        return new JssPropertiesKeyNode(node);
-      }
       else if (type == PROPERTIES_STATEMENT) {
         return new JssPropertiesStatementNode(node);
       }
       else if (type == PROPERTY) {
         return new JssPropertyNode(node);
-      }
-      else if (type == PROPERTY_MARK) {
-        return new JssPropertyMarkNode(node);
       }
       else if (type == SCHEMA) {
         return new JssSchemaNode(node);

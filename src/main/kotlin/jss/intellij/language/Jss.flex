@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij;
+package jss.intellij;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;

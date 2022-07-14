@@ -63,19 +63,11 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitPropertiesKey(@NotNull JssPropertiesKey o) {
-    visitPsiElement(o);
-  }
-
   public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
     visitPsiElement(o);
   }
 
   public void visitProperty(@NotNull JssProperty o) {
-    visitPsiElement(o);
-  }
-
-  public void visitPropertyMark(@NotNull JssPropertyMark o) {
     visitPsiElement(o);
   }
 

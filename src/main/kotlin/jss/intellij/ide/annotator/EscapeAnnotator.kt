@@ -11,7 +11,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors.VALID_STRING
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 
-class LiteralChecker : Annotator {
+class EscapeAnnotator : Annotator {
     override fun annotate(element: PsiElement, holder: AnnotationHolder) {
         when (element) {
             is JssStringInline -> annotate(element, holder)

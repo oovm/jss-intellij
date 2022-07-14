@@ -69,15 +69,11 @@ private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= property properties_key [type_hint] [properties_block] {
+properties_statement ::= property key [type_hint] [properties_block] {
     mixin = "jss.intellij.language.mixin.MixinProperty"
 };
-properties_key ::= STRING | SYMBOL
 property ::= "properties" | "property" | "prop" | "field" | DOT;
-property_mark ::= "properties" | "property" | "prop" | "field";
-
 private properties_block ::= <<brace_block properties_inner ignore>>;
-
 private properties_inner ::=
     idiom_statement
   | properties_statement
@@ -85,7 +81,7 @@ private properties_inner ::=
   | kv_pair // consider as anno
   ;
 // ---------------------------------------------------------------------------------------------------------------------
-def_statement ::= ("def"|"define"|"definition") properties_key [type_hint] [properties_block];
+def_statement ::= ("def"|"define"|"definition") key [type_hint] [properties_block];
 // ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
 idiom_statement ::= idiom_mark identifier [COLON] value {
@@ -97,12 +93,13 @@ idiom_mark ::= DOLLAR;
 anno_statement ::= key set value {
     mixin = "jss.intellij.language.mixin.MixinAnnotation"
 };
-private set ::= COLON;
-key ::= STRING | SYMBOL {
+// ---------------------------------------------------------------------------------------------------------------------
+kv_pair ::= key set value;
+key ::= RAW_STRING_1|RAW_STRING_2 | SYMBOL {
     mixin = "jss.intellij.language.mixin.MixinKey"
 };
 // ---------------------------------------------------------------------------------------------------------------------
-value ::= null | boolean | num | str | array | object | url_maybe_valid {
+value ::= null | boolean | num | string | array | object | url_maybe_valid {
     mixin = "jss.intellij.language.mixin.MixinValue"
 };
 null ::= "null";
@@ -113,19 +110,18 @@ url_maybe_valid ::= URL;
 type_hint ::= COLON type_symbol;
 private type_symbol ::= SYMBOL | STRING;
 // ---------------------------------------------------------------------------------------------------------------------
-//symbol_path ::= key (DOT key)*;
-//private key ::= string_inline | key_symbol | INTEGER;
-private eq ::= EQ | COLON;
+set ::= EQ | COLON;
 // ---------------------------------------------------------------------------------------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
 // ---------------------------------------------------------------------------------------------------------------------
-private str ::= (string_inline|string_multi);
-string_inline ::= STRING;
-string_multi ::= STRING;
+string ::= (RAW_STRING_1|RAW_STRING_2|RAW_STRING_3) {
+    mixin = "jss.intellij.language.mixin.MixinString"
+}
 // ---------------------------------------------------------------------------------------------------------------------
-array ::= <<bracket_block value ignore>>;
+array ::= <<bracket_block value ignore>> {
+    mixin = "jss.intellij.language.mixin.MixinArray"
+};
 object ::= <<brace_block kv_pair ignore>>;
-kv_pair ::= (string_inline|SYMBOL) eq value;
 // ---------------------------------------------------------------------------------------------------------------------
 namespace ::= identifier (DOT identifier)*;
 identifier ::= SYMBOL;

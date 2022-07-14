@@ -9,6 +9,7 @@ schema Product: object {
     ]
 }
 
+
 /// The unique identifier for a product
 properties productId: integer {
 

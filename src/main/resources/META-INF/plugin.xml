@@ -21,6 +21,7 @@
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>
+		<annotator language="JSS" implementationClass="jss.intellij.ide.annotator.EscapeAnnotator"/>
 		<colorSettingsPage implementation="jss.intellij.ide.highlight.JssColorSettingsPage"/>
 		<highlightVisitor implementation="jss.intellij.ide.highlight.JssHighlightVisitor"/>
 		<lang.syntaxHighlighter
@@ -64,7 +65,6 @@
 			language="JSS"
 			implementationClass="jss.intellij.ide.completion.VomlOptionCompletionContributor"/>
 
-		<annotator language="JSS" implementationClass="jss.intellij.ide.annotator.LiteralChecker"/>
 
 		<langCodeStyleSettingsProvider
 			implementation="jss.intellij.ide.codeStyle.VomlLanguageCodeStyleSettingsProvider"/>

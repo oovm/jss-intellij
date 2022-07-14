@@ -44,15 +44,8 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     }
 
     override fun visitPropertiesStatement(o: JssPropertiesStatement) {
-        val node = o as JssPropertiesStatementNode
-        //
-        val head = o.firstChild;
-        when (head.elementType) {
-            JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
-        }
-        //
-        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
-        highlight(prop, JssColor.SYM_PROP)
+        highlight(o.property, JssColor.KEYWORD)
+        highlight(o.key, JssColor.SYM_PROP)
     }
 
     override fun visitIdiomStatement(o: JssIdiomStatement) {
