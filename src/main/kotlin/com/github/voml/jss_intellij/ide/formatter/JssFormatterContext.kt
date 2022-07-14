@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.formatter
 
-import com.github.voml.jss_intellij.JssLanguage
+import com.github.voml.jss_intellij.language.JssLanguage
 import com.github.voml.jss_intellij.language.psi.JssTypes
 import com.intellij.formatting.SpacingBuilder
 import com.intellij.psi.codeStyle.CodeStyleSettings
@@ -13,7 +13,7 @@ data class JssFormatterContext(
 ) {
     companion object {
         fun create(settings: CodeStyleSettings): JssFormatterContext {
-            val commonSettings = settings.getCommonSettings(JssLanguage.INSTANCE)
+            val commonSettings = settings.getCommonSettings(JssLanguage)
             return JssFormatterContext(commonSettings, createSpacingBuilder(commonSettings))
         }
 

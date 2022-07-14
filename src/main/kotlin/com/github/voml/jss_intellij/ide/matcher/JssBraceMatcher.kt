@@ -1,12 +1,12 @@
 package com.github.voml.jss_intellij.ide.matcher
 
-import com.github.voml.jss_intellij.JssLanguage
+import com.github.voml.jss_intellij.language.JssLanguage
 import com.github.voml.jss_intellij.ide.file_view.JssFileType
 import com.intellij.codeInsight.highlighting.PairedBraceMatcherAdapter
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
 import com.intellij.openapi.fileTypes.FileType
 
-class JssBraceMatcher : PairedBraceMatcherAdapter(BaseBraceMatcher(), JssLanguage.INSTANCE) {
+class JssBraceMatcher : PairedBraceMatcherAdapter(BaseBraceMatcher(), JssLanguage) {
     override fun isLBraceToken(iterator: HighlighterIterator, fileText: CharSequence, fileType: FileType): Boolean =
         isBrace(iterator, fileText, fileType, true)
 

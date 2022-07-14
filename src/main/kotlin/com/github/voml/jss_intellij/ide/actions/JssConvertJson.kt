@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.actions
 
-import com.github.voml.jss_intellij.JssBundle
+import com.github.voml.jss_intellij.language.JssBundle
 import com.github.voml.jss_intellij.ide.file_view.JssFileType
 import com.github.voml.jss_intellij.ide.file_view.JssIcons
 import com.intellij.ide.actions.CreateFileAction
@@ -8,9 +8,6 @@ import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.LangDataKeys
-import com.intellij.openapi.application.WriteAction
-import com.intellij.psi.PsiDirectory
-import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiFileFactory
 

@@ -1,4 +1,4 @@
-package com.github.voml.jss_intellij
+package com.github.voml.jss_intellij.language
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.Nls

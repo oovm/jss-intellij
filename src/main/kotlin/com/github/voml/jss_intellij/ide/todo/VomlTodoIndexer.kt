@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.ide.todo
 
 import com.github.voml.jss_intellij.language.psi.JssLexerAdapter
-import com.github.voml.jss_intellij.language.psi.JSS_COMMENT
+import com.github.voml.jss_intellij.language.psi.JssParserDefinition
 import com.intellij.lexer.Lexer
 import com.intellij.psi.impl.cache.impl.BaseFilterLexer
 import com.intellij.psi.impl.cache.impl.OccurrenceConsumer
@@ -12,7 +12,7 @@ class VomlTodoIndexer : LexerBasedTodoIndexer() {
     override fun createLexer(consumer: OccurrenceConsumer): Lexer {
         return object : BaseFilterLexer(JssLexerAdapter(), consumer) {
             override fun advance() {
-                if (myDelegate.tokenType in JSS_COMMENT) {
+                if (myDelegate.tokenType in JssParserDefinition.commentTokens) {
                     scanWordsInToken(UsageSearchContext.IN_COMMENTS.toInt(), false, false)
                     advanceTodoItemCountsInToken()
                 }

@@ -1,6 +1,6 @@
 package com.github.voml.jss_intellij.ide.highlight
 
-import com.github.voml.jss_intellij.JssBundle
+import com.github.voml.jss_intellij.language.JssBundle
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.HighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey

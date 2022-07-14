@@ -1,10 +1,9 @@
 package com.github.voml.jss_intellij.ide.actions
 
-import com.github.voml.jss_intellij.JssBundle
+import com.github.voml.jss_intellij.language.JssBundle
 import com.github.voml.jss_intellij.ide.file_view.JssIcons
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog.*
-import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
 

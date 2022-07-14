@@ -1,7 +1,7 @@
 package com.github.voml.jss_intellij.language.psi
 
-import com.github.voml.jss_intellij.JssLanguage
 import com.github.voml.jss_intellij.ide.file_view.JssFile
+import com.github.voml.jss_intellij.language.JssLanguage
 import com.github.voml.jss_intellij.language.parser.JssParser
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
@@ -15,16 +15,23 @@ import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
 
 
-class JssParserDefinition : ParserDefinition {
+object JssParserDefinition : ParserDefinition {
     override fun createLexer(project: Project): Lexer = JssLexerAdapter()
 
     override fun createParser(project: Project): PsiParser = JssParser()
 
-    override fun getFileNodeType(): IFileElementType = FILE
+    override fun getFileNodeType(): IFileElementType = IFileElementType(JssLanguage)
 
-    override fun getCommentTokens(): TokenSet = COMMENTS
+    override fun getCommentTokens(): TokenSet = TokenSet.create(
+        JssTypes.COMMENT,
+        JssTypes.COMMENT_BLOCK,
+        JssTypes.COMMENT_DOCUMENT
+    )
 
-    override fun getStringLiteralElements(): TokenSet = STRING_LITERALS
+    override fun getStringLiteralElements(): TokenSet = TokenSet.create(
+        JssTypes.STRING_INLINE,
+        JssTypes.STRING_MULTI
+    )
 
     override fun createElement(node: ASTNode): PsiElement = JssTypes.Factory.createElement(node)
 
@@ -34,9 +41,4 @@ class JssParserDefinition : ParserDefinition {
         return ParserDefinition.SpaceRequirements.MAY
     }
 
-    companion object {
-        val COMMENTS = TokenSet.create(JssTypes.COMMENT, JssTypes.COMMENT_BLOCK)
-        val STRING_LITERALS = TokenSet.create(JssTypes.STRING_INLINE, JssTypes.STRING_MULTI)
-        val FILE = IFileElementType(JssLanguage.INSTANCE)
-    }
 }
