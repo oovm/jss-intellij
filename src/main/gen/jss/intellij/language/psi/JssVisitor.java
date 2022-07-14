@@ -43,10 +43,6 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitIdiomSymbol(@NotNull JssIdiomSymbol o) {
-    visitPsiElement(o);
-  }
-
   public void visitKvPair(@NotNull JssKvPair o) {
     visitPsiElement(o);
   }

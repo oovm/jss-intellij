@@ -268,14 +268,14 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // idiom_mark idiom_symbol [COLON] value
+  // idiom_mark identifier [COLON] value
   public static boolean idiom_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "idiom_statement")) return false;
     if (!nextTokenIs(b, DOLLAR)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = idiom_mark(b, l + 1);
-    r = r && idiom_symbol(b, l + 1);
+    r = r && identifier(b, l + 1);
     r = r && idiom_statement_2(b, l + 1);
     r = r && value(b, l + 1);
     exit_section_(b, m, IDIOM_STATEMENT, r);
@@ -287,18 +287,6 @@ public class JssParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "idiom_statement_2")) return false;
     consumeToken(b, COLON);
     return true;
-  }
-
-  /* ********************************************************** */
-  // SYMBOL
-  public static boolean idiom_symbol(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "idiom_symbol")) return false;
-    if (!nextTokenIs(b, SYMBOL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, SYMBOL);
-    exit_section_(b, m, IDIOM_SYMBOL, r);
-    return r;
   }
 
   /* ********************************************************** */

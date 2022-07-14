@@ -17,7 +17,6 @@ public interface JssTypes {
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
-  IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
@@ -91,9 +90,6 @@ public interface JssTypes {
       }
       else if (type == IDIOM_STATEMENT) {
         return new JssIdiomStatementNode(node);
-      }
-      else if (type == IDIOM_SYMBOL) {
-        return new JssIdiomSymbolNode(node);
       }
       else if (type == KV_PAIR) {
         return new JssKvPairNode(node);

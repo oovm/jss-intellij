@@ -87,9 +87,10 @@ private properties_inner ::=
 def_statement ::= ("def"|"define"|"definition") properties_key [type_hint] [properties_block];
 // ---------------------------------------------------------------------------------------------------------------------
 // $schema: https://json-schema.org/draft/2020-12/schema
-idiom_statement ::= idiom_mark idiom_symbol [COLON] value;
+idiom_statement ::= idiom_mark identifier [COLON] value {
+    mixin = "jss.intellij.language.mixin.MixinIdiom"
+};
 idiom_mark ::= DOLLAR;
-idiom_symbol ::= SYMBOL;
 // ---------------------------------------------------------------------------------------------------------------------
 // <KEY>: <VALUE>
 anno_statement ::= anno_key set value;

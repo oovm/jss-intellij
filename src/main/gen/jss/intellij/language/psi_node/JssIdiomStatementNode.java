@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinIdiom;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssIdiomStatementNode extends ASTWrapperPsiElement implements JssIdiomStatement {
+public class JssIdiomStatementNode extends MixinIdiom implements JssIdiomStatement {
 
   public JssIdiomStatementNode(@NotNull ASTNode node) {
     super(node);
@@ -30,14 +30,14 @@ public class JssIdiomStatementNode extends ASTWrapperPsiElement implements JssId
 
   @Override
   @NotNull
-  public JssIdiomMark getIdiomMark() {
-    return findNotNullChildByClass(JssIdiomMark.class);
+  public JssIdentifier getIdentifier() {
+    return findNotNullChildByClass(JssIdentifier.class);
   }
 
   @Override
   @NotNull
-  public JssIdiomSymbol getIdiomSymbol() {
-    return findNotNullChildByClass(JssIdiomSymbol.class);
+  public JssIdiomMark getIdiomMark() {
+    return findNotNullChildByClass(JssIdiomMark.class);
   }
 
   @Override

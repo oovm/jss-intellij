@@ -8,10 +8,10 @@ import com.intellij.psi.PsiElement;
 public interface JssIdiomStatement extends PsiElement {
 
   @NotNull
-  JssIdiomMark getIdiomMark();
+  JssIdentifier getIdentifier();
 
   @NotNull
-  JssIdiomSymbol getIdiomSymbol();
+  JssIdiomMark getIdiomMark();
 
   @NotNull
   JssValue getValue();
