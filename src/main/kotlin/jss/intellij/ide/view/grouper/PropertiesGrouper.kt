@@ -1,28 +1,19 @@
-// Copyright 2000-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
-package com.github.valkyrie.ide.view.grouper
+package jss.intellij.ide.view.grouper
 
-import com.github.valkyrie.ValkyrieBundle
+import com.intellij.icons.AllIcons
 import com.intellij.ide.util.treeView.AbstractTreeNode
 import com.intellij.ide.util.treeView.smartTree.*
-import com.intellij.psi.PsiElement
-import com.intellij.util.PlatformIcons
-import org.jetbrains.annotations.NonNls
+import jss.intellij.language.file.JssBundle
 
 object PropertiesGrouper : Grouper {
+    override fun getName(): String = "action.view.grouper.properties"
     override fun getPresentation(): ActionPresentation = ActionPresentationData(
-        ValkyrieBundle.message("view.PropertiesGrouper"),
-        "GGGGG",
-        PlatformIcons.ABSTRACT_CLASS_ICON
+        JssBundle.message(name),
+        null,
+        AllIcons.Nodes.AbstractClass
     )
 
-    override fun getName(): String {
-        return ValkyrieBundle.message("view.PropertiesGrouper")
-    }
-
-    override fun group(
-        parent: AbstractTreeNode<*>,
-        children: MutableCollection<TreeElement>,
-    ): MutableCollection<Group> {
+    override fun group(parent: AbstractTreeNode<*>, children: MutableCollection<TreeElement>): MutableCollection<Group> {
         return arrayListOf()
     }
 }
