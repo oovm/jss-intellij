@@ -1,7 +1,7 @@
 package jss.intellij.ide.matcher
 
 import jss.intellij.language.JssLanguage
-import jss.intellij.ide.file_view.JssFileType
+import jss.intellij.language.file.JssFileType
 import com.intellij.codeInsight.highlighting.PairedBraceMatcherAdapter
 import com.intellij.openapi.editor.highlighter.HighlighterIterator
 import com.intellij.openapi.fileTypes.FileType
@@ -19,7 +19,7 @@ class JssBraceMatcher : PairedBraceMatcherAdapter(BaseBraceMatcher(), JssLanguag
         fileType: FileType,
         left: Boolean
     ): Boolean {
-        if (fileType != JssFileType.INSTANCE) return false
+        if (fileType != JssFileType) return false
         val pair = findPair(left, iterator, fileText, fileType)
         return pair != null
     }

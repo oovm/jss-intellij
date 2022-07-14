@@ -1,7 +1,7 @@
 package jss.intellij.ide.todo
 
 import jss.intellij.language.psi.JssLexerAdapter
-import jss.intellij.ide.file_view.JssFile
+import jss.intellij.language.file.JssFile
 import jss.intellij.language.psi.JssParserDefinition
 import com.intellij.lexer.Lexer
 import com.intellij.psi.PsiFile

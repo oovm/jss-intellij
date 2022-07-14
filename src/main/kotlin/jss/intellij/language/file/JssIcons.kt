@@ -1,4 +1,4 @@
-package jss.intellij.ide.file_view
+package jss.intellij.language.file
 
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.util.IconLoader

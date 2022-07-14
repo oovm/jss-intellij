@@ -1,8 +1,8 @@
 package jss.intellij.ide.actions
 
-import jss.intellij.language.JssBundle
-import jss.intellij.ide.file_view.JssFileType
-import jss.intellij.ide.file_view.JssIcons
+import jss.intellij.language.file.JssBundle
+import jss.intellij.language.file.JssFileType
+import jss.intellij.language.file.JssIcons
 import com.intellij.ide.actions.CreateFileAction
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
@@ -48,7 +48,7 @@ fun createFromJson(source: JsonFile, name: String): PsiFile? {
         """${document.propertyList}
 """
     )
-    return PsiFileFactory.getInstance(source.project).createFileFromText(name, JssFileType.INSTANCE, buffer)
+    return PsiFileFactory.getInstance(source.project).createFileFromText(name, JssFileType, buffer)
 }
 
 fun tryGetJsonSchema(file: PsiFile): JsonObject? {

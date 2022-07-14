@@ -1,6 +1,6 @@
 package jss.intellij.ide.formatter
 
-import jss.intellij.ide.file_view.JssFile
+import jss.intellij.language.file.JssFile
 import com.intellij.lang.SmartEnterProcessorWithFixers
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement

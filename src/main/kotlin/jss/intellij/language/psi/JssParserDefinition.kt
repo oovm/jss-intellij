@@ -1,9 +1,8 @@
 package jss.intellij.language.psi
 
-import jss.intellij.ide.file_view.JssFile
+import jss.intellij.language.file.JssFile
 import jss.intellij.language.JssLanguage
 import jss.intellij.language.parser.JssParser
-import jss.intellij.language.psi.JssTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
 import com.intellij.lang.PsiParser

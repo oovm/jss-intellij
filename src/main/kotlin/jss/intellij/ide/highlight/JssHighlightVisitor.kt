@@ -1,6 +1,6 @@
 package jss.intellij.ide.highlight
 
-import jss.intellij.ide.file_view.JssFile
+import jss.intellij.language.file.JssFile
 import jss.intellij.language.psi.*
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType
@@ -21,8 +21,6 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         //
         val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
         highlight(prop, JssColor.SYM_SCHEMA)
-
-        super.visitSchemaStatement(o)
     }
 
 
@@ -35,8 +33,6 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         //
         val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
         highlight(prop, JssColor.SYM_PROP)
-
-        super.visitPropertiesStatement(o)
     }
 
     override fun visitDefStatement(o: JssDefStatement) {
@@ -48,8 +44,6 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         //
         val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
         highlight(prop, JssColor.SYM_PROP)
-
-        super.visitDefStatement(o)
     }
 
     override fun visitPropertiesMark(o: JssPropertiesMark) {
@@ -59,29 +53,20 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     override fun visitTypeHint(o: JssTypeHint) {
         val ty = o.lastChild;
         highlight(ty, JssColor.TYPE_HINT)
-
-        super.visitTypeHint(o)
     }
 
-    override fun visitIdiomMark(o: JssIdiomMark) {
-        highlight(o, JssColor.IDIOM_MARK)
+    override fun visitIdiomStatement(o: JssIdiomStatement) {
+        highlight(o.idiomMark, JssColor.IDIOM_MARK)
+        highlight(o.identifier, JssColor.IDIOM_SYMBOL)
     }
-
-    override fun visitIdiomSymbol(o: JssIdiomSymbol) {
-        highlight(o, JssColor.IDIOM_SYMBOL)
-    }
-
 
     override fun visitAnnoStatement(o: JssAnnoStatement) {
         highlight(o.firstChild, JssColor.SYM_ANNO)
-
-        super.visitAnnoStatement(o)
     }
 
 
     override fun visitKvPair(o: JssKvPair) {
         highlight(o.firstChild, JssColor.SYM_PROP)
-        super.visitKvPair(o)
     }
 
     override fun visitValue(o: JssValue) {

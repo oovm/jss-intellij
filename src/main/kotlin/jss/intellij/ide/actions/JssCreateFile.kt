@@ -1,7 +1,7 @@
 package jss.intellij.ide.actions
 
-import jss.intellij.language.JssBundle
-import jss.intellij.ide.file_view.JssIcons
+import jss.intellij.language.file.JssBundle
+import jss.intellij.language.file.JssIcons
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog.*
 import com.intellij.openapi.project.Project

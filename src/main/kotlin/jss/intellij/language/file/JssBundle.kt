@@ -1,4 +1,4 @@
-package jss.intellij.language
+package jss.intellij.language.file
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.Nls

@@ -1,6 +1,6 @@
 package jss.intellij.ide.highlight
 
-import jss.intellij.language.JssBundle
+import jss.intellij.language.file.JssBundle
 import com.intellij.lang.annotation.HighlightSeverity
 import com.intellij.openapi.editor.HighlighterColors
 import com.intellij.openapi.editor.colors.TextAttributesKey

@@ -1,7 +1,7 @@
 package jss.intellij.ide.highlight
 
-import jss.intellij.language.JssBundle
-import jss.intellij.ide.file_view.JssIcons
+import jss.intellij.language.file.JssBundle
+import jss.intellij.language.file.JssIcons
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 

@@ -12,12 +12,12 @@
 			name="JSS"
 			language="JSS"
 			extensions="jss"
-			implementationClass="jss.intellij.ide.file_view.JssFileType"
+			implementationClass="jss.intellij.language.file.JssFileType"
 			fieldName="INSTANCE"/>
 		<lang.parserDefinition
 			language="JSS"
 			implementationClass="jss.intellij.language.psi.JssParserDefinition"/>
-		<projectViewNestingRulesProvider implementation="jss.intellij.ide.file_view.JssFileGroup"/>
+		<projectViewNestingRulesProvider implementation="jss.intellij.language.file.JssFileGroup"/>
 		<!-- Highlight -->
 		<additionalTextAttributes scheme="Default" file="colors/JssDefault.xml"/>
 		<additionalTextAttributes scheme="Darcula" file="colors/JssDarcula.xml"/>

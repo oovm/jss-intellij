@@ -1,6 +1,6 @@
 package jss.intellij.ide.matcher
 
-import jss.intellij.ide.file_view.JssFile
+import jss.intellij.language.file.JssFile
 import jss.intellij.language.psi.JssTypes
 import com.intellij.lang.ASTNode
 import com.intellij.lang.folding.CustomFoldingBuilder
