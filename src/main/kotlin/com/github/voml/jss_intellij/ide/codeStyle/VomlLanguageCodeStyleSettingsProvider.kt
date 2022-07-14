@@ -19,7 +19,8 @@ class VomlLanguageCodeStyleSettingsProvider : LanguageCodeStyleSettingsProvider(
             modelSettings,
             configurableDisplayName
         ) {
-            override fun createPanel(settings: CodeStyleSettings?) = VomlCodeStyleMainPanel(currentSettings, settings)
+            override fun createPanel(settings: CodeStyleSettings?) =
+                settings?.let { VomlCodeStyleMainPanel(currentSettings, it) }
         }
     }
 

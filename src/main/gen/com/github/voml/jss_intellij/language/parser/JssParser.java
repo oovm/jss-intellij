@@ -4,7 +4,7 @@ package com.github.voml.jss_intellij.language.parser;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
 import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
-import static com.github.voml.jss_intellij.psi.JssParserUtil.*;
+import static com.github.voml.jss_intellij.language.psi.JssParserUtil.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;

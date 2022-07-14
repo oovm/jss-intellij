@@ -30,17 +30,17 @@ class JssConvertJson : CreateFileAction(name, description, JssIcons.FILE) {
 
 
 
-    override fun create(newName: String, directory: PsiDirectory?): Array<PsiElement> {
-        val mkdirs = MkDirs(newName, directory!!)
-        val array = when (sourceFile) {
-            is JsonFile -> createFromJson(sourceFile as JsonFile, newName)
-            else -> null
-        }
-        mkdirs.directory.add(array!!.originalElement)
-        return arrayOf(WriteAction.compute<PsiFile, RuntimeException> {
-            array
-        })
-    }
+//    override fun create(newName: String, directory: PsiDirectory?): Array<PsiElement> {
+//        val mkdirs = MkDirs(newName, directory!!)
+//        val array = when (sourceFile) {
+//            is JsonFile -> createFromJson(sourceFile as JsonFile, newName)
+//            else -> null
+//        }
+//        mkdirs.directory.add(array!!.originalElement)
+//        return arrayOf(WriteAction.compute<PsiFile, RuntimeException> {
+//            array
+//        })
+//    }
 }
 
 

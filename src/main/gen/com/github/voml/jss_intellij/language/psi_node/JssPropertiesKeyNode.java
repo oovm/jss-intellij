@@ -8,10 +8,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import com.github.voml.jss_intellij.language.mixin.JssPropertiesKeyMixin;
 import com.github.voml.jss_intellij.language.psi.*;
 
-public class JssPropertiesKeyNode extends ASTWrapperPsiElement implements JssPropertiesKey {
+public class JssPropertiesKeyNode extends JssPropertiesKeyMixin implements JssPropertiesKey {
 
   public JssPropertiesKeyNode(@NotNull ASTNode node) {
     super(node);

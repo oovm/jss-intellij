@@ -2,15 +2,6 @@
 	<id>com.github.voml.jss_intellij</id>
 	<name>JSS Support</name>
 	<vendor>voml</vendor>
-
-	<description><![CDATA[
-Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
-
-## Features
-- Syntax Highlight
-- Braces Matcher
-    ]]></description>
-
 	<!-- Product and plugin compatibility requirements -->
 	<!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
 	<depends>com.intellij.modules.platform</depends>
@@ -53,6 +44,7 @@ Intellij plugin for [VOML](https://github.com/voml), support all IDEs.
 		/>
 		<!-- Document -->
 		<!--documentationProvider implementation="com.github.voml.jss_intellij.ide.doc.JssDocumentationExtender"-->
+		<psi.referenceContributor implementation="com.github.voml.jss_intellij.ide.doc.JssUrlReferenceContributor"/>
 		<lang.documentationProvider
 			language="JSS"
 			implementationClass="com.github.voml.jss_intellij.ide.doc.JssDocumentationProvider"
