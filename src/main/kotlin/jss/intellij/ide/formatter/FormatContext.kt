@@ -7,11 +7,11 @@ import com.intellij.psi.tree.TokenSet
 import jss.intellij.language.JssLanguage
 import jss.intellij.language.psi.JssTypes
 
-data class JssFormatterContext(val commonSettings: CommonCodeStyleSettings, val spacingBuilder: SpacingBuilder) {
+data class FormatContext(val commonSettings: CommonCodeStyleSettings, val spacingBuilder: SpacingBuilder) {
     companion object {
-        fun create(settings: CodeStyleSettings): JssFormatterContext {
+        fun create(settings: CodeStyleSettings): FormatContext {
             val commonSettings = settings.getCommonSettings(JssLanguage)
-            return JssFormatterContext(commonSettings, createSpacingBuilder(commonSettings))
+            return FormatContext(commonSettings, createSpacingBuilder(commonSettings))
         }
 
         private val remove_space_before = TokenSet.create(
@@ -25,7 +25,7 @@ data class JssFormatterContext(val commonSettings: CommonCodeStyleSettings, val 
             JssTypes.BRACKET_L,
             JssTypes.COLON,
         )
-        private val remove_space_newline_after = TokenSet.create(JssTypes.IDIOM_MARK, JssTypes.PROPERTIES_MARK)
+        private val remove_space_newline_after = TokenSet.create(JssTypes.IDIOM_MARK, JssTypes.DOT)
 
         private val separators = TokenSet.create(JssTypes.COMMA, JssTypes.SEMICOLON)
 

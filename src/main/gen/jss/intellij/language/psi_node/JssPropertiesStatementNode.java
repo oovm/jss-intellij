@@ -42,8 +42,8 @@ public class JssPropertiesStatementNode extends MixinProperty implements JssProp
 
   @Override
   @NotNull
-  public JssPropertiesMark getPropertiesMark() {
-    return findNotNullChildByClass(JssPropertiesMark.class);
+  public JssProperty getProperty() {
+    return findNotNullChildByClass(JssProperty.class);
   }
 
   @Override

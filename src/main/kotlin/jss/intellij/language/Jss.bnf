@@ -56,30 +56,32 @@ private statement ::=
     schema_statement
   | properties_statement
   | def_statement
-  | COMMENT_DOCUMENT
+//  | COMMENT_DOCUMENT
   | object
   | ignore;
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= schema identifier [type_hint] <<brace_block properties_inner ignore>> {
+schema_statement ::= schema identifier [type_hint] schema_block {
     mixin = "jss.intellij.language.mixin.MixinSchema"
 };
+private schema_block ::= <<brace_block properties_inner ignore>>
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= properties_mark properties_key [type_hint] [properties_block] {
+properties_statement ::= property properties_key [type_hint] [properties_block] {
     mixin = "jss.intellij.language.mixin.MixinProperty"
 };
 properties_key ::= STRING | SYMBOL
-properties_mark ::= "properties" | "property" | "prop"| "field" | DOT;
+property ::= "properties" | "property" | "prop" | "field" | DOT;
+property_mark ::= "properties" | "property" | "prop" | "field";
+
 private properties_block ::= <<brace_block properties_inner ignore>>;
 
 private properties_inner ::=
     idiom_statement
   | properties_statement
   | anno_statement
-  | COMMENT_DOCUMENT
   | kv_pair // consider as anno
   ;
 // ---------------------------------------------------------------------------------------------------------------------

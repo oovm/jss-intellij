@@ -12,14 +12,14 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssPropertiesMarkNode extends ASTWrapperPsiElement implements JssPropertiesMark {
+public class JssPropertyNode extends ASTWrapperPsiElement implements JssProperty {
 
-  public JssPropertiesMarkNode(@NotNull ASTNode node) {
+  public JssPropertyNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesMark(this);
+    visitor.visitProperty(this);
   }
 
   @Override

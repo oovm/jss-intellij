@@ -10,6 +10,7 @@ import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiFile
 import com.intellij.psi.util.elementType
 import com.intellij.psi.util.nextLeaf
+import jss.intellij.language.psi_node.JssPropertiesStatementNode
 
 class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     private var infoHolder: HighlightInfoHolder? = null
@@ -24,16 +25,7 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
     }
 
 
-    override fun visitPropertiesStatement(o: JssPropertiesStatement) {
-        //
-        val head = o.firstChild;
-        when (head.elementType) {
-            JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
-        }
-        //
-        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
-        highlight(prop, JssColor.SYM_PROP)
-    }
+
 
     override fun visitDefStatement(o: JssDefStatement) {
         //
@@ -46,13 +38,21 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
         highlight(prop, JssColor.SYM_PROP)
     }
 
-    override fun visitPropertiesMark(o: JssPropertiesMark) {
-        highlight(o, JssColor.PROP_MARK)
-    }
-
     override fun visitTypeHint(o: JssTypeHint) {
         val ty = o.lastChild;
         highlight(ty, JssColor.TYPE_HINT)
+    }
+
+    override fun visitPropertiesStatement(o: JssPropertiesStatement) {
+        val node = o as JssPropertiesStatementNode
+        //
+        val head = o.firstChild;
+        when (head.elementType) {
+            JssTypes.SYMBOL -> highlight(head, JssColor.KEYWORD)
+        }
+        //
+        val prop = head.nextLeaf { it.elementType == JssTypes.SYMBOL }!!
+        highlight(prop, JssColor.SYM_PROP)
     }
 
     override fun visitIdiomStatement(o: JssIdiomStatement) {

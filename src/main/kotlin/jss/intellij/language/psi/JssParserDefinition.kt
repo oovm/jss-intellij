@@ -33,6 +33,10 @@ object JssParserDefinition : ParserDefinition {
         JssTypes.STRING_MULTI
     )
 
+    override fun getWhitespaceTokens(): TokenSet {
+        return super.getWhitespaceTokens()
+    }
+
     override fun createElement(node: ASTNode): PsiElement = JssTypes.Factory.createElement(node)
 
     override fun createFile(viewProvider: FileViewProvider): PsiFile = JssFileNode(viewProvider)

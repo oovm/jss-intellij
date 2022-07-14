@@ -4,9 +4,10 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.lang.ASTNode
 import com.intellij.navigation.ItemPresentation
+import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
-import jss.intellij.ide.highlight.JssColor
+import com.intellij.psi.PsiWhiteSpace
 import jss.intellij.ide.view.JssViewElement
 import javax.swing.Icon
 
@@ -42,5 +43,22 @@ abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
 
     open fun getChildrenView(): Array<JssViewElement> {
         return arrayOf()
+    }
+
+    open fun findDocumentation(): Array<PsiComment> {
+        val out = mutableListOf<PsiComment>()
+        var now = this.prevSibling
+        while (now != null) {
+            when (now) {
+                is PsiComment -> when {
+                    now.text.startsWith("///") -> out.add(now)
+                    else -> break
+                }
+                is PsiWhiteSpace -> continue
+                else -> break
+            }
+            now = now.prevSibling
+        }
+        return out.toTypedArray()
     }
 }

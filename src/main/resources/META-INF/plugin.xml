@@ -33,7 +33,7 @@
 		<!-- Formatter -->
 		<lang.formatter
 			language="JSS"
-			implementationClass="jss.intellij.ide.formatter.JssFormattingModelBuilder"/>
+			implementationClass="jss.intellij.ide.formatter.FormatBuilder"/>
 		<lang.commenter
 			language="JSS"
 			implementationClass="jss.intellij.ide.formatter.JssCommenter"/>
@@ -45,7 +45,7 @@
 		<!--		<psi.referenceContributor implementation="jss.intellij.ide.doc.JssUrlReferenceContributor"/>-->
 		<lang.documentationProvider
 			language="JSS"
-			implementationClass="jss.intellij.ide.doc.JssDocumentationProvider"/>
+			implementationClass="jss.intellij.ide.doc.DocumentationProvider"/>
 		<lang.braceMatcher
 			language="JSS"
 			implementationClass="jss.intellij.ide.matcher.JssBraceMatcher"/>

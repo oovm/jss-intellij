@@ -3,9 +3,8 @@
  * found in the LICENSE file.
  */
 
-package org.rust.toml.resolve
+package jss.intellij.ide.doc
 
-import jss.intellij.ide.doc.JssUrlReferenceProvider
 import jss.intellij.language.psi.JssUrlMaybeValid
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.patterns.PsiElementPattern

@@ -14,7 +14,7 @@ public interface JssPropertiesStatement extends PsiElement {
   JssPropertiesKey getPropertiesKey();
 
   @NotNull
-  JssPropertiesMark getPropertiesMark();
+  JssProperty getProperty();
 
   @Nullable
   JssTypeHint getTypeHint();
