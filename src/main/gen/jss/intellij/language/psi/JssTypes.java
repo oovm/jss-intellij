@@ -14,6 +14,7 @@ public interface JssTypes {
   IElementType BRACE_BLOCK = new JssElementType("BRACE_BLOCK");
   IElementType BRACKET_BLOCK = new JssElementType("BRACKET_BLOCK");
   IElementType DEF_STATEMENT = new JssElementType("DEF_STATEMENT");
+  IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
   IElementType IDIOM_SYMBOL = new JssElementType("IDIOM_SYMBOL");
@@ -25,6 +26,7 @@ public interface JssTypes {
   IElementType PROPERTIES_KEY = new JssElementType("PROPERTIES_KEY");
   IElementType PROPERTIES_MARK = new JssElementType("PROPERTIES_MARK");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
+  IElementType SCHEMA = new JssElementType("SCHEMA");
   IElementType SCHEMA_STATEMENT = new JssElementType("SCHEMA_STATEMENT");
   IElementType STRING_INLINE = new JssElementType("STRING_INLINE");
   IElementType STRING_MULTI = new JssElementType("STRING_MULTI");
@@ -81,6 +83,9 @@ public interface JssTypes {
       else if (type == DEF_STATEMENT) {
         return new JssDefStatementNode(node);
       }
+      else if (type == IDENTIFIER) {
+        return new JssIdentifierNode(node);
+      }
       else if (type == IDIOM_MARK) {
         return new JssIdiomMarkNode(node);
       }
@@ -113,6 +118,9 @@ public interface JssTypes {
       }
       else if (type == PROPERTIES_STATEMENT) {
         return new JssPropertiesStatementNode(node);
+      }
+      else if (type == SCHEMA) {
+        return new JssSchemaNode(node);
       }
       else if (type == SCHEMA_STATEMENT) {
         return new JssSchemaStatementNode(node);

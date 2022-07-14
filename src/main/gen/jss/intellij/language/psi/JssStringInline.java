@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssStringInline extends PsiElement {
 
-  @NotNull
-  PsiElement getString();
-
 }

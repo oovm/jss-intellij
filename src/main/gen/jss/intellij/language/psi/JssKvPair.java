@@ -13,13 +13,4 @@ public interface JssKvPair extends PsiElement {
   @NotNull
   JssValue getValue();
 
-  @Nullable
-  PsiElement getColon();
-
-  @Nullable
-  PsiElement getEq();
-
-  @Nullable
-  PsiElement getSymbol();
-
 }

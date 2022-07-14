@@ -28,10 +28,4 @@ public class JssPropertiesMarkNode extends ASTWrapperPsiElement implements JssPr
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getDot() {
-    return findNotNullChildByType(DOT);
-  }
-
 }

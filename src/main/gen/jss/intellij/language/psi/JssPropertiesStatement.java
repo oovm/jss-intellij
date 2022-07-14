@@ -16,7 +16,4 @@ public interface JssPropertiesStatement extends PsiElement {
   @Nullable
   JssTypeHint getTypeHint();
 
-  @Nullable
-  PsiElement getDot();
-
 }

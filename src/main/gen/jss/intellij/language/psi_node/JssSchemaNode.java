@@ -12,38 +12,20 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssPropertiesStatementNode extends ASTWrapperPsiElement implements JssPropertiesStatement {
+public class JssSchemaNode extends ASTWrapperPsiElement implements JssSchema {
 
-  public JssPropertiesStatementNode(@NotNull ASTNode node) {
+  public JssSchemaNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesStatement(this);
+    visitor.visitSchema(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public JssPropertiesBlock getPropertiesBlock() {
-    return findChildByClass(JssPropertiesBlock.class);
-  }
-
-  @Override
-  @NotNull
-  public JssPropertiesKey getPropertiesKey() {
-    return findNotNullChildByClass(JssPropertiesKey.class);
-  }
-
-  @Override
-  @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
   }
 
 }

@@ -16,7 +16,4 @@ public interface JssIdiomStatement extends PsiElement {
   @NotNull
   JssValue getValue();
 
-  @Nullable
-  PsiElement getColon();
-
 }

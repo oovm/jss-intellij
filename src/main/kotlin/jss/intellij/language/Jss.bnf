@@ -14,7 +14,7 @@
     tokenTypeClass = "jss.intellij.language.psi.JssElementType"
 
     psiImplUtilClass = "jss.intellij.language.mixin.NodeExtension"
-    generateTokenAccessors = true
+    generateTokenAccessors = false
 
     tokens = [
         // comment
@@ -62,9 +62,10 @@ private statement ::=
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>> {
+schema_statement ::= schema identifier [type_hint] <<brace_block properties_inner ignore>> {
     mixin = "jss.intellij.language.mixin.MixinSchema"
 };
+schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
 properties_statement ::= ("properties" | "property" | "prop"| "field" | DOT) properties_key [type_hint] [properties_block];
@@ -118,7 +119,8 @@ array ::= <<bracket_block value ignore>>;
 object ::= <<brace_block kv_pair ignore>>;
 kv_pair ::= (string_inline|SYMBOL) eq value;
 // ---------------------------------------------------------------------------------------------------------------------
-namespace ::= SYMBOL (DOT SYMBOL)*;
+namespace ::= identifier (DOT identifier)*;
+identifier ::= SYMBOL;
 // ---------------------------------------------------------------------------------------------------------------------
 // parenthesis ( )
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;

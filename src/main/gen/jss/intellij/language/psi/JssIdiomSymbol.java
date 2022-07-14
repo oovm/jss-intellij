@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssIdiomSymbol extends PsiElement {
 
-  @NotNull
-  PsiElement getSymbol();
-
 }

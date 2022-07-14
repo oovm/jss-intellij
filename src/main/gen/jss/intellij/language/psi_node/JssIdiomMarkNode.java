@@ -28,10 +28,4 @@ public class JssIdiomMarkNode extends ASTWrapperPsiElement implements JssIdiomMa
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getDollar() {
-    return findNotNullChildByType(DOLLAR);
-  }
-
 }

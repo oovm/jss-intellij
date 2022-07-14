@@ -31,6 +31,10 @@ public class JssVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitIdentifier(@NotNull JssIdentifier o) {
+    visitPsiElement(o);
+  }
+
   public void visitIdiomMark(@NotNull JssIdiomMark o) {
     visitPsiElement(o);
   }
@@ -72,6 +76,10 @@ public class JssVisitor extends PsiElementVisitor {
   }
 
   public void visitPropertiesStatement(@NotNull JssPropertiesStatement o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSchema(@NotNull JssSchema o) {
     visitPsiElement(o);
   }
 

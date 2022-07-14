@@ -28,4 +28,10 @@ public class JssNamespaceNode extends ASTWrapperPsiElement implements JssNamespa
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public List<JssIdentifier> getIdentifierList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, JssIdentifier.class);
+  }
+
 }

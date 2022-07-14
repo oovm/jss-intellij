@@ -7,10 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssBracketBlock extends PsiElement {
 
-  @NotNull
-  PsiElement getBracketL();
-
-  @NotNull
-  PsiElement getBracketR();
-
 }

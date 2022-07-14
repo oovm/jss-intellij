@@ -70,28 +70,4 @@ public class JssValueNode extends ASTWrapperPsiElement implements JssValue {
     return findChildByClass(JssUrlMaybeValid.class);
   }
 
-  @Override
-  @Nullable
-  public PsiElement getByte() {
-    return findChildByType(BYTE);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getDecimal() {
-    return findChildByType(DECIMAL);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getInteger() {
-    return findChildByType(INTEGER);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getSign() {
-    return findChildByType(SIGN);
-  }
-
 }

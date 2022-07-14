@@ -35,15 +35,21 @@ public class JssSchemaStatementNode extends MixinSchema implements JssSchemaStat
   }
 
   @Override
-  @Nullable
-  public JssTypeHint getTypeHint() {
-    return findChildByClass(JssTypeHint.class);
+  @NotNull
+  public JssIdentifier getIdentifier() {
+    return findNotNullChildByClass(JssIdentifier.class);
   }
 
   @Override
   @NotNull
-  public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
+  public JssSchema getSchema() {
+    return findNotNullChildByClass(JssSchema.class);
+  }
+
+  @Override
+  @Nullable
+  public JssTypeHint getTypeHint() {
+    return findChildByClass(JssTypeHint.class);
   }
 
 }

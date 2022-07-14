@@ -28,16 +28,4 @@ public class JssBracketBlockNode extends ASTWrapperPsiElement implements JssBrac
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getBracketL() {
-    return findNotNullChildByType(BRACKET_L);
-  }
-
-  @Override
-  @NotNull
-  public PsiElement getBracketR() {
-    return findNotNullChildByType(BRACKET_R);
-  }
-
 }

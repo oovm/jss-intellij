@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssUrlMaybeValid extends PsiElement {
 
-  @NotNull
-  PsiElement getUrl();
-
 }

@@ -46,10 +46,4 @@ public class JssIdiomStatementNode extends ASTWrapperPsiElement implements JssId
     return findNotNullChildByClass(JssValue.class);
   }
 
-  @Override
-  @Nullable
-  public PsiElement getColon() {
-    return findChildByType(COLON);
-  }
-
 }

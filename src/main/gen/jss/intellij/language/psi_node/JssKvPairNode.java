@@ -40,22 +40,4 @@ public class JssKvPairNode extends ASTWrapperPsiElement implements JssKvPair {
     return findNotNullChildByClass(JssValue.class);
   }
 
-  @Override
-  @Nullable
-  public PsiElement getColon() {
-    return findChildByType(COLON);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getEq() {
-    return findChildByType(EQ);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getSymbol() {
-    return findChildByType(SYMBOL);
-  }
-
 }

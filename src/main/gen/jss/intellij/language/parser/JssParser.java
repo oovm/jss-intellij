@@ -244,6 +244,18 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // SYMBOL
+  public static boolean identifier(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "identifier")) return false;
+    if (!nextTokenIs(b, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, SYMBOL);
+    exit_section_(b, m, IDENTIFIER, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // DOLLAR
   public static boolean idiom_mark(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "idiom_mark")) return false;
@@ -324,19 +336,19 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // SYMBOL (DOT SYMBOL)*
+  // identifier (DOT identifier)*
   public static boolean namespace(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "namespace")) return false;
     if (!nextTokenIs(b, SYMBOL)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, SYMBOL);
+    r = identifier(b, l + 1);
     r = r && namespace_1(b, l + 1);
     exit_section_(b, m, NAMESPACE, r);
     return r;
   }
 
-  // (DOT SYMBOL)*
+  // (DOT identifier)*
   private static boolean namespace_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "namespace_1")) return false;
     while (true) {
@@ -347,12 +359,13 @@ public class JssParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // DOT SYMBOL
+  // DOT identifier
   private static boolean namespace_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "namespace_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, DOT, SYMBOL);
+    r = consumeToken(b, DOT);
+    r = r && identifier(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -546,13 +559,24 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>>
+  // "schema"
+  public static boolean schema(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "schema")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, SCHEMA, "<schema>");
+    r = consumeToken(b, "schema");
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // schema identifier [type_hint] <<brace_block properties_inner ignore>>
   public static boolean schema_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "schema_statement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, SCHEMA_STATEMENT, "<schema statement>");
-    r = consumeToken(b, "schema");
-    r = r && consumeToken(b, SYMBOL);
+    r = schema(b, l + 1);
+    r = r && identifier(b, l + 1);
     r = r && schema_statement_2(b, l + 1);
     r = r && brace_block(b, l + 1, JssParser::properties_inner, JssParser::ignore);
     exit_section_(b, l, m, r, false, null);

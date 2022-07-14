@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssPropertiesMark extends PsiElement {
 
-  @NotNull
-  PsiElement getDot();
-
 }

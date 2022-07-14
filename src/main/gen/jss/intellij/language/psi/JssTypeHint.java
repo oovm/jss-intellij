@@ -7,13 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssTypeHint extends PsiElement {
 
-  @NotNull
-  PsiElement getColon();
-
-  @Nullable
-  PsiElement getString();
-
-  @Nullable
-  PsiElement getSymbol();
-
 }

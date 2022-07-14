@@ -7,10 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface JssPropertiesKey extends PsiElement {
 
-  @Nullable
-  PsiElement getString();
-
-  @Nullable
-  PsiElement getSymbol();
-
 }

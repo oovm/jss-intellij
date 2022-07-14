@@ -10,13 +10,4 @@ public interface JssAnnoStatement extends PsiElement {
   @NotNull
   JssValue getValue();
 
-  @NotNull
-  PsiElement getColon();
-
-  @Nullable
-  PsiElement getString();
-
-  @Nullable
-  PsiElement getSymbol();
-
 }

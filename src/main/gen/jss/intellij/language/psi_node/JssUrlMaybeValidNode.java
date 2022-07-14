@@ -28,10 +28,4 @@ public class JssUrlMaybeValidNode extends ASTWrapperPsiElement implements JssUrl
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getUrl() {
-    return findNotNullChildByType(URL);
-  }
-
 }

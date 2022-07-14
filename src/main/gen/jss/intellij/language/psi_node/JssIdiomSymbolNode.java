@@ -28,10 +28,4 @@ public class JssIdiomSymbolNode extends ASTWrapperPsiElement implements JssIdiom
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getSymbol() {
-    return findNotNullChildByType(SYMBOL);
-  }
-
 }

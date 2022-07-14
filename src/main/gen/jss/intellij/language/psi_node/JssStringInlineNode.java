@@ -28,10 +28,4 @@ public class JssStringInlineNode extends ASTWrapperPsiElement implements JssStri
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getString() {
-    return findNotNullChildByType(STRING);
-  }
-
 }

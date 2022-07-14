@@ -28,22 +28,4 @@ public class JssTypeHintNode extends ASTWrapperPsiElement implements JssTypeHint
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public PsiElement getColon() {
-    return findNotNullChildByType(COLON);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getString() {
-    return findChildByType(STRING);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getSymbol() {
-    return findChildByType(SYMBOL);
-  }
-
 }

@@ -28,16 +28,4 @@ public interface JssValue extends PsiElement {
   @Nullable
   JssUrlMaybeValid getUrlMaybeValid();
 
-  @Nullable
-  PsiElement getByte();
-
-  @Nullable
-  PsiElement getDecimal();
-
-  @Nullable
-  PsiElement getInteger();
-
-  @Nullable
-  PsiElement getSign();
-
 }
