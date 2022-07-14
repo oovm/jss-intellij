@@ -4,7 +4,7 @@ properties NAME: TYPE {
 }
 
 /// ## Case 1.2: Minimun
-.NAME: TYPE{
+.NAME: TYPE {
 
 }
 

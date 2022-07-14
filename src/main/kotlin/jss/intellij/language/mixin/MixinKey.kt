@@ -31,7 +31,7 @@ open class MixinKey(node: ASTNode) : ASTWrapperPsiElement(node),
     }
 
     override fun getNameIdentifier(): PsiElement? {
-        TODO("Not yet implemented")
+        return null
     }
 
 }

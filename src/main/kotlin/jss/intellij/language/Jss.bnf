@@ -11,24 +11,23 @@
 
     elementTypeHolderClass = "jss.intellij.language.psi.JssTypes"
     elementTypeClass = "jss.intellij.language.psi.JssElementType"
-    tokenTypeClass = "jss.intellij.language.psi.JssTokenType"
+    tokenTypeClass = "jss.intellij.language.psi.JssElementType"
 
-    psiImplUtilClass = "jss.intellij.language.psi_node.JssPsiImplUtil"
+    psiImplUtilClass = "jss.intellij.language.mixin.NodeExtension"
+    generateTokenAccessors = true
 
     tokens = [
         // comment
-        COMMENT_DOCUMENT = 'regexp:(///)[^\r\n]*'
-        COMMENT = 'regexp:(//)[^\r\n]*'
-        COMMENT_BLOCK = 'regexp:[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]'
-
+        COMMENT_DOCUMENT = 'DocumentComment'
+        COMMENT = 'DocumentInline'
+        COMMENT_BLOCK = 'DocumentBlock'
         // literal
-        URL = 'regexp: [A-Za-z0-9]+://[\-\p{XID_Continue}./?&#]+'
-        SYMBOL = 'regexp:[\p{XID_Start}_][\p{XID_Continue}_]*'
-        STRING = 'regexp:"([^"\\]|\\.)*"'
-
-        BYTE = 'regexp:(0[bBoOxXfF][0-9A-Fa-f][0-9A-Fa-f_]*)'
-        INTEGER = 'regexp:(0|[1-9][0-9_]*)'
-        DECIMAL = 'regexp:([0-9]+\.[0-9]*([*][*][0-9]+)?)|(\.[0-9]+([Ee][0-9]+)?)'
+        URL = 'Url'
+        SYMBOL = 'Symbol'
+        STRING = 'String'
+        BYTE = 'Byte'
+        INTEGER = 'Integer'
+        DECIMAL = 'Decimal'
         SIGN = 'regexp:[+-]'
 
         PARENTHESIS_L = '('
@@ -48,8 +47,6 @@
         DOT = '.'
         STAR = '*'
         AT = '@'
-//      SPACE='regexp:\s+'
-//      ANY = 'regexp:.'
     ]
 }
 
@@ -65,14 +62,15 @@ private statement ::=
 private ignore ::= SEMICOLON | COMMA;
 // ---------------------------------------------------------------------------------------------------------------------
 // schema <ID>: <TYPE> { }
-schema_statement ::= "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>>;
+schema_statement ::= "schema" SYMBOL [type_hint] <<brace_block properties_inner ignore>> {
+    mixin = "jss.intellij.language.mixin.MixinSchema"
+};
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
 properties_statement ::= ("properties" | "property" | "prop"| "field" | DOT) properties_key [type_hint] [properties_block];
 properties_key ::= STRING | SYMBOL {
     mixin = "jss.intellij.language.mixin.MixinKey"
 }
-
 // used in formatter
 properties_mark ::= DOT;
 properties_block ::= <<brace_block properties_inner ignore>>;
@@ -119,6 +117,8 @@ string_multi ::= STRING;
 array ::= <<bracket_block value ignore>>;
 object ::= <<brace_block kv_pair ignore>>;
 kv_pair ::= (string_inline|SYMBOL) eq value;
+// ---------------------------------------------------------------------------------------------------------------------
+namespace ::= SYMBOL (DOT SYMBOL)*;
 // ---------------------------------------------------------------------------------------------------------------------
 // parenthesis ( )
 private meta parenthesis ::= PARENTHESIS_L <<param>> PARENTHESIS_R;
