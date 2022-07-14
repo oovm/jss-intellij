@@ -8,5 +8,5 @@ object JssIcons {
     val SCHEMA = AllIcons.Actions.DependencyAnalyzer
     val IDIOM = AllIcons.Actions.ShortcutFilter
     val PROPERTY = AllIcons.Nodes.Property
-    val ANNOTATION = AllIcons.Nodes.Annotationtype
+    val ANNOTATION = AllIcons.Nodes.ObjectTypeAttribute
 }

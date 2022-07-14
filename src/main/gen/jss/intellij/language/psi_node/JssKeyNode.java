@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinKey;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssKeyNode extends ASTWrapperPsiElement implements JssKey {
+public class JssKeyNode extends MixinKey implements JssKey {
 
   public JssKeyNode(@NotNull ASTNode node) {
     super(node);

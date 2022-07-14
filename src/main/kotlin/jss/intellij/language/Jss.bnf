@@ -96,7 +96,17 @@ anno_statement ::= key set value {
     mixin = "jss.intellij.language.mixin.MixinAnnotation"
 };
 private set ::= COLON;
-key ::= STRING | SYMBOL;
+key ::= STRING | SYMBOL {
+    mixin = "jss.intellij.language.mixin.MixinKey"
+};
+// ---------------------------------------------------------------------------------------------------------------------
+value ::= null | boolean | num | str | array | object | url_maybe_valid {
+    mixin = "jss.intellij.language.mixin.MixinValue"
+};
+null ::= "null";
+boolean ::= "true" | "false";
+// used in annotation
+url_maybe_valid ::= URL;
 // ---------------------------------------------------------------------------------------------------------------------
 type_hint ::= COLON type_symbol;
 private type_symbol ::= SYMBOL | STRING;
@@ -104,12 +114,6 @@ private type_symbol ::= SYMBOL | STRING;
 //symbol_path ::= key (DOT key)*;
 //private key ::= string_inline | key_symbol | INTEGER;
 private eq ::= EQ | COLON;
-// ---------------------------------------------------------------------------------------------------------------------
-value ::= null | boolean | num | str | array | object | url_maybe_valid;
-null ::= "null";
-boolean ::= "true" | "false";
-// used in annotation
-url_maybe_valid ::= URL;
 // ---------------------------------------------------------------------------------------------------------------------
 private num ::= [SIGN] (INTEGER | DECIMAL) | [SIGN] BYTE;
 // ---------------------------------------------------------------------------------------------------------------------

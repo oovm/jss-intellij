@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinValue;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssValueNode extends ASTWrapperPsiElement implements JssValue {
+public class JssValueNode extends MixinValue implements JssValue {
 
   public JssValueNode(@NotNull ASTNode node) {
     super(node);

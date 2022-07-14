@@ -17,7 +17,7 @@ abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
 
     abstract override fun getNameIdentifier(): PsiElement;
 
-    override fun getName(): String? {
+    override fun getName(): String {
         return nameIdentifier.text
     }
 
