@@ -68,12 +68,11 @@ schema_statement ::= schema identifier [type_hint] <<brace_block properties_inne
 schema ::= "schema"
 // ---------------------------------------------------------------------------------------------------------------------
 // properties <ID>: <TYPE> { }
-properties_statement ::= ("properties" | "property" | "prop"| "field" | DOT) properties_key [type_hint] [properties_block];
-properties_key ::= STRING | SYMBOL {
-    mixin = "jss.intellij.language.mixin.MixinKey"
-}
-// used in formatter
-properties_mark ::= DOT;
+properties_statement ::= properties_mark properties_key [type_hint] [properties_block] {
+    mixin = "jss.intellij.language.mixin.MixinProperty"
+};
+properties_key ::= STRING | SYMBOL
+properties_mark ::= "properties" | "property" | "prop"| "field" | DOT;
 properties_block ::= <<brace_block properties_inner ignore>>;
 
 private properties_inner ::=

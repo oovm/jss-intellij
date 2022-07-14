@@ -14,7 +14,7 @@ import com.intellij.psi.impl.source.tree.LeafPsiElement
 import com.intellij.psi.impl.source.tree.PsiWhiteSpaceImpl
 
 
-class JssStructureProvider : SelectableTreeStructureProvider, DumbAware {
+class StructureProvider : SelectableTreeStructureProvider, DumbAware {
     override fun modify(
         parent: AbstractTreeNode<*>,
         children: MutableCollection<AbstractTreeNode<*>>,

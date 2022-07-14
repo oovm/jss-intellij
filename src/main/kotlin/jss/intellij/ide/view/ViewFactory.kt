@@ -7,14 +7,13 @@ import com.intellij.lang.PsiStructureViewFactory
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiFile
 
-class JssViewFactory : PsiStructureViewFactory {
+class ViewFactory : PsiStructureViewFactory {
     override fun getStructureViewBuilder(psiFile: PsiFile): StructureViewBuilder {
-        class Builder : TreeBasedStructureViewBuilder() {
+        return object : TreeBasedStructureViewBuilder() {
             override fun createStructureViewModel(editor: Editor?): StructureViewModel {
-                return JssViewModel(psiFile)
+                return ViewModel(psiFile)
             }
         }
-        return Builder()
     }
 }
 

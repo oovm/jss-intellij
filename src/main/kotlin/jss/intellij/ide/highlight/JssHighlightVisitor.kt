@@ -1,6 +1,6 @@
 package jss.intellij.ide.highlight
 
-import jss.intellij.language.file.JssFile
+import jss.intellij.language.file.JssFileNode
 import jss.intellij.language.psi.*
 import com.intellij.codeInsight.daemon.impl.HighlightInfo
 import com.intellij.codeInsight.daemon.impl.HighlightInfoType
@@ -100,7 +100,7 @@ class JssHighlightVisitor : JssVisitor(), HighlightVisitor {
 
     override fun clone(): HighlightVisitor = JssHighlightVisitor()
 
-    override fun suitableForFile(file: PsiFile): Boolean = file is JssFile
+    override fun suitableForFile(file: PsiFile): Boolean = file is JssFileNode
 
     override fun visit(element: PsiElement) = element.accept(this)
 }

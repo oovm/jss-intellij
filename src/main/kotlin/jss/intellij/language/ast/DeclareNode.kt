@@ -1,17 +1,17 @@
 package jss.intellij.language.ast
 
 import com.intellij.extapi.psi.ASTWrapperPsiElement
-import com.intellij.ide.util.treeView.smartTree.TreeElement
+import com.intellij.ide.projectView.PresentationData
 import com.intellij.lang.ASTNode
 import com.intellij.navigation.ItemPresentation
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiNameIdentifierOwner
+import jss.intellij.ide.highlight.JssColor
 import jss.intellij.ide.view.JssViewElement
 import javax.swing.Icon
 
 abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
-    PsiNameIdentifierOwner,
-    ItemPresentation {
+    PsiNameIdentifierOwner {
 
     abstract override fun getOriginalElement(): PsiElement;
 
@@ -31,15 +31,12 @@ abstract class DeclareNode(node: ASTNode) : ASTWrapperPsiElement(node),
         return nameIdentifier.textOffset
     }
 
-    override fun getPresentation(): ItemPresentation = this
-
-    override fun getPresentableText(): String? {
-        return this.name
-    }
-
-    final override fun getIcon(unused: Boolean): Icon {
-        return this.getIcon(0)
-    }
+    override fun getPresentation(): ItemPresentation = PresentationData(
+        this.name,
+        "",
+        this.getIcon(0),
+        null
+    )
 
     abstract override fun getIcon(flags: Int): Icon;
 

@@ -8,11 +8,11 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static jss.intellij.language.psi.JssTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import jss.intellij.language.mixin.MixinProperty;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssPropertiesStatementNode extends ASTWrapperPsiElement implements JssPropertiesStatement {
+public class JssPropertiesStatementNode extends MixinProperty implements JssPropertiesStatement {
 
   public JssPropertiesStatementNode(@NotNull ASTNode node) {
     super(node);
@@ -38,6 +38,12 @@ public class JssPropertiesStatementNode extends ASTWrapperPsiElement implements 
   @NotNull
   public JssPropertiesKey getPropertiesKey() {
     return findNotNullChildByClass(JssPropertiesKey.class);
+  }
+
+  @Override
+  @NotNull
+  public JssPropertiesMark getPropertiesMark() {
+    return findNotNullChildByClass(JssPropertiesMark.class);
   }
 
   @Override

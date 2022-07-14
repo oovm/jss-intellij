@@ -5,7 +5,7 @@ import com.intellij.ide.structureView.StructureViewTreeElement
 import com.intellij.openapi.editor.Editor
 import com.intellij.psi.PsiElement
 
-class JssViewExtension : StructureViewExtension {
+class ViewExtension : StructureViewExtension {
     override fun getType(): Class<out PsiElement> {
         TODO("Not yet implemented")
     }

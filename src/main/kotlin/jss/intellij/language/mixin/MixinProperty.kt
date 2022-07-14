@@ -7,17 +7,17 @@ import jss.intellij.ide.view.JssViewElement
 import jss.intellij.language.file.JssIcons
 import jss.intellij.language.ast.DeclareNode
 import jss.intellij.language.psi.searchChildrenOfType
-import jss.intellij.language.psi_node.JssSchemaStatementNode
+import jss.intellij.language.psi_node.JssPropertiesStatementNode
 import javax.swing.Icon
 
-open class MixinSchema(node: ASTNode) : DeclareNode(node) {
-    override fun getOriginalElement(): JssSchemaStatementNode {
-        return this as JssSchemaStatementNode
+open class MixinProperty(node: ASTNode) : DeclareNode(node) {
+    override fun getOriginalElement(): JssPropertiesStatementNode {
+        return this as JssPropertiesStatementNode
     }
     override fun getNameIdentifier(): PsiElement {
-       return originalElement.identifier
+       return originalElement.propertiesKey
     }
-    override fun getIcon(flags: Int): Icon = JssIcons.SCHEMA
+    override fun getIcon(flags: Int): Icon = JssIcons.PROPERTY
     override fun setName(name: String): PsiElement {
         TODO("Not yet implemented")
     }

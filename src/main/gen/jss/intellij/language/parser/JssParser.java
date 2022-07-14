@@ -495,40 +495,31 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // DOT
+  // "properties" | "property" | "prop"| "field" | DOT
   public static boolean properties_mark(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "properties_mark")) return false;
-    if (!nextTokenIs(b, DOT)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, DOT);
-    exit_section_(b, m, PROPERTIES_MARK, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // ("properties" | "property" | "prop"| "field" | DOT) properties_key [type_hint] [properties_block]
-  public static boolean properties_statement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "properties_statement")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, PROPERTIES_STATEMENT, "<properties statement>");
-    r = properties_statement_0(b, l + 1);
-    r = r && properties_key(b, l + 1);
-    r = r && properties_statement_2(b, l + 1);
-    r = r && properties_statement_3(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // "properties" | "property" | "prop"| "field" | DOT
-  private static boolean properties_statement_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "properties_statement_0")) return false;
-    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, PROPERTIES_MARK, "<properties mark>");
     r = consumeToken(b, "properties");
     if (!r) r = consumeToken(b, "property");
     if (!r) r = consumeToken(b, "prop");
     if (!r) r = consumeToken(b, "field");
     if (!r) r = consumeToken(b, DOT);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // properties_mark properties_key [type_hint] [properties_block]
+  public static boolean properties_statement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "properties_statement")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, PROPERTIES_STATEMENT, "<properties statement>");
+    r = properties_mark(b, l + 1);
+    r = r && properties_key(b, l + 1);
+    r = r && properties_statement_2(b, l + 1);
+    r = r && properties_statement_3(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

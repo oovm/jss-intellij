@@ -26,6 +26,10 @@
 		<lang.syntaxHighlighter
 			language="JSS"
 			implementationClass="jss.intellij.ide.highlight.JssSyntaxHighlighter"/>
+		<!-- View -->
+		<lang.psiStructureViewFactory
+			language="JSS"
+			implementationClass="jss.intellij.ide.view.ViewFactory"/>
 		<!-- Formatter -->
 		<lang.formatter
 			language="JSS"
