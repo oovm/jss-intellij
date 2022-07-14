@@ -30,8 +30,8 @@ public class JssPropertiesStatementNode extends MixinProperty implements JssProp
 
   @Override
   @Nullable
-  public JssPropertiesBlock getPropertiesBlock() {
-    return findChildByClass(JssPropertiesBlock.class);
+  public JssBraceBlock getBraceBlock() {
+    return findChildByClass(JssBraceBlock.class);
   }
 
   @Override

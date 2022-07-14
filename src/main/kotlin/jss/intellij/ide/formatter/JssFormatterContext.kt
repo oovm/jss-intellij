@@ -1,16 +1,13 @@
 package jss.intellij.ide.formatter
 
-import jss.intellij.language.JssLanguage
-import jss.intellij.language.psi.JssTypes
 import com.intellij.formatting.SpacingBuilder
 import com.intellij.psi.codeStyle.CodeStyleSettings
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings
 import com.intellij.psi.tree.TokenSet
+import jss.intellij.language.JssLanguage
+import jss.intellij.language.psi.JssTypes
 
-data class JssFormatterContext(
-    val commonSettings: CommonCodeStyleSettings,
-    val spacingBuilder: SpacingBuilder
-) {
+data class JssFormatterContext(val commonSettings: CommonCodeStyleSettings, val spacingBuilder: SpacingBuilder) {
     companion object {
         fun create(settings: CodeStyleSettings): JssFormatterContext {
             val commonSettings = settings.getCommonSettings(JssLanguage)
@@ -41,7 +38,7 @@ data class JssFormatterContext(
                 // k = v
                 .around(JssTypes.EQ).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
                 // SpacingBuilder { }
-                .before(JssTypes.PROPERTIES_BLOCK).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
+                .before(JssTypes.BRACE_BLOCK).spacing(1, 1, 0, commonSettings.KEEP_LINE_BREAKS, 0)
 
             return custom
                 .before(remove_space_before).spaceIf(false)

@@ -12,26 +12,20 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import jss.intellij.language.psi.*;
 import jss.intellij.language.mixin.NodeExtension;
 
-public class JssPropertiesBlockNode extends ASTWrapperPsiElement implements JssPropertiesBlock {
+public class JssKeyNode extends ASTWrapperPsiElement implements JssKey {
 
-  public JssPropertiesBlockNode(@NotNull ASTNode node) {
+  public JssKeyNode(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull JssVisitor visitor) {
-    visitor.visitPropertiesBlock(this);
+    visitor.visitKey(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof JssVisitor) accept((JssVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @NotNull
-  public JssBraceBlock getBraceBlock() {
-    return findNotNullChildByClass(JssBraceBlock.class);
   }
 
 }

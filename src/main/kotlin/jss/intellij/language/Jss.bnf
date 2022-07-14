@@ -73,7 +73,7 @@ properties_statement ::= properties_mark properties_key [type_hint] [properties_
 };
 properties_key ::= STRING | SYMBOL
 properties_mark ::= "properties" | "property" | "prop"| "field" | DOT;
-properties_block ::= <<brace_block properties_inner ignore>>;
+private properties_block ::= <<brace_block properties_inner ignore>>;
 
 private properties_inner ::=
     idiom_statement
@@ -92,9 +92,11 @@ idiom_statement ::= idiom_mark identifier [COLON] value {
 idiom_mark ::= DOLLAR;
 // ---------------------------------------------------------------------------------------------------------------------
 // <KEY>: <VALUE>
-anno_statement ::= anno_key set value;
+anno_statement ::= key set value {
+    mixin = "jss.intellij.language.mixin.MixinAnnotation"
+};
 private set ::= COLON;
-private anno_key ::= STRING | SYMBOL;
+key ::= STRING | SYMBOL;
 // ---------------------------------------------------------------------------------------------------------------------
 type_hint ::= COLON type_symbol;
 private type_symbol ::= SYMBOL | STRING;

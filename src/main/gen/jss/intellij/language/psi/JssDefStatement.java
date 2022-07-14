@@ -8,7 +8,7 @@ import com.intellij.psi.PsiElement;
 public interface JssDefStatement extends PsiElement {
 
   @Nullable
-  JssPropertiesBlock getPropertiesBlock();
+  JssBraceBlock getBraceBlock();
 
   @NotNull
   JssPropertiesKey getPropertiesKey();

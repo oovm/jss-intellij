@@ -23,7 +23,8 @@ open class MixinProperty(node: ASTNode) : DeclareNode(node) {
     }
 
     override fun getChildrenView(): Array<JssViewElement> {
-        return this.searchChildrenOfType(NavigatablePsiElement::class.java)
+        return originalElement.braceBlock
+            .searchChildrenOfType(NavigatablePsiElement::class.java)
             .map { JssViewElement(it) }
             .toTypedArray()
     }

@@ -30,8 +30,8 @@ public class JssDefStatementNode extends ASTWrapperPsiElement implements JssDefS
 
   @Override
   @Nullable
-  public JssPropertiesBlock getPropertiesBlock() {
-    return findChildByClass(JssPropertiesBlock.class);
+  public JssBraceBlock getBraceBlock() {
+    return findChildByClass(JssBraceBlock.class);
   }
 
   @Override

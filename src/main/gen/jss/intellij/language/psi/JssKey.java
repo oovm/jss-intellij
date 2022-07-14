@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface JssAnnoStatement extends PsiElement {
-
-  @NotNull
-  JssKey getKey();
-
-  @NotNull
-  JssValue getValue();
+public interface JssKey extends PsiElement {
 
 }

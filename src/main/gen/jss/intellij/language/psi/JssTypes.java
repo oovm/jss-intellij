@@ -17,11 +17,11 @@ public interface JssTypes {
   IElementType IDENTIFIER = new JssElementType("IDENTIFIER");
   IElementType IDIOM_MARK = new JssElementType("IDIOM_MARK");
   IElementType IDIOM_STATEMENT = new JssElementType("IDIOM_STATEMENT");
+  IElementType KEY = new JssElementType("KEY");
   IElementType KV_PAIR = new JssElementType("KV_PAIR");
   IElementType NAMESPACE = new JssElementType("NAMESPACE");
   IElementType NULL = new JssElementType("NULL");
   IElementType OBJECT = new JssElementType("OBJECT");
-  IElementType PROPERTIES_BLOCK = new JssElementType("PROPERTIES_BLOCK");
   IElementType PROPERTIES_KEY = new JssElementType("PROPERTIES_KEY");
   IElementType PROPERTIES_MARK = new JssElementType("PROPERTIES_MARK");
   IElementType PROPERTIES_STATEMENT = new JssElementType("PROPERTIES_STATEMENT");
@@ -91,6 +91,9 @@ public interface JssTypes {
       else if (type == IDIOM_STATEMENT) {
         return new JssIdiomStatementNode(node);
       }
+      else if (type == KEY) {
+        return new JssKeyNode(node);
+      }
       else if (type == KV_PAIR) {
         return new JssKvPairNode(node);
       }
@@ -102,9 +105,6 @@ public interface JssTypes {
       }
       else if (type == OBJECT) {
         return new JssObjectNode(node);
-      }
-      else if (type == PROPERTIES_BLOCK) {
-        return new JssPropertiesBlockNode(node);
       }
       else if (type == PROPERTIES_KEY) {
         return new JssPropertiesKeyNode(node);

@@ -48,24 +48,13 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // STRING | SYMBOL
-  static boolean anno_key(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "anno_key")) return false;
-    if (!nextTokenIs(b, "", STRING, SYMBOL)) return false;
-    boolean r;
-    r = consumeToken(b, STRING);
-    if (!r) r = consumeToken(b, SYMBOL);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // anno_key set value
+  // key set value
   public static boolean anno_statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "anno_statement")) return false;
     if (!nextTokenIs(b, "<anno statement>", STRING, SYMBOL)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ANNO_STATEMENT, "<anno statement>");
-    r = anno_key(b, l + 1);
+    r = key(b, l + 1);
     r = r && set(b, l + 1);
     r = r && value(b, l + 1);
     exit_section_(b, l, m, r, false, null);
@@ -301,6 +290,19 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // STRING | SYMBOL
+  public static boolean key(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "key")) return false;
+    if (!nextTokenIs(b, "<key>", STRING, SYMBOL)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, KEY, "<key>");
+    r = consumeToken(b, STRING);
+    if (!r) r = consumeToken(b, SYMBOL);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // (string_inline|SYMBOL) eq value
   public static boolean kv_pair(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "kv_pair")) return false;
@@ -454,14 +456,8 @@ public class JssParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // <<brace_block properties_inner ignore>>
-  public static boolean properties_block(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "properties_block")) return false;
-    if (!nextTokenIs(b, BRACE_L)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = brace_block(b, l + 1, JssParser::properties_inner, JssParser::ignore);
-    exit_section_(b, m, PROPERTIES_BLOCK, r);
-    return r;
+  static boolean properties_block(PsiBuilder b, int l) {
+    return brace_block(b, l + 1, JssParser::properties_inner, JssParser::ignore);
   }
 
   /* ********************************************************** */
