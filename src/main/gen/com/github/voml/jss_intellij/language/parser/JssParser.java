@@ -1,10 +1,10 @@
 // This is a generated file. Not intended for manual editing.
-package com.github.voml.jss_intellij.language.parser;
+package jss.intellij.language.parser;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import static com.github.voml.jss_intellij.language.psi.JssTypes.*;
-import static com.github.voml.jss_intellij.language.psi.JssParserUtil.*;
+import static jss.intellij.language.psi.JssTypes.*;
+import static jss.intellij.language.psi.JssParserUtil.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;
@@ -32,17 +32,17 @@ public class JssParser implements PsiParser, LightPsiParser {
   }
 
   static boolean parse_root_(IElementType t, PsiBuilder b, int l) {
-    return Jss(b, l + 1);
+    return JSS(b, l + 1);
   }
 
   /* ********************************************************** */
   // statement*
-  static boolean Jss(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Jss")) return false;
+  static boolean JSS(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "JSS")) return false;
     while (true) {
       int c = current_position_(b);
       if (!statement(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "Jss", c)) break;
+      if (!empty_element_parsed_guard_(b, "JSS", c)) break;
     }
     return true;
   }
