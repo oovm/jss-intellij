@@ -12,7 +12,6 @@ properties tags: array {
     "items": {
         "type": "string"
     }
-    
 }
 
 /// Dimensions for the product
