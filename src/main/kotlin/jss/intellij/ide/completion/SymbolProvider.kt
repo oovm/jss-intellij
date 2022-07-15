@@ -6,6 +6,7 @@ import com.intellij.codeInsight.completion.CompletionResultSet
 import com.intellij.codeInsight.lookup.LookupElementBuilder
 import com.intellij.openapi.editor.EditorModificationUtil
 import com.intellij.util.ProcessingContext
+import jss.intellij.ide.completion.lookup.PropertyData
 import jss.intellij.language.file.JssIcons
 
 class SymbolProvider : CompletionProvider<CompletionParameters>() {
@@ -16,13 +17,18 @@ class SymbolProvider : CompletionProvider<CompletionParameters>() {
         addProperty(resultSet)
     }
 
-
+    // FIXME: Remove fields that have already appeared
     private fun addProperty(set: CompletionResultSet) {
         set.addKeyword("property", "keyword")
         set.addKeyword("schema", "keyword")
         set.addProperty("type", "string | array")
+        set.addProperty("allOf", "array")
+        set.addProperty("anyOf", "array")
+        set.addProperty("oneOf", "array")
         addArrayProperty(set)
-        addObjectProperty(set)
+        PropertyData.objectCompletion(set, setOf())
+        addStringProperty(set)
+        addNumberProperty(set)
     }
 
     private fun addArrayProperty(set: CompletionResultSet) {
@@ -33,32 +39,37 @@ class SymbolProvider : CompletionProvider<CompletionParameters>() {
         set.addProperty("maximum", "number")
         set.addProperty("exclusiveMaximum", "boolean")
         set.addProperty("items", "object")
+        set.addProperty("uniqueItems", "boolean")
     }
 
-    private fun addObjectProperty(set: CompletionResultSet) {
-        set.addProperty("minProperties", "number")
-        set.addProperty("maxProperties", "number")
-        set.addProperty("required", "array")
-        set.addProperty("properties", "object")
-        set.addProperty("additionalProperties", "object")
+    private fun addStringProperty(set: CompletionResultSet) {
+        set.addProperty("minLength", "number")
+        set.addProperty("maxLength", "number")
+        set.addProperty("pattern", "regex")
+    }
+
+    private fun addNumberProperty(set: CompletionResultSet) {
+        set.addProperty("minimum", "number")
+        set.addProperty("exclusiveMinimum", "boolean")
+        set.addProperty("maximum", "number")
+        set.addProperty("exclusiveMaximum", "boolean")
+        set.addProperty("multipleOf", "boolean")
     }
 }
 
 private fun CompletionResultSet.addProperty(field: String, typing: String) {
     val e = when (typing) {
-        "array" -> LookupElementBuilder.create("$field: [];").withInsertHandler { ctx, _ ->
-            EditorModificationUtil.moveCaretRelatively(ctx.editor, -2)
+        "array" -> LookupElementBuilder.create("$field: []").withInsertHandler { ctx, _ ->
+            EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
         }
-        "object" -> LookupElementBuilder.create("$field: {};").withInsertHandler { ctx, _ ->
-            EditorModificationUtil.moveCaretRelatively(ctx.editor, -2)
+        "object" -> LookupElementBuilder.create("$field: {}").withInsertHandler { ctx, _ ->
+            EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
         }
-        "string" -> LookupElementBuilder.create("$field: '';").withInsertHandler { ctx, _ ->
-            EditorModificationUtil.moveCaretRelatively(ctx.editor, -2)
+        "string", "regex" -> LookupElementBuilder.create("$field: ''").withInsertHandler { ctx, _ ->
+            EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
         }
         else -> {
-            LookupElementBuilder.create("$field: ;").withInsertHandler { ctx, _ ->
-                EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
-            }
+            LookupElementBuilder.create("$field: ")
         }
     }
     val e2 = e.withPresentableText(field)
@@ -68,13 +79,10 @@ private fun CompletionResultSet.addProperty(field: String, typing: String) {
 }
 
 private fun CompletionResultSet.addKeyword(keyword: String, typing: String) {
-    val e = LookupElementBuilder.create(keyword)
+    val e = LookupElementBuilder.create("$keyword {}")
         .withPresentableText(keyword)
         .withIcon(JssIcons.SCHEMA)
         .withTypeText(typing)
         .withBoldness(true)
-        .withInsertHandler { ctx, _ ->
-            EditorModificationUtil.moveCaretRelatively(ctx.editor, -1)
-        }
     this.addElement(e)
 }

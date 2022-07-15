@@ -31,6 +31,10 @@ open class MixinProperty(node: ASTNode) : DeclareNode(node) {
             .map { JssViewElement(it) }
             .toTypedArray()
     }
+
+    fun getType(): String? {
+        return originalElement.typeHint?.lastChild?.text
+    }
 }
 
 

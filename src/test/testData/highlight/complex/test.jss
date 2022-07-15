@@ -6,7 +6,7 @@ schema Product: object {
 }
 
 /// Tags for the product
-properties tags: array {
+property tags: array {
     minItems: 1,
     uniqueItems: true
     "items": {
@@ -15,7 +15,7 @@ properties tags: array {
 }
 
 /// Dimensions for the product
-properties dimensions: object {
+property dimensions: object {
     .length: number
     .width: number
     .height: number
