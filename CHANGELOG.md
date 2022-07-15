@@ -1,8 +1,15 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# jss-intellij Changelog
+# Jss Intellij Changelog
 
 
+## [0.2.0]
+
+### New
+- Add structure view
+
+### Fixed
+- Support version `2022.2.*`
 
 ## [0.1.1]
 
