@@ -63,7 +63,7 @@
 			implementationClass="jss.intellij.ide.todo.VomlTodoIndexer"/>
 		<completion.contributor
 			language="JSS"
-			implementationClass="jss.intellij.ide.completion.VomlOptionCompletionContributor"/>
+			implementationClass="jss.intellij.ide.completion.CompletionContributor"/>
 
 
 		<langCodeStyleSettingsProvider
